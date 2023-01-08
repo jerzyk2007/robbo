@@ -1,0 +1,740 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(../font/BPdotsPlus.otf);
+}
+
+@font-face {
+    font-family: mySecondFont;
+    src: url(../font/saxmono.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    touch-action: manipulation;
+}
+body {
+    background-color: black;
+    cursor: none;
+    // width: 100vw;
+    // height: 100vh;
+}
+.gameBoard {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    max-width: 900px;
+    max-height: 540px;
+    transform: translateX(-50%);
+    overflow: hidden;
+    background-color: rgb(34, 87, 34);
+
+    display: grid;
+    @media (max-width: 1024px){
+        top: 20px;
+        max-width: 900px;
+        max-height: 540px; 
+    }
+    @media (max-width: 840px){
+        top: 50px;
+        max-width: 670px;
+        max-height: 585px; 
+    }
+
+    @media (max-width: 420px){
+        max-width: 330px;
+        max-height: 270px;
+    }
+    @media (max-width: 360px){
+        max-width: 270px;
+        max-height: 270px;
+    }
+    @media (max-width: 280px){
+        max-width: 225px;
+        max-height: 225px;
+    }
+    }
+    .nextLevel {
+        position: fixed;
+        top: 20px;
+        left: 100%;
+        width: 1080px;
+        height: 540px;
+        background-color: rgb(0, 0, 0);
+        // overflow: hidden;
+        @media (max-width: 1024px){
+            width: 1080px;
+            height: 640px;
+        }
+        @media (max-width: 800px){
+            width: 720px;
+            height: 640px;
+        }
+        @media (max-width: 420px){
+            width: 400px;
+            height: 450px;
+        }
+        @media (max-width: 360px){
+            width: 330px;
+            height: 450px;
+        }
+        @media (max-width: 280px){
+            width: 260px;
+            // height: 300px;
+
+        }
+    }
+    .animationNextLevel {
+        animation: nextLevel 2s linear;
+        @media (max-width: 840px){
+            animation-duration: 2s;
+        }
+        @media (max-width: 420px){
+            animation-duration: 1.8s;
+        }
+    }
+    @keyframes nextLevel {
+        100% {
+            left: -130%;
+        }
+    }
+.pieceBoard {
+    width: 60px;
+    height: 60px;
+    background-color: rgb(28, 109, 25);
+    text-align: center;
+    background-size: 100%;
+    color: transparent;
+    font-size: .001px;
+    // color: red;
+    // font-size: 12px;
+    @media (max-width: 1024px){
+        width: 60px;
+        height: 60px;
+    }
+    @media (max-width: 840px){
+        width: 45px;
+        height: 45px;
+    }
+    @media (max-width: 420px){
+        width: 30px;
+        height: 30px;
+    }
+    @media (max-width: 280px){
+        width: 25px;
+        height: 25px;
+    }
+    }
+.scoresBoard {
+    position: fixed;
+    top: 570px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 70px;
+    // width: 800px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+// background-color: red;
+@media (max-width: 1024px){
+    top: 580px;
+    height: 70px;
+}
+@media (max-width: 840px){
+    top: 640px;
+    height: 75px;
+}
+@media (max-width: 420px){
+    top: 330px;
+    height: 30px;
+}
+@media (max-width: 360px){
+    top: 330px;
+    height: 30px;
+}
+@media (max-width: 280px){
+    top: 285px;
+    height: 28px;
+}
+
+
+& > div {
+    display: flex;
+    align-items: center;
+}
+&  > span {
+text-align: right;
+padding-right: 5px;
+flex-basis: 50%;
+margin-right: 10px;
+}
+&__image {
+    padding-left: 35px;
+    // height: 65px;
+    @media (max-width: 1024px){
+        padding-left: 25px;
+            height: 60px;
+        }
+    @media (max-width: 840px){
+        padding-left: 15px;
+            height: 50px;
+        }
+    @media (max-width: 420px){
+        padding-left: 7px;
+            height: 24px;
+        }
+    @media (max-width: 360px){
+          padding-left: 7px;
+          height: 20px;
+           }
+    @media (max-width: 280px){
+    padding-left: 5px;
+    height: 16px;
+                }
+}
+
+&__scores--count{
+    // width: 180px;
+    display: flex;
+    justify-content: center;
+    @media (max-width: 1024px){
+        width: 180px;
+        }
+    @media (max-width: 840px){
+        width: 150px;
+        }
+    @media (max-width: 420px){
+        width: 80px;
+        }
+    @media (max-width: 360px){
+    width: 75px;
+    }
+    @media (max-width: 280px){
+        width: 70px;
+        }
+
+    }
+ &__screws--count, &__lives--count, &__ammo--count, &__keys--count, .scoresBoard__level--count {
+    // width: 70px;
+    display: flex;
+    justify-content: center;
+}}
+.number {
+    margin: 0px;
+    height: 70px;
+    @media (max-width: 1024px){
+        height: 65px;
+        // width: 35px;
+        // border: 2px solid red;
+        }
+    @media (max-width: 840px){
+        height: 50px;
+        }
+    @media (max-width: 420px){
+        height: 25px;
+        }
+    @media (max-width: 360px){
+    height: 25px;
+    width: 11px;
+    }
+    @media (max-width: 280px){
+        height: 16px;
+        width: 9px;
+        }
+    }
+
+///css planszy
+
+
+.material-symbols-outlined {
+    font-size: 22px;
+    margin: 0 10px;
+    @media (max-width: 420px){
+        font-size: 16px;
+        margin: 0 5px;
+        }
+    @media (max-width: 360px){
+        font-size: 12px;
+        margin: 0 5px;
+        }
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 48,
+}
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+.welcomeBoard {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 610px;
+    height: 650px;
+    background-color: #000;
+    font-family: myFirstFont;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 640px){
+        width: 610px;
+        height: 650px;
+    }
+    @media (max-width: 420px){
+        width: 350px;
+        height: 600px;
+    }
+    @media (max-width: 360px){
+        width: 330px;
+        height: 500px;
+    }
+    @media (max-width: 280px){
+        width: 260px;
+        height: 500px;
+    }
+}
+
+.container__title {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px 0;
+    height: 25%;
+    flex-basis: 100%;
+}
+
+.letter {
+    width: 80px;
+    height: 110px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    @media (max-width: 640px){
+        margin: 0 10px;
+        width: 80px;
+        height: 110px;
+    }
+    @media (max-width: 420px){
+        margin: 0 8px;
+        width: 50px;
+        height: 70px;
+    }
+    @media (max-width: 360px){
+        margin: 0 6px;
+    }
+    @media (max-width: 280px){
+        margin: 0 3px;
+        width: 45px;
+        height: 60px;
+    }
+}
+
+.letterElement {
+    width: 10px;
+    height: 10px;
+    margin: 1.5px 0px;
+    text-align: center;
+    @media (max-width: 640px){
+        width: 8px;
+        height: 8px;
+    margin: 1.5px 0px;
+        }
+    @media (max-width: 420px){
+        width: 7px;
+        height: 7px;
+    }
+    @media (max-width: 360px){
+        width: 7px;
+        height: 7px;
+    margin: .2px 0px;
+    }
+    @media (max-width: 360px){
+        width: 5px;
+        height: 5px;
+    margin: .1px 0px;
+    }
+}
+
+.titleAnimation {
+    animation: titleAnimation linear infinite;
+}
+
+@keyframes titleAnimation {
+    0% {
+        background-color: #064d13;
+    }
+
+    50% {
+        background-color: #7ec022;
+    }
+
+    100% {
+        background-color: #114012;
+    }
+}
+
+.author {
+     font-size: 14px;
+    color: rgb(175, 171, 171);
+    text-align: center;
+    font-family: mySecondFont;
+    flex-basis: 100%;
+    height: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 420px){
+        font-size: 12px;
+    height: 15%;
+    }
+    @media (max-width: 360px){
+        font-size: 10px;
+    height: 15%;
+    }
+&__h1 {
+flex-basis: 100%;
+}
+    &__h2{
+    margin: 10px;
+flex-basis: 100%;
+    }
+    &__h3{
+        color: #d34848;
+        letter-spacing: 2px;
+        flex-basis: 100%;
+    }
+}
+
+.information {
+    flex-basis: 100%;
+    height: 20%;
+    margin: 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: myFirstFont;
+    @media (max-width: 420px){
+    font-family: mySecondFont;
+
+        height: 15%;
+    }
+    @media (max-width: 360px){
+        height: 15%;
+        margin: 0 5px;
+    }
+    &__span {
+        width: 50%;
+        height: 50%;
+        color: grey;
+        font-size: 24px;
+        font-weight: 600;
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        @media (max-width: 420px){
+            font-size: 16px;
+        padding: 2px 0px ;
+        }
+        @media (max-width: 360px){
+            font-size: 12px;
+        }
+    }}
+
+
+.robboStory {
+    border-top: 2px solid blue;
+    border-bottom: 2px solid blue;
+    color: grey;
+    flex-basis: 100%;
+    height: 223px;
+    overflow: hidden;
+   
+    @media (max-width: 420px){
+        height: 124px;
+    }
+    @media (max-width: 360px){
+        height: 104px;
+    }
+}
+
+.container {
+    position: relative;
+    top: 174px;
+    width: 100%;
+    height: 756px;
+    padding: 5px 0;
+    
+    @media (max-width: 420px){
+        height: 462px;
+    }
+    @media (max-width: 360px){
+        height: 378px;
+    }
+}
+
+.scroll {
+    display: block;
+    position: relative;
+    height: 36px;
+    font-size: 26px;
+    letter-spacing: 1px;
+    white-space: pre;
+    font-family: mySecondFont;
+    padding: 0px 0;
+    
+    @media (max-width: 420px){
+        font-size: 13px;
+    letter-spacing: 1.5px;
+    height: 22px;
+    }
+    @media (max-width: 360px){
+        font-size: 12px;
+    height: 18px;
+    }
+    @media (max-width: 280px){
+        font-size: 9px;
+        // letter-spacing: 1px;
+    height: 18px;
+    }
+}
+
+.scroll:first-child {
+    display: table;
+    margin: 0 auto;
+    background-color: gray;
+    color: rgb(0, 0, 0);
+    @media (max-width: 420px) {
+            line-height: 18px;
+      }
+    }
+
+.scroll:nth-child(18), .scroll:nth-child(19){
+    display: inline-block;
+    text-align-last: left;
+}
+
+.scroll:nth-child(19){
+    background-color: gray;
+    color: black;
+    @media (max-width: 420px) {
+        line-height: 26px;
+    }
+}
+
+.scroll::after {
+    content: attr(data-value);
+    background-color: gray;
+    color: transparent;
+    opacity: 0;
+    margin-left: 2px;
+    animation: cursor .2s infinite;
+}
+
+@keyframes cursor {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+.firstLevel {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    width: 900px;
+    height: 540px;
+    transform: translateX(-50%);
+    background-color: rgb(0, 0, 0);
+    overflow: hidden;
+    animation: firstLevel 1s linear;
+    @media (max-width: 1024px){
+        width: 900px;
+        height: 840px;
+
+    }
+    @media (max-width: 840px){
+        width: 670px;
+        height: 840px;
+    }
+    @media (max-width: 420px){
+        width: 330px;
+
+    }
+    @media (max-width: 360px){
+        width: 270px;
+    }
+    @media (max-width: 280px){
+        width: 225px;
+}
+@keyframes firstLevel {
+    0% {
+    transform: translateX(-50%);
+
+    }
+    100% {
+    transform: translateX(-150%);
+    }
+}
+}
+.buttons--steering {
+    display: none;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 150px;
+    width: 100%;
+    @media (max-width: 1024px){
+        display: none;
+    }
+    @media (max-width: 840px){
+     display: block;
+    }
+}
+.buttons {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #000;
+    border-radius: 10%;
+    border: 2px solid gray;
+    background-color: transparent;
+&:active {
+    animation: buttonBorder .1s linear;
+}
+    & > .material-symbols-outlined {
+        font-size: 40px;
+        color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-variation-settings:
+            'FILL' 0,
+            'wght' 300,
+            'GRAD' 0,
+            'opsz' 48,
+    }
+    &__ESC {
+        top: -25px;
+        color: gray;
+        transform: translateY(-50%);
+        left: 150px;
+        @media (max-width: 768px){
+            top: 75px;
+            left: 150px;
+            }
+
+        @media (max-width: 420px){
+            top: 0px;
+            left: 100px;
+            }
+        @media (max-width: 280px){
+            top: 0px;
+           left: 50px;
+           }
+    }
+
+    &__right {
+        top: 50%;
+        transform: translateY(-50%);
+        right: 50px;
+        @media (max-width: 420px){
+            right: 50px;
+            }
+        @media (max-width: 280px){
+           right: 25px;
+           }
+    }
+    &__left {
+        top: 50%;
+        transform: translateY(-50%);
+        right: 150px;
+        @media (max-width: 420px){
+            right: 150px;
+            }
+        @media (max-width: 280px){
+            right: 125px;
+            }
+    }
+    &__up {
+        top: 0;
+        right: 100px;
+        @media (max-width: 420px){
+            right: 100px;
+            }
+        @media (max-width: 280px){
+            right: 75px;
+            }
+    }
+    &__down {
+        bottom: 0;
+        right: 100px;
+        @media (max-width: 420px){
+            right: 100px;
+            }
+        @media (max-width: 280px){
+            right: 75px;
+            }
+    }
+    &__shot {
+        top: 50px;
+        left: 50px;
+        @media (max-width: 420px){
+            left: 50px;
+            }
+        @media (max-width: 280px){
+            left: 25px;
+            }
+    }
+}
+@keyframes buttonBorder {
+    100% {
+        border-color: red;
+    }
+}
+
+.gunAnimShotUD{
+    animation: gunAnimUD .5s linear infinite;
+}
+@keyframes gunAnimUD{
+    0% {
+        background-image: url(../pictures/shot-UD-first.png)
+    }
+     49.99% {
+        background-image: url(../pictures/shot-UD-first.png)
+    }
+     50% {
+        background-image: url(../pictures/shot-UD-second.png)
+    }
+      100% {
+        background-image: url(../pictures/shot-UD-second.png)
+        
+    }
+}
+.gunAnimShotLR{
+    animation: gunAnimLR .5s linear infinite;
+}
+@keyframes gunAnimLR{
+    0% {
+        background-image: url(../pictures/shot-LR-first.png)
+    }
+     49.99% {
+        background-image: url(../pictures/shot-LR-first.png)
+    }
+     50% {
+        background-image: url(../pictures/shot-LR-second.png)
+    }
+      100% {
+        background-image: url(../pictures/shot-LR-second.png)
+        
+    }
+}
