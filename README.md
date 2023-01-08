@@ -1,2 +1,2 @@
 # robbo
-Robbo - a game for Atari XL written in Javascript
+Robbo - a game from Atari XL written in Javascript
