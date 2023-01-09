@@ -22,6 +22,7 @@ class Gun {
     this.type = type;
     this.shotImages;
     this.checkMove;
+    this.frequentlyShot = 500;
     this.shotDirection = ["left", "right", "up", "down"];
     this.course = "vertical";
     //    this.action = ["kill"];
@@ -226,7 +227,8 @@ class Gun {
         this.startColumnPosition
       );
       if (this.checkMove.textContent == "GO") {
-        this.timeInterval = setInterval(() => {
+        // this.timeInterval = setInterval(() => {
+        setTimeout(() => {
           this.shot = new Shot(
             this.direction,
             this.startRowPosition + row,
@@ -234,8 +236,18 @@ class Gun {
             this.startName
           );
           board.elementContainer.shotNumber++;
-        }, 1000);
+          // this.randomNumber = Math.floor(
+          //   Math.random() * (2000 - 500 + 1) + 500
+          // );
+        }, 0);
       }
+      this.frequentlyShot =
+        Math.floor(Math.floor(Math.random() * (2000 - 500 + 1) + 500) / 250) *
+        250;
+      this.timeShot = setTimeout(() => {
+        this.singleShot(direction);
+      }, this.frequentlyShot);
+      console.log(this.frequentlyShot);
     }
   }
   move(shotDirection) {}

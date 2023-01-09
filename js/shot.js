@@ -81,6 +81,11 @@ class Shot {
             `.class${this.startRowPosition + row}x${
               this.startColumnPosition + column
             }`
+          ).style.backgroundImage = "";
+          document.querySelector(
+            `.class${this.startRowPosition + row}x${
+              this.startColumnPosition + column
+            }`
           ).textContent = "GO";
           this.startShot();
         }, levels.gameSpeed);
