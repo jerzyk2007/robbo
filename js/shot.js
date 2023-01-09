@@ -7,7 +7,7 @@ class Shot {
       "url(pictures/shot-UD-first.png)",
       "url(pictures/shot-UD-second.png)",
     ];
-    // this.explosionAnim = ["url(pictures/boom2.png)", "url(pictures/boom1.png)"];
+
     this.moveDirection = direction;
     this.startRowPosition = row;
     this.startColumnPosition = column;
@@ -18,13 +18,11 @@ class Shot {
     this.checkMove;
     this.counter = 2;
     this.startElementName = startElementName;
-    this.action = ["shot"];
+    // this.action = ["shot"];
     this.time;
-    this.shotTimeAnim;
   }
   addToObject() {
-    // console.log(this.startName);
-    // board.elementContainer.objects.push(this.startName);
+    board.elementContainer.objects.push(this.startName);
   }
   imageDirection() {
     if (this.moveDirection == "right" || this.moveDirection == "left") {
@@ -37,22 +35,23 @@ class Shot {
       return this.imageMove;
     }
   }
+  bomb() {}
   startShot() {
-    let row = 0;
-    let column = 0;
+    this.row = 0;
+    this.column = 0;
     if (this.moveDirection === "down") {
-      row = -1;
+      this.row = -1;
     } else if (this.moveDirection === "up") {
-      row = 1;
+      this.row = 1;
     } else if (this.moveDirection === "left") {
-      column = 1;
+      this.column = 1;
     } else if (this.moveDirection === "right") {
-      column = -1;
+      this.column = -1;
     }
     this.checkMove = checkAction(
       this.moveDirection,
-      this.startRowPosition + row,
-      this.startColumnPosition + column
+      this.startRowPosition + this.row,
+      this.startColumnPosition + this.column
     );
     if (this.checkMove) {
       if (this.checkMove.textContent == "GO") {
@@ -73,55 +72,58 @@ class Shot {
         }
         this.time = setTimeout(() => {
           document.querySelector(
-            `.class${this.startRowPosition + row}x${
-              this.startColumnPosition + column
+            `.class${this.startRowPosition + this.row}x${
+              this.startColumnPosition + this.column
             }`
           ).style.backgroundImage = "";
           document.querySelector(
-            `.class${this.startRowPosition + row}x${
-              this.startColumnPosition + column
+            `.class${this.startRowPosition + this.row}x${
+              this.startColumnPosition + this.column
             }`
           ).style.backgroundImage = "";
           document.querySelector(
-            `.class${this.startRowPosition + row}x${
-              this.startColumnPosition + column
+            `.class${this.startRowPosition + this.row}x${
+              this.startColumnPosition + this.column
             }`
           ).textContent = "GO";
-          this.startShot();
+          return this.startShot();
         }, levels.gameSpeed);
       } else if (this.checkMove.textContent == "STOP") {
         animShot(
-          this.startRowPosition + row,
-          this.startColumnPosition + column
+          this.startRowPosition + this.row,
+          this.startColumnPosition + this.column
         );
+        board.elementContainer.deleteNameObjects(this.startName);
       } else if (this.checkMove.textContent == "SHOT") {
-        console.log("strzał");
-
         animShot(this.startRowPosition, this.startColumnPosition);
-        //              animShot(
-        //          this.startRowPosition + row,
-        //          this.startColumnPosition + column
-        //        );
+        board.elementContainer.deleteNameObjects(this.startName);
       } else {
         clearTimeout(this.time);
         eval(this.checkMove.textContent).shot();
 
         if (
           document.querySelector(
-            `.class${this.startRowPosition + row}x${
-              this.startColumnPosition + column
+            `.class${this.startRowPosition + this.row}x${
+              this.startColumnPosition + this.column
             }`
           ).textContent == "GO"
         ) {
           animShot(
-            this.startRowPosition + row,
-            this.startColumnPosition + column
+            this.startRowPosition + this.row,
+            this.startColumnPosition + this.column
           );
+          board.elementContainer.deleteNameObjects(this.startName);
         }
       }
     }
   }
-  destroy() {}
+  destroy() {
+    clearTimeout(this.time);
+    animExplosion(
+      this.startRowPosition + this.row,
+      this.startColumnPosition + this.column
+    );
+  }
   shot() {}
   move(movedirection) {}
   direction(movedirection) {}

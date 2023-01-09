@@ -123,8 +123,7 @@ class Board {
           this.elementContainer.objects.push(
             `board.gunRight${this.elementContainer.gunRight}`
           );
-        } 
-          else if (
+        } else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "E"
         ) {
           this.elementContainer.gunRight++;
@@ -134,9 +133,17 @@ class Board {
           this.elementContainer.objects.push(
             `board.gunRight${this.elementContainer.gunRight}`
           );
-        } 
-          
-          else if (
+        } else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "N"
+        ) {
+          this.elementContainer.gunLeft++;
+          eval(
+            `this.gunLeft${this.elementContainer.gunLeft} = new Gun(i+1, j+1, "board.gunLeft${this.elementContainer.gunLeft}", "left", "single")`
+          );
+          this.elementContainer.objects.push(
+            `board.gunLeft${this.elementContainer.gunLeft}`
+          );
+        } else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "Q"
         ) {
           this.elementContainer.hash++;

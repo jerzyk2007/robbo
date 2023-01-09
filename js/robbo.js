@@ -18,7 +18,7 @@ class Robbo {
     this.startColumnPosition = column;
     this.action = ["empty"];
     this.moveDirection;
-//    this.shotNumber = 1;
+    //    this.shotNumber = 1;
     this.flag = true;
     // this.stop = true;
     document.querySelector(
@@ -46,7 +46,6 @@ class Robbo {
     }, 800);
   }
 
- 
   makeShot() {
     if (board.scoreBoard.ammo > 0) {
       board.scoreBoard.changeCount("shot");
@@ -160,12 +159,7 @@ class Robbo {
     }
   }
   position() {}
-  destroy() {
-    // this.killRobbo();
-    // clearTimeout(this.time);
-    // this.time = "";
-    // animExplosion(this.startRowPosition, this.startColumnPosition);
-  }
+  destroy() {}
   bomb() {
     this.killRobbo();
     clearTimeout(this.time);

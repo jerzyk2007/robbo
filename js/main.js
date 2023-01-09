@@ -188,12 +188,12 @@ function keyDownListener(direction) {
     canMoveSetTime = setTimeout(function () {
       canMove = true;
     }, levels.gameSpeed * 0.9);
-//      if (direction =="right"){
-//           console.log(canMove)
-//          return board.robbo.moveRobbo("right");
-//      }
-//    else 
-        if (!direction) {
+    //      if (direction =="right"){
+    //           console.log(canMove)
+    //          return board.robbo.moveRobbo("right");
+    //      }
+    //    else
+    if (!direction) {
       switch (event.keyCode) {
         case 39:
           return board.robbo.moveRobbo("right");
@@ -208,30 +208,37 @@ function keyDownListener(direction) {
         case 27:
           return board.robbo.killRobbo();
       }
-        
     } else {
       if (direction == "shot") {
         return board.robbo.makeShot();
       } else if (direction == "esc") {
-         return board.robbo.killRobbo() 
-      }
-        else {
-       return board.robbo.moveRobbo(direction);
+        return board.robbo.killRobbo();
+      } else {
+        return board.robbo.moveRobbo(direction);
       }
     }
   };
 }
 
-
 function mobileKeyListener() {
-
-    document.querySelector(".buttons__right").addEventListener('touchstart', keyDownListener("right"))
-    document.querySelector(".buttons__left").addEventListener('touchstart', keyDownListener("left"))
-    document.querySelector(".buttons__up").addEventListener('touchstart', keyDownListener("up"))
-    document.querySelector(".buttons__down").addEventListener('touchstart', keyDownListener("down"))
-    document.querySelector(".buttons__shot").addEventListener('touchstart', keyDownListener("shot"))
-    document.querySelector(".buttons__ESC").addEventListener('touchstart', keyDownListener("esc"))
-
+  document
+    .querySelector(".buttons__right")
+    .addEventListener("touchstart", keyDownListener("right"));
+  document
+    .querySelector(".buttons__left")
+    .addEventListener("touchstart", keyDownListener("left"));
+  document
+    .querySelector(".buttons__up")
+    .addEventListener("touchstart", keyDownListener("up"));
+  document
+    .querySelector(".buttons__down")
+    .addEventListener("touchstart", keyDownListener("down"));
+  document
+    .querySelector(".buttons__shot")
+    .addEventListener("touchstart", keyDownListener("shot"));
+  document
+    .querySelector(".buttons__ESC")
+    .addEventListener("touchstart", keyDownListener("esc"));
 }
 
 // funkcja zamykająca ekran powitalny gry

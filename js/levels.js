@@ -11,7 +11,7 @@ class Levels {
 
     this.level1 = [8, 11];
     this.level1part1 = [...`###########`];
-    this.level1part2 = [...`#$        #`];
+    this.level1part2 = [...`#$        N`];
     this.level1part3 = [...`#R  A   B #`];
     this.level1part4 = [...`X#   ## # #`];
     this.level1part5 = [...`X   # S#  #`];
@@ -99,6 +99,7 @@ class Levels {
 // O - gun - shot left - laser
 // M - gun - shot right - laser
 // E - gun - shot right - single
+// N - gun - shot left - single
 // < - magnet right
 // > - magnet left
 // C - ant - left - up

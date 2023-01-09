@@ -5,8 +5,9 @@ class ElemenntContainer {
     this.birdHorizontal = 0;
     this.birdVertical = 0;
     this.hash = 0;
-      this.makeShotName;
-    this.shotNumber=0
+    // this.shot = 0;
+    this.makeShotName;
+    this.shotNumber = 0;
     this.ammo = 0;
     this.border = 0;
     this.lives = 0;

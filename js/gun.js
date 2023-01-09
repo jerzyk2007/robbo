@@ -99,7 +99,9 @@ class Gun {
       eval(this.shotRoad[i]).classList.remove(`${this.nameAnimShot}`);
     }
   }
-  shot() {}
+  shot() {
+    console.log("działa");
+  }
 
   moveShot() {
     if (this.type == "laser") {
@@ -227,27 +229,25 @@ class Gun {
         this.startColumnPosition
       );
       if (this.checkMove.textContent == "GO") {
-        // this.timeInterval = setInterval(() => {
         setTimeout(() => {
-          this.shot = new Shot(
+          eval(
+            `this.makeShot${board.elementContainer.shotNumber} = new Shot(
             this.direction,
             this.startRowPosition + row,
             this.startColumnPosition + column,
-            this.startName
+            "${this.startName}.makeShot${board.elementContainer.shotNumber}",
+            this.checkMove.textContent
+          )`
           );
           board.elementContainer.shotNumber++;
-          // this.randomNumber = Math.floor(
-          //   Math.random() * (2000 - 500 + 1) + 500
-          // );
         }, 0);
       }
       this.frequentlyShot =
-        Math.floor(Math.floor(Math.random() * (2000 - 500 + 1) + 500) / 250) *
+        Math.floor(Math.floor(Math.random() * (3000 - 500 + 1) + 500) / 250) *
         250;
       this.timeShot = setTimeout(() => {
         this.singleShot(direction);
       }, this.frequentlyShot);
-      console.log(this.frequentlyShot);
     }
   }
   move(shotDirection) {}
