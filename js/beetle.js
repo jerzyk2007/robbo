@@ -5,7 +5,7 @@ class Beetle {
       "url(pictures/beetle-first.png)",
       "url(pictures/beetle-second.png)",
       "url(pictures/ant-first.png)",
-      "url(pictures/ant-second.png)",
+      "url(pictures/ant-second.png)"
     ];
     this.startRowPosition = row;
     this.startColumnPosition = column;
@@ -30,6 +30,7 @@ class Beetle {
   }
 
   tryMove(moveDirection) {
+
     setTimeout(() => {
       this.search = [-1, 0, 1];
       this.arrayMove = [];
@@ -133,10 +134,10 @@ class Beetle {
       this.possibleDirection = [
         ["", "right", ""],
         ["up", "", "down"],
-        ["", "right1", ""],
+        ["", "left", ""],
       ];
     }
-
+if (this.type == "ant") {
     if (arrayMatrix[1][2] == "GO") {
       this.tryDirection = this.possibleDirection[1][2];
     } else if (arrayMatrix[1][2] != "GO" && arrayMatrix[0][1] == "GO") {
@@ -148,7 +149,21 @@ class Beetle {
     ) {
       this.tryDirection = this.possibleDirection[1][0];
     }
-    // console.log("idź: " + this.tryDirection);
+} 
+      else if (this.type == "beetle") {
+            if (arrayMatrix[1][0] == "GO") {
+      this.tryDirection = this.possibleDirection[1][0];
+    } else if (arrayMatrix[1][0] != "GO" && arrayMatrix[0][1] == "GO") {
+      this.tryDirection = this.possibleDirection[0][1];
+    } else if (
+      arrayMatrix[1][0] != "GO" &&
+      arrayMatrix[0][1] != "GO" &&
+      arrayMatrix[1][2] == "GO"
+    ) {
+        
+      this.tryDirection = this.possibleDirection[1][2];
+    }
+    }
     this.moveElement(this.tryDirection);
   }
   startDirection() {
@@ -219,6 +234,7 @@ class Beetle {
             this.imageMove,
             this.startName
           );
+            searchRobbo(this.startRowPosition, this.startColumnPosition);
           this.tryMove(tryDirection);
         } else {
           this.tryMove(this.moveDirection[this.tryMoveCounter]);
@@ -227,25 +243,16 @@ class Beetle {
             this.tryMoveCounter = 0;
           }
         }
-        //  else {
-        //   this.runDirection = this.moveDirection[this.moveCounter];
-        //   this.moveCounter++;
-        //   if (this.moveCounter == 4) {
-        //     this.moveCounter = 0;
-        //   }
-        //   this.moveElement();
-        // }
+      } 
+        else {
+       
+          this.tryMove(this.moveDirection[this.tryMoveCounter]);
+          this.tryMoveCounter++;
+          if (this.tryMoveCounter == 4) {
+            this.tryMoveCounter = 0;
+          }
       }
-      //   for (let i = 0; i < this.moveDirection.length; i++) {
-      //     this.checkMove = checkAction(
-      //       this.moveDirection[i],
-      //       this.startRowPosition,
-      //       this.startColumnPosition
-      //     );
-      //     this.arrayMove.push(this.checkMove.textContent);
-      //   }
-      //   console.log(this.arrayMove);
-      //   searchRobbo(this.startRowPosition, this.startColumnPosition);
+     
     }, levels.gameSpeed);
   }
   move(moveDirection) {}

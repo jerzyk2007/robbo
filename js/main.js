@@ -170,7 +170,7 @@ function animShot(rowPosition, columnPosition) {
       }
       counter--;
     }
-  }, 80);
+  }, 50);
 }
 
 // funkcja która po śmierci robocika wywołuje ekcpolzję wszystkich obiektów

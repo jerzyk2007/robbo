@@ -90,10 +90,13 @@ class Shot {
           this.startColumnPosition + column
         );
       } else if (this.checkMove.textContent == "SHOT") {
-        animShot(
-          this.startRowPosition + row,
-          this.startColumnPosition + column
-        );
+        console.log("strzał");
+
+        animShot(this.startRowPosition, this.startColumnPosition);
+        //              animShot(
+        //          this.startRowPosition + row,
+        //          this.startColumnPosition + column
+        //        );
       } else {
         clearTimeout(this.time);
         eval(this.checkMove.textContent).shot();

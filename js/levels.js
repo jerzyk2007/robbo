@@ -12,11 +12,11 @@ class Levels {
     this.level1 = [8, 11];
     this.level1part1 = [...`###########`];
     this.level1part2 = [...`#$        #`];
-    this.level1part3 = [...`#R  B     #`];
-    this.level1part4 = [...`X#   ##C# #`];
-    this.level1part5 = [...`X#  # S#  #`];
-    this.level1part6 = [...`X#        #`];
-    this.level1part7 = [...`# A       #`];
+    this.level1part3 = [...`#R  A   B #`];
+    this.level1part4 = [...`X#   ## # #`];
+    this.level1part5 = [...`X   # S#  #`];
+    this.level1part6 = [...`X#  Q     #`];
+    this.level1part7 = [...`#E        #`];
     this.level1part8 = [...`###########`];
 
     // level 2
@@ -94,10 +94,11 @@ class Levels {
 // B - bomb
 // P - wall
 // D - door
-// G - gun - shot up
-// J - gun - shot down
-// O - gun - shot left
-// M - gun - shot right
+// G - gun - shot up - laser
+// J - gun - shot down - laser
+// O - gun - shot left - laser
+// M - gun - shot right - laser
+// E - gun - shot right - single
 // < - magnet right
 // > - magnet left
 // C - ant - left - up

@@ -118,17 +118,30 @@ class Board {
         ) {
           this.elementContainer.gunRight++;
           eval(
-            `this.gunRight${this.elementContainer.gunRight} = new Gun(i+1, j+1, "board.gunRight${this.elementContainer.gunRight}", "right")`
+            `this.gunRight${this.elementContainer.gunRight} = new Gun(i+1, j+1, "board.gunRight${this.elementContainer.gunRight}", "right", "laser")`
           );
           this.elementContainer.objects.push(
             `board.gunRight${this.elementContainer.gunRight}`
           );
-        } else if (
+        } 
+          else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "E"
+        ) {
+          this.elementContainer.gunRight++;
+          eval(
+            `this.gunRight${this.elementContainer.gunRight} = new Gun(i+1, j+1, "board.gunRight${this.elementContainer.gunRight}", "right", "single")`
+          );
+          this.elementContainer.objects.push(
+            `board.gunRight${this.elementContainer.gunRight}`
+          );
+        } 
+          
+          else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "Q"
         ) {
           this.elementContainer.hash++;
           eval(
-            `this.hash${this.elementContainer.hash} = new Hash(i+1, j+1, "board.hash${this.elementContainer.hash}")`
+            `this.hash${this.elementContainer.hash} = new Hash(i+1, j+1, "board.hash${this.elementContainer.hash}", "hash")`
           );
           this.elementContainer.objects.push(
             `board.hash${this.elementContainer.hash}`
@@ -136,12 +149,12 @@ class Board {
         } else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "W"
         ) {
-          this.elementContainer.autoHash++;
+          this.elementContainer.hash++;
           eval(
-            `this.autoHash${this.elementContainer.autoHash} = new AutoHash(i+1, j+1, "board.autoHash${this.elementContainer.autoHash}")`
+            `this.hash${this.elementContainer.hash} = new Hash(i+1, j+1, "board.hash${this.elementContainer.hash}", "autohash")`
           );
           this.elementContainer.objects.push(
-            `board.autoHash${this.elementContainer.autoHash}`
+            `board.hash${this.elementContainer.hash}`
           );
         } else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "A"

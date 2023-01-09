@@ -18,7 +18,7 @@ class Robbo {
     this.startColumnPosition = column;
     this.action = ["empty"];
     this.moveDirection;
-    this.shotNumber = 1;
+//    this.shotNumber = 1;
     this.flag = true;
     // this.stop = true;
     document.querySelector(
@@ -46,94 +46,7 @@ class Robbo {
     }, 800);
   }
 
-  // tryMove(moveDirection) {
-  //   console.log(moveDirection);
-  //   if (moveDirection == "up") {
-  //     this.search = [-1, 0, 1];
-
-  //     this.arrayMove = [];
-  //     this.arrayMatrix = [];
-  //     for (let j = 0; j < this.search.length; j++) {
-  //       for (let i = 0; i < this.search.length; i++) {
-  //         let checkMove = checkAction(
-  //           "stop",
-  //           this.startRowPosition + this.search[j],
-  //           this.startColumnPosition + this.search[i]
-  //         );
-  //         if (checkMove) {
-  //           this.arrayMove.push(checkMove.textContent);
-  //         } else {
-  //           this.arrayMove.push("STOP");
-  //         }
-  //       }
-  //       this.arrayMatrix.push(this.arrayMove);
-  //       this.arrayMove = [];
-  //     }
-  //   } else if (moveDirection == "down") {
-  //     this.search = [-1, 0, 1];
-
-  //     this.arrayMove = [];
-  //     this.arrayMatrix = [];
-  //     for (let j = 2; j > -1; j--) {
-  //       for (let i = 2; i > -1; i--) {
-  //         let checkMove = checkAction(
-  //           "stop",
-  //           this.startRowPosition + this.search[j],
-  //           this.startColumnPosition + this.search[i]
-  //         );
-  //         if (checkMove) {
-  //           this.arrayMove.push(checkMove.textContent);
-  //         } else {
-  //           this.arrayMove.push("STOP");
-  //         }
-  //       }
-  //       this.arrayMatrix.push(this.arrayMove);
-  //       this.arrayMove = [];
-  //     }
-  //   } else if (moveDirection == "right") {
-  //     this.search = [-1, 0, 1];
-  //     this.arrayMove = [];
-  //     this.arrayMatrix = [];
-  //     for (let i = 2; i > -1; i--) {
-  //       for (let j = 0; j < this.search.length; j++) {
-  //         let checkMove = checkAction(
-  //           "stop",
-  //           this.startRowPosition + this.search[j],
-  //           this.startColumnPosition + this.search[i]
-  //         );
-  //         if (checkMove) {
-  //           this.arrayMove.push(checkMove.textContent);
-  //         } else {
-  //           this.arrayMove.push("STOP");
-  //         }
-  //       }
-  //       this.arrayMatrix.push(this.arrayMove);
-  //       this.arrayMove = [];
-  //     }
-  //   } else if (moveDirection == "left") {
-  //     this.search = [-1, 0, 1];
-  //     this.arrayMove = [];
-  //     this.arrayMatrix = [];
-  //     for (let i = 0; i < this.search.length; i++) {
-  //       for (let j = 2; j > -1; j--) {
-  //         console.log(this.search[j], this.search[i]);
-  //         let checkMove = checkAction(
-  //           "stop",
-  //           this.startRowPosition + this.search[j],
-  //           this.startColumnPosition + this.search[i]
-  //         );
-  //         if (checkMove) {
-  //           this.arrayMove.push(checkMove.textContent);
-  //         } else {
-  //           this.arrayMove.push("STOP");
-  //         }
-  //       }
-  //       this.arrayMatrix.push(this.arrayMove);
-  //       this.arrayMove = [];
-  //     }
-  //   }
-  //   console.log(this.arrayMatrix);
-  // }
+ 
   makeShot() {
     if (board.scoreBoard.ammo > 0) {
       board.scoreBoard.changeCount("shot");
@@ -161,16 +74,16 @@ class Robbo {
         );
         if (this.checkMove.textContent != "SHOT") {
           eval(
-            `this.makeShot${this.shotNumber} = new Shot(
+            `this.makeShot${board.elementContainer.shotNumber} = new Shot(
             this.moveDirection,
             this.startRowPosition + row,
             this.startColumnPosition + column,
-            "board.robbo.makeShot${this.shotNumber}",
+            "board.robbo.makeShot${board.elementContainer.shotNumber}",
             this.checkMove.textContent
           )`
           );
         }
-        this.shotNumber++;
+        board.elementContainer.shotNumber++;
         // }
       }
     }
