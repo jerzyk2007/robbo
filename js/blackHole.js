@@ -11,7 +11,7 @@ class BlackHole {
     ).style.backgroundImage = this.images[0];
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
-    ).textContent = "STOP";
+    ).textContent = "SHOT";
   }
   move(moveDirection) {}
   destroy() {}

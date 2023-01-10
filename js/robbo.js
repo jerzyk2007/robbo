@@ -73,14 +73,23 @@ class Robbo {
         );
         if (this.checkMove.textContent != "SHOT") {
           eval(
-            `this.makeShot${board.elementContainer.shotNumber} = new Shot(
+            `board.robbo${board.elementContainer.shotNumber} = new Shot(
             this.moveDirection,
             this.startRowPosition + row,
             this.startColumnPosition + column,
-            "board.robbo.makeShot${board.elementContainer.shotNumber}",
+            "board.robbo${board.elementContainer.shotNumber}",
             this.checkMove.textContent
           )`
           );
+//                eval(
+//            `this.makeShot${board.elementContainer.shotNumber} = new Shot(
+//            this.moveDirection,
+//            this.startRowPosition + row,
+//            this.startColumnPosition + column,
+//            "board.robbo.makeShot${board.elementContainer.shotNumber}",
+//            this.checkMove.textContent
+//          )`
+//          );
         }
         board.elementContainer.shotNumber++;
         // }
@@ -159,7 +168,8 @@ class Robbo {
     }
   }
   position() {}
-  destroy() {}
+  destroy() {
+  }
   bomb() {
     this.killRobbo();
     clearTimeout(this.time);

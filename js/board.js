@@ -26,15 +26,15 @@ class Board {
   createElement(rowCounter, columnCounter) {
     for (let i = 0; i < rowCounter; i++) {
       for (let j = 0; j < columnCounter; j++) {
-        if (eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "#") {
+        if (eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "*") {
           eval(`this.border = new Border(i + 1, j + 1, "board.border")`);
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "R"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "@"
         ) {
           this.robbo = new Robbo(i + 1, j + 1, "board.robbo");
           this.elementContainer.objects.push(`board.robbo`);
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "S"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "%"
         ) {
           this.elementContainer.screws++;
           eval(
@@ -44,77 +44,77 @@ class Board {
             `board.screw${this.elementContainer.screws}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "H"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "Q"
         ) {
-          this.elementContainer.birdHorizontal++;
+          this.elementContainer.bird++;
           eval(
-            `this.birdHorizontal${this.elementContainer.birdHorizontal} = new Bird(i+1, j+1, "board.birdHorizontal${this.elementContainer.birdHorizontal}", "horizontal")`
+            `this.bird${this.elementContainer.bird} = new Bird(i+1, j+1, "board.bird${this.elementContainer.bird}", "horizontal")`
           );
           this.elementContainer.objects.push(
-            `board.birdHorizontal${this.elementContainer.birdHorizontal}`
+            `board.bird${this.elementContainer.bird}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "V"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "P"
         ) {
-          this.elementContainer.birdVertical++;
+          this.elementContainer.bird++;
           eval(
-            `this.birdVertical${this.elementContainer.birdVertical} = new Bird(i+1, j+1, "board.birdVertical${this.elementContainer.birdVertical}", "vertical")`
+            `this.bird${this.elementContainer.bird} = new Bird(i+1, j+1, "board.bird${this.elementContainer.bird}", "vertical")`
           );
           this.elementContainer.objects.push(
-            `board.birdVertical${this.elementContainer.birdVertical}`
+            `board.bird${this.elementContainer.bird}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "G"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "g"
         ) {
-          this.elementContainer.gunUp++;
+          this.elementContainer.gun++;
           eval(
-            `this.gunUp${this.elementContainer.gunUp} = new Gun(i+1, j+1, "board.gunUp${this.elementContainer.gunUp}", "up")`
+            `this.gun${this.elementContainer.gun} = new Gun(i+1, j+1, "board.gun${this.elementContainer.gun}", "up", "laser")`
           );
           this.elementContainer.objects.push(
-            `board.gunUp${this.elementContainer.gunUp}`
+            `board.gun${this.elementContainer.gun}`
           );
         } else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === ">"
         ) {
-          this.elementContainer.magnetLeft++;
+          this.elementContainer.magnet++;
           eval(
-            `this.magnetLeft${this.elementContainer.magnetLeft} = new Magnet(i+1, j+1, "board.magnetLeft${this.elementContainer.magnetLeft}", "left")`
+            `this.magnet${this.elementContainer.magnet} = new Magnet(i+1, j+1, "board.magnet${this.elementContainer.magnet}", "left")`
           );
           this.elementContainer.objects.push(
-            `board.magnetLeft${this.elementContainer.magnetLeft}`
+            `board.magnet${this.elementContainer.magnet}`
           );
         } else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "<"
         ) {
-          this.elementContainer.magnetRight++;
+          this.elementContainer.magnet++;
           eval(
-            `this.magnetRight${this.elementContainer.magnetRight} = new Magnet(i+1, j+1, "board.magnetRight${this.elementContainer.magnetRight}", "right")`
+            `this.magnet${this.elementContainer.magnet} = new Magnet(i+1, j+1, "board.magnet${this.elementContainer.magnet}", "right")`
           );
           this.elementContainer.objects.push(
-            `board.magnetRight${this.elementContainer.magnetRight}`
+            `board.magnet${this.elementContainer.magnet}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "J"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "h"
         ) {
-          this.elementContainer.gunDown++;
+          this.elementContainer.gun++;
           eval(
-            `this.gunDown${this.elementContainer.gunDown} = new Gun(i+1, j+1, "board.gunDown${this.elementContainer.gunDown}", "down")`
+            `this.gun${this.elementContainer.gun} = new Gun(i+1, j+1, "board.gun${this.elementContainer.gun}", "down", "laser")`
           );
           this.elementContainer.objects.push(
-            `board.gunDown${this.elementContainer.gunDown}`
+            `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "O"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "f"
         ) {
-          this.elementContainer.gunLeft++;
+          this.elementContainer.gun++;
           eval(
-            `this.gunLeft${this.elementContainer.gunLeft} = new Gun(i+1, j+1, "board.gunLeft${this.elementContainer.gunLeft}", "left")`
+            `this.gun${this.elementContainer.gun} = new Gun(i+1, j+1, "board.gun${this.elementContainer.gun}", "left", "laser")`
           );
           this.elementContainer.objects.push(
-            `board.gunLeft${this.elementContainer.gunLeft}`
+            `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "M"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "e"
         ) {
           this.elementContainer.gunRight++;
           eval(
@@ -123,28 +123,53 @@ class Board {
           this.elementContainer.objects.push(
             `board.gunRight${this.elementContainer.gunRight}`
           );
-        } else if (
+        } 
+          else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "E"
         ) {
-          this.elementContainer.gunRight++;
+          this.elementContainer.gun++;
           eval(
-            `this.gunRight${this.elementContainer.gunRight} = new Gun(i+1, j+1, "board.gunRight${this.elementContainer.gunRight}", "right", "single")`
+            `this.gun${this.elementContainer.gun} = new Gun(i+1, j+1, "board.gun${this.elementContainer.gun}", "right", "single")`
           );
           this.elementContainer.objects.push(
-            `board.gunRight${this.elementContainer.gunRight}`
+            `board.gun${this.elementContainer.gun}`
           );
-        } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "N"
+        } 
+             else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "H"
         ) {
-          this.elementContainer.gunLeft++;
+          this.elementContainer.gun++;
           eval(
-            `this.gunLeft${this.elementContainer.gunLeft} = new Gun(i+1, j+1, "board.gunLeft${this.elementContainer.gunLeft}", "left", "single")`
+            `this.gun${this.elementContainer.gun} = new Gun(i+1, j+1, "board.gun${this.elementContainer.gun}", "down", "single")`
           );
           this.elementContainer.objects.push(
-            `board.gunLeft${this.elementContainer.gunLeft}`
+            `board.gun${this.elementContainer.gun}`
+          );
+        } 
+          else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "G"
+        ) {
+          this.elementContainer.gun++;
+          eval(
+            `this.gun${this.elementContainer.gun} = new Gun(i+1, j+1, "board.gun${this.elementContainer.gun}", "up", "single")`
+          );
+          this.elementContainer.objects.push(
+            `board.gun${this.elementContainer.gun}`
+          );
+        } 
+          
+          else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "F"
+        ) {
+          this.elementContainer.gun++;
+          eval(
+            `this.gun${this.elementContainer.gun} = new Gun(i+1, j+1, "board.gun${this.elementContainer.gun}", "left", "single")`
+          );
+          this.elementContainer.objects.push(
+            `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "Q"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "#"
         ) {
           this.elementContainer.hash++;
           eval(
@@ -154,7 +179,7 @@ class Board {
             `board.hash${this.elementContainer.hash}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "W"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "$"
         ) {
           this.elementContainer.hash++;
           eval(
@@ -184,7 +209,7 @@ class Board {
             `board.bomb${this.elementContainer.bombs}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "L"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "!"
         ) {
           this.elementContainer.lives++;
           eval(
@@ -194,7 +219,7 @@ class Board {
             `board.lives${this.elementContainer.lives}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "K"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "^"
         ) {
           this.elementContainer.keys++;
           eval(
@@ -209,7 +234,7 @@ class Board {
           // this.elementContainer.keys++;
           eval(`this.blackHole = new BlackHole(i+1, j+1, "board.blackHole")`);
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "P"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "C"
         ) {
           this.elementContainer.wall++;
           eval(
@@ -229,22 +254,22 @@ class Board {
             `board.door${this.elementContainer.door}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "$"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "&"
         ) {
           this.ship = new Ship(i + 1, j + 1, "board.ship");
           this.elementContainer.objects.push(`board.ship`);
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "C"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "N"
         ) {
-          this.elementContainer.ant++;
+          this.elementContainer.beetle++;
           eval(
-            `this.ant${this.elementContainer.ant} = new Beetle(i+1, j+1, "board.ant${this.elementContainer.ant}", "left", "ant")`
+            `this.beetle${this.elementContainer.beetle} = new Beetle(i+1, j+1, "board.beetle${this.elementContainer.beetle}", "left", "ant")`
           );
           this.elementContainer.objects.push(
-            `board.ant${this.elementContainer.ant}`
+            `board.beetle${this.elementContainer.beetle}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "F"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "O"
         ) {
           this.elementContainer.beetle++;
           eval(

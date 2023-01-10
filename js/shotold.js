@@ -7,7 +7,7 @@ class Shot {
       "url(pictures/shot-UD-first.png)",
       "url(pictures/shot-UD-second.png)",
     ];
-    this.startElementName = startElementName;
+
     this.moveDirection = direction;
     this.startRowPosition = row;
     this.startColumnPosition = column;
@@ -17,11 +17,11 @@ class Shot {
     this.start = this.startShot();
     this.checkMove;
     this.counter = 2;
+    this.startElementName = startElementName;
     // this.action = ["shot"];
     this.time;
   }
   addToObject() {
-//      console.log(this.startName)
     board.elementContainer.objects.push(this.startName);
   }
   imageDirection() {
@@ -99,8 +99,6 @@ class Shot {
         board.elementContainer.deleteNameObjects(this.startName);
       } else {
         clearTimeout(this.time);
-          
-//          console.log(this.checkMove.textContent)
         eval(this.checkMove.textContent).shot();
 
         if (
@@ -117,12 +115,6 @@ class Shot {
           board.elementContainer.deleteNameObjects(this.startName);
         }
       }
-    } else {
-         animShot(
-            this.startRowPosition + this.row,
-            this.startColumnPosition + this.column
-          );  
-        board.elementContainer.deleteNameObjects(this.startName);
     }
   }
   destroy() {
@@ -137,12 +129,11 @@ class Shot {
   direction(movedirection) {}
   nextLevel() {
     clearTimeout(this.time);
-    
     document.querySelector(
-      `.class${this.startRowPosition+this.row}x${this.startColumnPosition+this.column}`
+      `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";
     document.querySelector(
-      `.class${this.startRowPosition+this.row}x${this.startColumnPosition+this.column}`
+      `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = "";
   }
 }

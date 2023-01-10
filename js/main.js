@@ -20,6 +20,7 @@ function nextLevel(info) {
     this.objects = board.elementContainer.objects;
     this.staticObjects = board.elementContainer.staticObjects;
     this.objects.forEach((objects) => {
+        console.log(objects)
       eval(objects).nextLevel();
       // delete eval(objects);
     });
@@ -173,6 +174,45 @@ function animShot(rowPosition, columnPosition) {
   }, 50);
 }
 
+//funkcja generująca pojedyńcze strzału dla dział, ptaków i co tam jeszcze strzela
+
+ function singleShot(direction, startRow, startColumn, name) {
+    let row = 0;
+    let column = 0;
+    if (direction) {
+      if (direction == "left") {
+        column = -1;
+      }
+      if (direction == "right") {
+        column = 1;
+      }
+      if (direction == "up") {
+        row = -1;
+      }
+      if (direction == "down") {
+        row = 1;
+      }
+
+      let checkMove = checkAction(
+        direction,
+        startRow,
+        startColumn
+      );
+      if (checkMove.textContent == "GO") {
+        setTimeout(() => {
+          eval(
+            `name = new Shot(
+            direction,
+            startRow + row,
+            startColumn + column,
+            "${name}",
+            checkMove.textContent
+          )`
+          );
+         
+        }, 0);
+      }
+  }}
 // funkcja która po śmierci robocika wywołuje ekcpolzję wszystkich obiektów
 function destroyAllElements() {
   board.elementContainer.objects.forEach((objects) => {
