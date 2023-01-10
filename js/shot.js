@@ -1,13 +1,12 @@
 // klasa która tworzy "strzały" i ich animacje
 class Shot {
-  constructor(direction, row, column, name, startElementName) {
+  constructor(direction, row, column, name) {
     this.images = [
       "url(pictures/shot-LR-first.png)",
       "url(pictures/shot-LR-second.png)",
       "url(pictures/shot-UD-first.png)",
       "url(pictures/shot-UD-second.png)",
     ];
-    this.startElementName = startElementName;
     this.moveDirection = direction;
     this.startRowPosition = row;
     this.startColumnPosition = column;
@@ -53,6 +52,7 @@ class Shot {
       this.startRowPosition + this.row,
       this.startColumnPosition + this.column
     );
+
     if (this.checkMove) {
       if (this.checkMove.textContent == "GO") {
         document.querySelector(
@@ -102,8 +102,6 @@ class Shot {
         board.elementContainer.deleteNameObjects(this.startName);
       } else {
         clearTimeout(this.time);
-
-        //          console.log(this.checkMove.textContent)
         eval(this.checkMove.textContent).shot();
 
         if (

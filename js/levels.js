@@ -10,14 +10,14 @@ class Levels {
     // level 1
 
     this.level1 = [8, 11];
-    this.level1part1 = [...`     q     `];
-    this.level1part2 = [...`&          `];
+    this.level1part1 = [...`q  qqq     `];
+    this.level1part2 = [...`&#         `];
     this.level1part3 = [...`@  A      *`];
-    this.level1part4 = [...`           `];
-    this.level1part5 = [...`           `];
-    this.level1part6 = [...`           `];
-    this.level1part7 = [...`           `];
-    this.level1part8 = [...`e          `];
+    this.level1part4 = [...` #         `];
+    this.level1part5 = [...`         # `];
+    this.level1part6 = [...`        # #`];
+    this.level1part7 = [...`         % `];
+    this.level1part8 = [...`           `];
 
     // level 2
   }

@@ -7,11 +7,10 @@ class Ship {
     this.startName = name;
     this.checkMove;
     this.imageMove = this.images[0];
-    this.action = ["empty"];
+    // this.action = ["empty"];
     this.endLevel = false;
     this.time;
     this.flag = true;
-    // this.shipReady = this.shipReady();
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = this.imageMove;

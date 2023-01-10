@@ -11,7 +11,7 @@ class Bird {
     this.checkMove;
     this.moveDirection = ["left", "right", "up", "down"];
     this.course = course;
-    this.shot = shot;
+    this.armedBird = shot;
     this.startDirection = this.startDirection();
     this.runElement = this.moveElement();
     this.time;
@@ -30,7 +30,7 @@ class Bird {
     } else if (this.course == "horizontal") {
       this.runDirection = this.moveDirection[0];
     }
-    if (this.shot == "shot") {
+    if (this.armedBird == "shot") {
       this.timeStartShot = setTimeout(() => {
         this.singleShot("down");
       }, 1000);
@@ -64,7 +64,13 @@ class Bird {
   }
   shot() {
     clearTimeout(this.time);
-    animExplosion(this.startRowPosition, this.startColumnPosition);
+    clearTimeout(this.timeShot);
+    clearTimeout(this.timeStartShot);
+    animExplosion(
+      this.startRowPosition,
+      this.startColumnPosition,
+      this.startName
+    );
     board.scoreBoard.scores += 150;
     board.scoreBoard.changeCount("scores");
     board.elementContainer.deleteNameObjects(this.startName);
@@ -96,8 +102,6 @@ class Bird {
             this.imageMove,
             this.startName
           );
-
-          // } else if (this.checkMove.textContent == "STOP") {
         } else {
           this.runDirection =
             this.runDirection === this.moveDirection[0 + this.counter]
@@ -106,8 +110,6 @@ class Bird {
         }
 
         searchRobbo(this.startRowPosition, this.startColumnPosition);
-        // console.log(this.checkMove);
-
         this.moveElement();
       } else {
         this.runDirection =
@@ -125,19 +127,21 @@ class Bird {
       this.startRowPosition,
       this.startColumnPosition
     );
-    if (this.checkMove.textContent == "GO") {
-      setTimeout(() => {
-        eval(
-          `this.makeShot${board.elementContainer.shotNumber} = new Shot(
+    if (this.checkMove) {
+      // console.log(this.checkMove.textContent);
+      if (this.checkMove.textContent != "SHOT") {
+        setTimeout(() => {
+          eval(
+            `this.makeShot${board.elementContainer.shotNumber} = new Shot(
             direction,
-            this.startRowPosition + 1,
+            this.startRowPosition +1,
             this.startColumnPosition ,
-            "${this.startName}.makeShot${board.elementContainer.shotNumber}",
-            this.checkMove.textContent
+            "${this.startName}.makeShot${board.elementContainer.shotNumber}"
           )`
-        );
-        board.elementContainer.shotNumber++;
-      }, 0);
+          );
+          board.elementContainer.shotNumber++;
+        }, 0);
+      }
     }
     this.frequentlyShot =
       Math.floor(Math.floor(Math.random() * (2000 - 250 + 1) + 250) / 250) *
@@ -149,6 +153,8 @@ class Bird {
   move(moveDirection) {}
   nextLevel() {
     clearTimeout(this.time);
+    clearTimeout(this.timeShot);
+    clearTimeout(this.timeStartShot);
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";
