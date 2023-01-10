@@ -21,7 +21,7 @@ class Shot {
     this.time;
   }
   addToObject() {
-//      console.log(this.startName)
+    //      console.log(this.startName)
     board.elementContainer.objects.push(this.startName);
   }
   imageDirection() {
@@ -95,12 +95,15 @@ class Shot {
         );
         board.elementContainer.deleteNameObjects(this.startName);
       } else if (this.checkMove.textContent == "SHOT") {
-        animShot(this.startRowPosition, this.startColumnPosition);
+        animShot(
+          this.startRowPosition + this.row,
+          this.startColumnPosition + this.column
+        );
         board.elementContainer.deleteNameObjects(this.startName);
       } else {
         clearTimeout(this.time);
-          
-//          console.log(this.checkMove.textContent)
+
+        //          console.log(this.checkMove.textContent)
         eval(this.checkMove.textContent).shot();
 
         if (
@@ -118,11 +121,11 @@ class Shot {
         }
       }
     } else {
-         animShot(
-            this.startRowPosition + this.row,
-            this.startColumnPosition + this.column
-          );  
-        board.elementContainer.deleteNameObjects(this.startName);
+      animShot(
+        this.startRowPosition + this.row,
+        this.startColumnPosition + this.column
+      );
+      board.elementContainer.deleteNameObjects(this.startName);
     }
   }
   destroy() {
@@ -137,12 +140,16 @@ class Shot {
   direction(movedirection) {}
   nextLevel() {
     clearTimeout(this.time);
-    
+
     document.querySelector(
-      `.class${this.startRowPosition+this.row}x${this.startColumnPosition+this.column}`
+      `.class${this.startRowPosition + this.row}x${
+        this.startColumnPosition + this.column
+      }`
     ).textContent = "GO";
     document.querySelector(
-      `.class${this.startRowPosition+this.row}x${this.startColumnPosition+this.column}`
+      `.class${this.startRowPosition + this.row}x${
+        this.startColumnPosition + this.column
+      }`
     ).style.backgroundImage = "";
   }
 }

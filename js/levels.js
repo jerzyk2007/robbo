@@ -16,8 +16,8 @@ class Levels {
     this.level1part4 = [...`           `];
     this.level1part5 = [...`           `];
     this.level1part6 = [...`           `];
-    this.level1part7 = [...`E          `];
-    this.level1part8 = [...`E          `];
+    this.level1part7 = [...`           `];
+    this.level1part8 = [...`e          `];
 
     // level 2
   }
