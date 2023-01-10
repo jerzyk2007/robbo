@@ -14,7 +14,6 @@ class Bird {
     this.shot = shot;
     this.startDirection = this.startDirection();
     this.runElement = this.moveElement();
-    // this.makeShot = this.singleShot("down");
     this.time;
     this.timeStartShot;
     document.querySelector(
