@@ -33,7 +33,7 @@ class Gun {
     this.runElement = this.moveShot();
     this.timeShot;
     this.timeShotBack;
-      this.singleShotInterval;
+    this.singleShotInterval;
     this.shotRoad = [];
 
     this.explosionInterval;
@@ -100,16 +100,13 @@ class Gun {
       eval(this.shotRoad[i]).classList.remove(`${this.nameAnimShot}`);
     }
   }
-  shot() {
-    console.log("działa");
-  }
+  shot() {}
 
   moveShot() {
     if (this.type == "laser") {
       this.timeShot = setTimeout(() => {
         if (this.runDirection == "up" || this.runDirection == "down") {
           this.shotImage = this.shotImages[0];
-
           this.nameAnimShot = "gunAnimShotUD";
         }
         if (this.runDirection == "left" || this.runDirection == "right") {
@@ -165,8 +162,6 @@ class Gun {
       }, levels.gameSpeed);
     } else if (this.type == "single") {
       this.singleShot(this.direction);
-//              this.singleShot(this.direction);
-
     }
   }
   moveShotBack() {
@@ -208,26 +203,27 @@ class Gun {
       }
     }, levels.gameSpeed);
   }
-    singleShot(direction) {
-    let row = 0;
-    let column = 0;
 
-    if (this.direction) {
+  singleShot(direction) {
+    if (direction) {
       if (this.direction == "left") {
-        column = -1;
+        this.column = -1;
+        this.row = 0;
       }
       if (this.direction == "right") {
-        column = 1;
+        this.column = 1;
+        this.row = 0;
       }
       if (this.direction == "up") {
-        row = -1;
+        this.row = -1;
+        this.column = 0;
       }
       if (this.direction == "down") {
-        row = 1;
+        this.row = 1;
+        this.column = 0;
       }
-
       this.checkMove = checkAction(
-        this.direction,
+        direction,
         this.startRowPosition,
         this.startColumnPosition
       );
@@ -236,8 +232,8 @@ class Gun {
           eval(
             `this.makeShot${board.elementContainer.shotNumber} = new Shot(
             this.direction,
-            this.startRowPosition + row,
-            this.startColumnPosition + column,
+            this.startRowPosition + this.row,
+            this.startColumnPosition + this.column,
             "${this.startName}.makeShot${board.elementContainer.shotNumber}",
             this.checkMove.textContent
           )`
@@ -246,32 +242,17 @@ class Gun {
         }, 0);
       }
       this.frequentlyShot =
-        (Math.floor(Math.floor(Math.random() * (3000 - 500 + 1) + 500) / 250) *
-        250);
+        Math.floor(Math.floor(Math.random() * (2000 - 250 + 1) + 250) / 250) *
+        250;
       this.timeShot = setTimeout(() => {
         this.singleShot(direction);
       }, this.frequentlyShot);
     }
   }
-    
-//  singleShot(direction) {
-//       this.frequentlyShot =
-//        (Math.floor(Math.floor(Math.random() * (1500 - 250 + 1) + 250) / 250) *
-//        250);
-////      console.log(this.frequentlyShot)
-//      this.singleShotInterval = setInterval(() => {
-////          console.log(direction)
-//        singleShot(direction, this.startRowPosition, this.startColumnPosition, `${this.startName}${board.elementContainer.shotNumber}`);
-//          clearInterval(this.singleShotInterval);
-//           board.elementContainer.shotNumber++;
-//         this.singleShot(direction)
-//         
-//      }, this.frequentlyShot);
-//  }
   move(shotDirection) {}
   nextLevel() {
     this.clearBombRoad();
-clearInterval(this.singleShotInterval);
+    clearInterval(this.singleShotInterval);
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";

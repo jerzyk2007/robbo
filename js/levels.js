@@ -10,18 +10,16 @@ class Levels {
     // level 1
 
     this.level1 = [8, 11];
-    this.level1part1 = [...`           `];
-    this.level1part2 = [...`           `];
+    this.level1part1 = [...`     q     `];
+    this.level1part2 = [...`&          `];
     this.level1part3 = [...`@  A      *`];
     this.level1part4 = [...`           `];
     this.level1part5 = [...`           `];
     this.level1part6 = [...`           `];
-    this.level1part7 = [...`E         &`];
+    this.level1part7 = [...`E          `];
     this.level1part8 = [...`E          `];
 
     // level 2
-
-    
   }
 }
 // A – ammo
@@ -46,15 +44,15 @@ class Levels {
 // P – bird vertical, no shot
 // Q - bird horiontal, no shot
 // q - bird horiontal, single shot
-// R – 
-// S – 
-// T - 
-// U – 
-// V - 
-// W - 
+// R –
+// S –
+// T -
+// U –
+// V -
+// W -
 // X – black hole – empty space
-// Y – 
-// Z – 
+// Y –
+// Z –
 // ! – live
 //@ - robbo
 // # - hash
@@ -71,4 +69,3 @@ class Levels {
 // = -
 // < - magnet right
 // > - magnet left
-

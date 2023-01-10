@@ -1,6 +1,6 @@
 // klasa tworzy ptaki,latające poziomo, pionowo i poziomo strzelające
 class Bird {
-  constructor(row, column, name, course) {
+  constructor(row, column, name, course, shot) {
     this.images = [
       "url(pictures/bird-first.png)",
       "url(pictures/bird-second.png)",
@@ -11,11 +11,12 @@ class Bird {
     this.checkMove;
     this.moveDirection = ["left", "right", "up", "down"];
     this.course = course;
-    // this.action = ["kill"];
+    this.shot = shot;
     this.startDirection = this.startDirection();
     this.runElement = this.moveElement();
+    // this.makeShot = this.singleShot("down");
     this.time;
-    this.explosionInterval;
+    this.timeStartShot;
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = this.imageMove;
@@ -29,6 +30,11 @@ class Bird {
       this.runDirection = this.moveDirection[2];
     } else if (this.course == "horizontal") {
       this.runDirection = this.moveDirection[0];
+    }
+    if (this.shot == "shot") {
+      this.timeStartShot = setTimeout(() => {
+        this.singleShot("down");
+      }, 1000);
     }
   }
   direction(moveDirection) {
@@ -44,6 +50,8 @@ class Bird {
   }
   destroy() {
     clearTimeout(this.time);
+    clearTimeout(this.timeShot);
+    clearTimeout(this.timeStartShot);
     animExplosion(
       this.startRowPosition,
       this.startColumnPosition,
@@ -110,6 +118,34 @@ class Bird {
         this.moveElement();
       }
     }, levels.gameSpeed);
+  }
+
+  singleShot(direction) {
+    this.checkMove = checkAction(
+      direction,
+      this.startRowPosition,
+      this.startColumnPosition
+    );
+    if (this.checkMove.textContent == "GO") {
+      setTimeout(() => {
+        eval(
+          `this.makeShot${board.elementContainer.shotNumber} = new Shot(
+            direction,
+            this.startRowPosition + 1,
+            this.startColumnPosition ,
+            "${this.startName}.makeShot${board.elementContainer.shotNumber}",
+            this.checkMove.textContent
+          )`
+        );
+        board.elementContainer.shotNumber++;
+      }, 0);
+    }
+    this.frequentlyShot =
+      Math.floor(Math.floor(Math.random() * (2000 - 250 + 1) + 250) / 250) *
+      250;
+    this.timeShot = setTimeout(() => {
+      this.singleShot(direction);
+    }, this.frequentlyShot);
   }
   move(moveDirection) {}
   nextLevel() {
