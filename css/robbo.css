@@ -956,8 +956,8 @@ body {
   }
 }
 .gunAnimShotUD {
-  -webkit-animation: gunAnimUD 0.5s linear infinite;
-          animation: gunAnimUD 0.5s linear infinite;
+  -webkit-animation: gunAnimUD 0.4s linear infinite;
+          animation: gunAnimUD 0.4s linear infinite;
 }
 
 @-webkit-keyframes gunAnimUD {
@@ -990,8 +990,8 @@ body {
   }
 }
 .gunAnimShotLR {
-  -webkit-animation: gunAnimLR 0.5s linear infinite;
-          animation: gunAnimLR 0.5s linear infinite;
+  -webkit-animation: gunAnimLR 0.4s linear infinite;
+          animation: gunAnimLR 0.4s linear infinite;
 }
 
 @-webkit-keyframes gunAnimLR {
