@@ -1,8 +1,6 @@
 const levels = new Levels();
 let board = null;
-let canMove = true;
-let canMoveSetTime;
-let activeMagnet = null;
+
 // funkcja która uruchamia następny level lub po stracie użycia uruchamia ponownie ten sam
 function nextLevel(info) {
   window.removeEventListener("keydown", keyDownListener());
@@ -24,7 +22,6 @@ function nextLevel(info) {
     });
     this.staticObjects.forEach((staticObjects) => {
       eval(staticObjects).nextLevel();
-      // delete eval(objects);
     });
     this.pieceBoard = document.querySelectorAll(".pieceBoard");
     this.pieceBoard.forEach((pieceBoard) => pieceBoard.remove());
@@ -180,12 +177,12 @@ function destroyAllElements() {
 }
 // funkcja obsługująca klawisze sterujące
 function keyDownListener(direction) {
-  canMove = true;
+  levels.canMove = true;
   return function (event) {
-    if (!canMove) return false;
-    canMove = false;
-    canMoveSetTime = setTimeout(function () {
-      canMove = true;
+    if (!levels.canMove) return false;
+    levels.canMove = false;
+    levels.canMoveSetTime = setTimeout(function () {
+      levels.canMove = true;
     }, levels.gameSpeed * 0.9);
 
     if (!direction) {

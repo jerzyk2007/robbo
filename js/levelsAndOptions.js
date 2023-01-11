@@ -4,12 +4,12 @@ class Levels {
     this.scorePoints = 0;
     this.robboLives = 3;
     this.gameSpeed = 200;
-    this.levelCounter = 1;
-    this.lastLevel = 1;
     this.canMove = true;
     this.canMoveSetTime;
     this.activeMagnet = null;
 
+    this.levelCounter = 1;
+    this.lastLevel = 1;
     // level 1
 
     this.level1 = [8, 11];
