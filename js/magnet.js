@@ -54,13 +54,13 @@ class Magnet {
           }
           this.startMagnet(direction);
         } else if (this.checkMove.textContent == "board.robbo") {
-          if (!activeMagnet || activeMagnet == this.startName) {
-            activeMagnet = this.startName;
+          if (!levels.activeMagnet || levels.activeMagnet == this.startName) {
+            levels.activeMagnet = this.startName;
             this.robboStop = true;
             this.startMagneticColumnPosition = this.startColumnPosition;
-            clearTimeout(canMoveSetTime);
+            clearTimeout(levels.canMoveSetTime);
 
-            canMove = false;
+            levels.canMove = false;
             setTimeout(() => {
               if (
                 this.startRowPosition == board.robbo.startRowPosition &&
@@ -75,11 +75,10 @@ class Magnet {
           }
         } else {
           if (this.robboStop) {
-            canMove = true;
+            levels.canMove = true;
             this.robboStop = false;
           }
-          activeMagnet = null;
-          //        canMove = true;
+          levels.activeMagnet = null;
           this.startMagneticColumnPosition = this.startColumnPosition;
           setTimeout(() => {
             this.startMagnet(direction);
