@@ -7,15 +7,15 @@ class Gun {
       "url(pictures/shot-LR-first.png)",
       "url(pictures/shot-LR-second.png)",
     ];
-    this.gunImages = []
-    
-        this.gunStopImages = [
+    this.gunImages = [];
+
+    this.gunStopImages = [
       "url(pictures/gunUp.png)",
       "url(pictures/gunDown.png)",
       "url(pictures/gunLeft.png)",
       "url(pictures/gunRight.png)",
     ];
-         this.gunMovingImages = [
+    this.gunMovingImages = [
       "url(pictures/gunUpMoving.png)",
       "url(pictures/gunDownMoving.png)",
       "url(pictures/gunLeftMoving.png)",
@@ -27,9 +27,9 @@ class Gun {
     this.startShotColumnPosition = this.startColumnPosition;
     this.startName = name;
     this.startShotDirection = direction;
-      this.movingDirection= direction;
+    this.movingDirection = direction;
     this.type = typeShot;
-      this.typeMove = typeMove
+    this.typeMove = typeMove;
     this.shotImages;
     this.checkMove;
     this.frequentlyShot = 500;
@@ -53,66 +53,61 @@ class Gun {
   }
 
   startGunImage(direction) {
-      if (this.typeMove == "moving"){
-       this.gunImages =  this.gunMovingImages  
-      } else {
-         this.gunImages =  this.gunStopImages  
-      }
+    if (this.typeMove == "moving") {
+      this.gunImages = this.gunMovingImages;
+    } else {
+      this.gunImages = this.gunStopImages;
+    }
     if (direction == "up") {
-        this.counter = 2
-        this.movingGunDirection = "left"
+      this.counter = 2;
+      this.movingGunDirection = "left";
       return this.gunImages[0];
     } else if (direction == "down") {
-        this.counter = 2
-        this.movingGunDirection = "right"
+      this.counter = 2;
+      this.movingGunDirection = "right";
       return this.gunImages[1];
     } else if (direction == "left") {
-        this.counter = 0
-        this.movingGunDirection = "up"
+      this.counter = 0;
+      this.movingGunDirection = "up";
       return this.gunImages[2];
     } else if (direction == "right") {
-      
-        this.counter = 0
-        this.movingGunDirection = "down"
+      this.counter = 0;
+      this.movingGunDirection = "down";
       return this.gunImages[3];
     }
   }
+
   startDirection() {
     if (this.startShotDirection == "up") {
-      this.runDirection = this.shotDirection[2];
-    } else if (this.startShotDirection == "down") {
-      this.runDirection = this.shotDirection[3];
-    } else if (this.startShotDirection == "left") {
       this.runDirection = this.shotDirection[0];
-    } else if (this.startShotDirection == "right") {
+    } else if (this.startShotDirection == "down") {
       this.runDirection = this.shotDirection[1];
+    } else if (this.startShotDirection == "left") {
+      this.runDirection = this.shotDirection[2];
+    } else if (this.startShotDirection == "right") {
+      this.runDirection = this.shotDirection[3];
     }
   }
   direction(moveDirection) {
-     if (moveDirection === "down") {
-       this.startRowPosition++;
-     } else if (moveDirection === "up") {
-       this.startRowPosition--;
-     } else if (moveDirection === "left") {
-       this.startColumnPosition--;
-     } else if (moveDirection === "right") {
-       this.startColumnPosition++;
-     }
+    if (moveDirection === "down") {
+      this.startRowPosition++;
+    } else if (moveDirection === "up") {
+      this.startRowPosition--;
+    } else if (moveDirection === "left") {
+      this.startColumnPosition--;
+    } else if (moveDirection === "right") {
+      this.startColumnPosition++;
+    }
   }
   destroy() {
     this.clearBombRoad();
-      clearTimeout( this.timeShot)
+    clearTimeout(this.timeShot);
     clearInterval(this.singleShotInterval);
     clearInterval(this.timeMoving);
-      animExplosion(
-      this.startRowPosition,
-      this.startColumnPosition,
-      
-    );
-
+    animExplosion(this.startRowPosition, this.startColumnPosition);
   }
   bomb() {
-        clearTimeout( this.timeShot)
+    clearTimeout(this.timeShot);
     clearInterval(this.singleShotInterval);
     clearInterval(this.timeMoving);
     this.clearBombRoad();
@@ -268,28 +263,28 @@ class Gun {
         }, 0);
       }
       this.frequentlyShot =
-      (  Math.floor(Math.floor(Math.random() * (3500 + 1)) / 250) *
-        250);
+        Math.floor(Math.floor(Math.random() * (3500 + 1)) / 250) * 250;
       this.timeShot = setTimeout(() => {
-            if (this.typeMove == "rotate"){
-        this.rotateGun()}
-             this.moveShot();
+        if (this.typeMove == "rotate") {
+          this.rotateGun();
+        }
+        this.moveShot();
       }, this.frequentlyShot);
     }
   }
-    
-    rotateGun(){
-        this.roatateDirection = Math.floor(Math.random()*4)
-        this.startShotDirection = this.shotDirection[this.roatateDirection]
-        this.gunImage = this.gunImages[this.roatateDirection]
-         document.querySelector(
+
+  rotateGun() {
+    this.roatateDirection = Math.floor(Math.random() * 4);
+    this.startShotDirection = this.shotDirection[this.roatateDirection];
+    this.gunImage = this.gunImages[this.roatateDirection];
+    document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = this.gunImage;
-    }
-    
+  }
+
   move(moveDirection) {
-      if (this.typeMove == "moving"){
-         this.checkMove = checkAction(
+    if (this.typeMove == "moving") {
+      this.checkMove = checkAction(
         moveDirection,
         this.startRowPosition,
         this.startColumnPosition
@@ -306,48 +301,45 @@ class Gun {
           board.robbo.moveRobbo(moveDirection);
         }
       }
-      }
+    }
   }
-    
-       moveElement() {
-            if (this.typeMove == "moving"){
-this.timeMoving =  setInterval(() => {
-       this.checkMove = checkAction(
-        this.movingGunDirection,
-        this.startRowPosition,
-        this.startColumnPosition
-      );
-    if (this.checkMove){
-            if (this.checkMove.textContent=="GO"){
 
-         move(
-            this.movingGunDirection,
-            this.startRowPosition,
-            this.startColumnPosition,
-            this.gunImage,
-            this.startName
-          ); 
-    }else {
-                this.movingGunDirection =
-          this.movingGunDirection === this.shotDirection[0 + this.counter]
-            ? this.shotDirection[1 + this.counter]
-            : this.shotDirection[0 + this.counter];
+  moveElement() {
+    if (this.typeMove == "moving") {
+      this.timeMoving = setInterval(() => {
+        this.checkMove = checkAction(
+          this.movingGunDirection,
+          this.startRowPosition,
+          this.startColumnPosition
+        );
+        if (this.checkMove) {
+          if (this.checkMove.textContent == "GO") {
+            move(
+              this.movingGunDirection,
+              this.startRowPosition,
+              this.startColumnPosition,
+              this.gunImage,
+              this.startName
+            );
+          } else {
+            this.movingGunDirection =
+              this.movingGunDirection === this.shotDirection[0 + this.counter]
+                ? this.shotDirection[1 + this.counter]
+                : this.shotDirection[0 + this.counter];
+          }
+        } else {
+          this.movingGunDirection =
+            this.movingGunDirection === this.shotDirection[0 + this.counter]
+              ? this.shotDirection[1 + this.counter]
+              : this.shotDirection[0 + this.counter];
+        }
+      }, levels.gameSpeed * 1.5);
     }
-        
-    }
-    else {
-                this.movingGunDirection =
-          this.movingGunDirection === this.shotDirection[0 + this.counter]
-            ? this.shotDirection[1 + this.counter]
-            : this.shotDirection[0 + this.counter];
-    }
-    
-}, levels.gameSpeed*1.5)}
   }
-    
+
   nextLevel() {
     this.clearBombRoad();
-        clearTimeout( this.timeShot)
+    clearTimeout(this.timeShot);
     clearInterval(this.singleShotInterval);
     clearInterval(this.timeMoving);
     document.querySelector(
