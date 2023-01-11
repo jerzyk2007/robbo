@@ -21,11 +21,12 @@ class Wall {
     animExplosion(this.startRowPosition, this.startColumnPosition);
     board.elementContainer.deleteNameObjects(this.startName);
   }
-  shot() {
+  shot(robboShot) {
     board.elementContainer.deleteNameObjects(this.startName);
     animExplosion(this.startRowPosition, this.startColumnPosition);
+    if (robboShot=="robboShot"){
     board.scoreBoard.scores += 100;
-    board.scoreBoard.changeCount("scores");
+    board.scoreBoard.changeCount("scores");}
   }
   nextLevel() {
     document.querySelector(

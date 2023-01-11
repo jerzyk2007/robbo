@@ -10,14 +10,14 @@ class Levels {
     // level 1
 
     this.level1 = [8, 11];
-    this.level1part1 = [...`e          `];
-    this.level1part2 = [...`&#         `];
-    this.level1part3 = [...`@  A      *`];
-    this.level1part4 = [...` #         `];
+    this.level1part1 = [...`           `];
+    this.level1part2 = [...`&#    M    `];
+    this.level1part3 = [...` @ A#     *`];
+    this.level1part4 = [...`A# k       `];
     this.level1part5 = [...`         # `];
-    this.level1part6 = [...`        # #`];
-    this.level1part7 = [...`         % `];
-    this.level1part8 = [...`     g     `];
+    this.level1part6 = [...`        #q `];
+    this.level1part7 = [...` B       % `];
+    this.level1part8 = [...`CCCCCCCCCCC`];
 
     // level 2
   }
@@ -34,10 +34,14 @@ class Levels {
 // g - gun - shot up – laser
 // H - gun - shot down – single
 // h - gun - shot down – laser
-// I – gun - shot right - burner
-// J - gun - shot left - burner
-// K – gun - shot up - burner
-// L – gun - shot down - burner
+// I – gun - shot right - burner *
+// i - gun - shot right – single, moving up-down 
+// J - gun - shot left - burner *
+// j - gun - shot left – single, moving up-down 
+// K – gun - shot up - burner *
+// k - gun - shot up – single, moving left-right
+// L – gun - shot down - burner *
+// l - gun - shot down – single, moving left-right 
 // M - gun - shot down – rotate, single shot
 // N - ant - left
 // O - beetle - right

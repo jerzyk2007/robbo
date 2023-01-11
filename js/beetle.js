@@ -199,12 +199,14 @@ if (this.type == "ant") {
     animExplosion(this.startRowPosition, this.startColumnPosition);
     board.elementContainer.deleteNameObjects(this.startName);
   }
-  shot() {
+  shot(robboShot) {
     clearTimeout(this.time);
     animExplosion(this.startRowPosition, this.startColumnPosition);
+                 if (robboShot=="robboShot"){
+
     board.scoreBoard.scores += 150;
     board.scoreBoard.changeCount("scores");
-    board.elementContainer.deleteNameObjects(this.startName);
+    board.elementContainer.deleteNameObjects(this.startName);}
   }
   moveElement(tryDirection) {
     this.time = setTimeout(() => {

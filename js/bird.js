@@ -62,7 +62,7 @@ class Bird {
     animExplosion(this.startRowPosition, this.startColumnPosition);
     board.elementContainer.deleteNameObjects(this.startName);
   }
-  shot() {
+  shot(robboShot) {
     clearTimeout(this.time);
     clearTimeout(this.timeShot);
     clearTimeout(this.timeStartShot);
@@ -71,9 +71,11 @@ class Bird {
       this.startColumnPosition,
       this.startName
     );
+if (robboShot=="robboShot"){
+
     board.scoreBoard.scores += 150;
     board.scoreBoard.changeCount("scores");
-    board.elementContainer.deleteNameObjects(this.startName);
+    board.elementContainer.deleteNameObjects(this.startName);}
   }
   moveElement() {
     this.time = setTimeout(() => {
@@ -95,6 +97,7 @@ class Bird {
       );
       if (this.checkMove) {
         if (this.checkMove.textContent == "GO") {
+
           move(
             this.runDirection,
             this.startRowPosition,

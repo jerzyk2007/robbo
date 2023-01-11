@@ -1,6 +1,6 @@
 // klasa która tworzy "strzały" i ich animacje
 class Shot {
-  constructor(direction, row, column, name) {
+  constructor(direction, row, column, name, robboShot) {
     this.images = [
       "url(pictures/shot-LR-first.png)",
       "url(pictures/shot-LR-second.png)",
@@ -11,6 +11,7 @@ class Shot {
     this.startRowPosition = row;
     this.startColumnPosition = column;
     this.startName = name;
+          this.robboShot = robboShot;
     this.object = this.addToObject();
     this.imageMove = this.imageDirection();
     this.start = this.startShot();
@@ -20,7 +21,6 @@ class Shot {
     this.time;
   }
   addToObject() {
-    //      console.log(this.startName)
     board.elementContainer.objects.push(this.startName);
   }
   imageDirection() {
@@ -102,7 +102,7 @@ class Shot {
         board.elementContainer.deleteNameObjects(this.startName);
       } else {
         clearTimeout(this.time);
-        eval(this.checkMove.textContent).shot();
+        eval(this.checkMove.textContent).shot(this.robboShot);
 
         if (
           document.querySelector(

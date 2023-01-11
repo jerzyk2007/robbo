@@ -20,6 +20,7 @@ class Robbo {
     this.moveDirection;
     //    this.shotNumber = 1;
     this.flag = true;
+      this.robboShot = "robboShot"
     // this.stop = true;
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
@@ -78,18 +79,9 @@ class Robbo {
             this.startRowPosition + row,
             this.startColumnPosition + column,
             "board.robbo${board.elementContainer.shotNumber}",
-            this.checkMove.textContent
+            this.robboShot
           )`
           );
-//                eval(
-//            `this.makeShot${board.elementContainer.shotNumber} = new Shot(
-//            this.moveDirection,
-//            this.startRowPosition + row,
-//            this.startColumnPosition + column,
-//            "board.robbo.makeShot${board.elementContainer.shotNumber}",
-//            this.checkMove.textContent
-//          )`
-//          );
         }
         board.elementContainer.shotNumber++;
         // }

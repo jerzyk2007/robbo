@@ -54,7 +54,7 @@ class Bomb {
   destroy() {
     animExplosion(this.startRowPosition, this.startColumnPosition);
   }
-  shot() {
+  shot(robboShot) {
     setTimeout(() => {
       for (let i = -1; i <= 1; i++) {
         for (let j = -1; j <= 1; j++) {
@@ -79,8 +79,10 @@ class Bomb {
           }
         }
       }
+           if (robboShot=="robboShot"){
       board.scoreBoard.changeCount("kill");
       board.elementContainer.deleteNameObjects(this.startName);
+           }
     }, 200);
   }
   nextLevel() {
