@@ -11,7 +11,7 @@ class Shot {
     this.startRowPosition = row;
     this.startColumnPosition = column;
     this.startName = name;
-          this.robboShot = robboShot;
+    this.robboShot = robboShot;
     this.object = this.addToObject();
     this.imageMove = this.imageDirection();
     this.start = this.startShot();
@@ -95,10 +95,7 @@ class Shot {
         );
         board.elementContainer.deleteNameObjects(this.startName);
       } else if (this.checkMove.textContent == "SHOT") {
-        animShot(
-          this.startRowPosition + this.row,
-          this.startColumnPosition + this.column
-        );
+        animShot(this.startRowPosition, this.startColumnPosition);
         board.elementContainer.deleteNameObjects(this.startName);
       } else {
         clearTimeout(this.time);

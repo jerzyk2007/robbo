@@ -263,7 +263,7 @@ class Gun {
         }, 0);
       }
       this.frequentlyShot =
-        Math.floor(Math.floor(Math.random() * (3500 + 1)) / 250) * 250;
+        Math.floor(Math.floor(Math.random() * (3500 + 1)) / 250) * 500;
       this.timeShot = setTimeout(() => {
         if (this.typeMove == "rotate") {
           this.rotateGun();

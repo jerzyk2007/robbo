@@ -13,8 +13,8 @@ class Levels {
     // level 1
 
     this.level1 = [8, 11];
-    this.level1part1 = [...`        H  `];
-    this.level1part2 = [...`&#    M    `];
+    this.level1part1 = [...`           `];
+    this.level1part2 = [...`&#         `];
     this.level1part3 = [...` @ A#     *`];
     this.level1part4 = [...`A#         `];
     this.level1part5 = [...`           `];
