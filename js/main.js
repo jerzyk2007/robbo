@@ -171,6 +171,8 @@ function animShot(rowPosition, columnPosition) {
 
 // funkcja która po śmierci robocika wywołuje ekcpolzję wszystkich obiektów
 function destroyAllElements() {
+  levels.canMove = false;
+
   board.elementContainer.objects.forEach((objects) => {
     eval(objects).destroy();
   });
