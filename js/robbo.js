@@ -20,51 +20,60 @@ class Robbo {
     this.moveDirection;
     //    this.shotNumber = 1;
     this.flag = true;
-      this.robboShot = "robboShot"
-      this.robboScrollStart = this.scrollStart();
+    this.robboShot = "robboShot";
+    this.robboScrollStart = this.scrollStart();
+    this.scrollRow = levels[`level${levels.levelCounter}`][0];
+    this.scrollColumn = levels[`level${levels.levelCounter}`][1];
+
     // this.stop = true;
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
-    ).style.backgroundImage = this.images[0];
+    ).style.backgroundImage = "url(pictures/ship.png)";
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = this.startName;
-//    document
-//      .querySelector(
-//        `.class${this.startRowPosition}x${this.startColumnPosition}`
-//      )
-//      .scrollIntoView({
-//        block: "center",
-//        inline: "center",
-//      });
   }
-    scrollStart(){
-        console.log(this.startRowPosition)
-        
-        for (let i = 0; i<this.startRowPosition; i++) {
-  setTimeout(function() {
-      
+  scrollStart() {
+    this.scrollTime = setInterval(() => {
+      document
+        .querySelector(`.class${this.scrollRow}x${this.scrollColumn}`)
+        .scrollIntoView({
+          block: "center",
+          inline: "center",
+        });
+      if (this.scrollRow > this.startRowPosition) {
+        this.scrollRow--;
+      }
+      if (this.scrollColumn > this.startColumnPosition) {
+        this.scrollColumn--;
+      }
 
-      
-      
-    console.log(i);
-  }, 200 *i);
- setTimeout(()=>{
-       document.querySelector(
+      if (
+        this.scrollRow == this.startRowPosition &&
+        this.scrollColumn == this.startColumnPosition
+      ) {
+        clearInterval(this.scrollTime);
+        this.createRobbo();
+      }
+    }, 100);
+  }
+  createRobbo() {
+    setTimeout(() => {
+      document.querySelector(
         `.class${this.startRowPosition}x${this.startColumnPosition}`
-      )
-      .scrollIntoView({
-        block: "center",
-        inline: "center",
-      });  
-     
- }, 1000)           
-}
-
-    
-    }
+      ).style.backgroundImage = "";
+      animExplosion(this.startRowPosition, this.startColumnPosition);
+    }, 500);
+    setTimeout(() => {
+      document.querySelector(
+        `.class${this.startRowPosition}x${this.startColumnPosition}`
+      ).style.backgroundImage = this.images[0];
+      levels.canMove = true;
+    }, 1300);
+  }
   move(moveDirection) {}
   killRobbo() {
+    clearInterval(this.scrollTime);
     this.flag = false;
     animExplosion(this.startRowPosition, this.startColumnPosition);
     board.scoreBoard.changeCount("lostLives");
@@ -74,8 +83,8 @@ class Robbo {
   }
 
   makeShot(shotDirection) {
-      this.moveDirection = shotDirection;
-      this.counter;
+    this.moveDirection = shotDirection;
+    this.counter;
     if (board.scoreBoard.ammo > 0) {
       board.scoreBoard.changeCount("shot");
       let row = 0;
@@ -84,27 +93,24 @@ class Robbo {
       if (shotDirection) {
         if (shotDirection == "left") {
           column = -1;
-            this.counter=4;
+          this.counter = 4;
         }
         if (shotDirection == "right") {
           column = 1;
-        this.counter=6;
-
+          this.counter = 6;
         }
         if (shotDirection == "up") {
           row = -1;
-        this.counter=2;
-
+          this.counter = 2;
         }
         if (shotDirection == "down") {
           row = 1;
-            this.counter=0;
-
+          this.counter = 0;
         }
-    document.querySelector(
-      `.class${this.startRowPosition}x${this.startColumnPosition}`
-    ).style.backgroundImage = this.images[0+this.counter];
-          
+        document.querySelector(
+          `.class${this.startRowPosition}x${this.startColumnPosition}`
+        ).style.backgroundImage = this.images[0 + this.counter];
+
         this.checkMove = checkAction(
           shotDirection,
           this.startRowPosition,
@@ -198,11 +204,12 @@ class Robbo {
     }
   }
   position() {}
-  destroy() {
-  }
+  destroy() {}
   bomb() {
     this.killRobbo();
     clearTimeout(this.time);
+    clearInterval(this.scrollTime);
+
     this.time = "";
     animExplosion(this.startRowPosition, this.startColumnPosition);
     board.elementContainer.deleteNameObjects(this.startName);
@@ -211,6 +218,8 @@ class Robbo {
     this.killRobbo();
   }
   nextLevel() {
+    clearInterval(this.scrollTime);
+
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";

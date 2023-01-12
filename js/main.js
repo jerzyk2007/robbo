@@ -177,7 +177,7 @@ function destroyAllElements() {
 }
 // funkcja obsługująca klawisze sterujące
 function keyDownListener(direction) {
-  levels.canMove = true;
+  // levels.canMove = true;
   return function (event) {
     if (!levels.canMove) return false;
     levels.canMove = false;
@@ -188,32 +188,32 @@ function keyDownListener(direction) {
     if (!direction) {
       switch (event.keyCode) {
         case 39:
-        if (levels.spaceShot) {
-          return board.robbo.makeShot("right");
-        } else {
-          return board.robbo.moveRobbo("right");
-        }
+          if (levels.spaceShot) {
+            return board.robbo.makeShot("right");
+          } else {
+            return board.robbo.moveRobbo("right");
+          }
         case 40:
-        if (levels.spaceShot) {
-          return board.robbo.makeShot("down");
-        } else {
-          return board.robbo.moveRobbo("down");
-        }  
+          if (levels.spaceShot) {
+            return board.robbo.makeShot("down");
+          } else {
+            return board.robbo.moveRobbo("down");
+          }
         case 37:
-           if (levels.spaceShot) {
-          return board.robbo.makeShot("left");
-        } else {
-          return board.robbo.moveRobbo("left");
-        }
+          if (levels.spaceShot) {
+            return board.robbo.makeShot("left");
+          } else {
+            return board.robbo.moveRobbo("left");
+          }
         case 38:
-                 if (levels.spaceShot) {
-          return board.robbo.makeShot("up");
-        } else {
-          return board.robbo.moveRobbo("up");
-        }
+          if (levels.spaceShot) {
+            return board.robbo.makeShot("up");
+          } else {
+            return board.robbo.moveRobbo("up");
+          }
         case 32:
-         levels.spaceShot = true;
-              break;
+          levels.spaceShot = true;
+          break;
         case 27:
           return board.robbo.killRobbo();
       }
@@ -228,7 +228,7 @@ function keyDownListener(direction) {
     }
   };
 }
-document.addEventListener("keyup", function(event) {
+document.addEventListener("keyup", function (event) {
   if (event.keyCode === 32) {
     levels.spaceShot = false;
   }

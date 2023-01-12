@@ -32,15 +32,18 @@ class ScoreBoard {
   }
   changeCount(counter) {
     if (counter == "screw") {
-      this.scores += 100;
+      this.scores += 150;
+
       this.changeScoreBoard(this.scores, "000000", ".score--number");
       this.screws -= 1;
       this.changeScoreBoard(this.screws, "00", ".screws--number");
+
       this.shipReady();
     }
 
     if (counter == "kill") {
       this.scores += 250;
+
       this.changeScoreBoard(this.scores, "000000", ".score--number");
     }
     if (counter == "scores") {
@@ -49,14 +52,20 @@ class ScoreBoard {
     }
 
     if (counter == "ammo") {
-      this.ammo += 9;
+      if (this.ammo < 91) {
+        this.ammo += 9;
+      } else if (this.ammo >= 91) {
+        this.ammo = 99;
+      }
       this.changeScoreBoard(this.ammo, "00", ".ammo--number");
       this.scores += 50;
       this.changeScoreBoard(this.scores, "000000", ".score--number");
     }
 
     if (counter == "lives") {
-      this.lives += 1;
+      if (this.lives < 99) {
+        this.lives++;
+      }
       this.changeScoreBoard(this.lives, "00", ".lives--number");
       this.scores += 150;
       this.changeScoreBoard(this.scores, "000000", ".score--number");
