@@ -68,6 +68,9 @@ class Robbo {
       document.querySelector(
         `.class${this.startRowPosition}x${this.startColumnPosition}`
       ).style.backgroundImage = this.images[0];
+      document.querySelector(
+        `.class${this.startRowPosition}x${this.startColumnPosition}`
+      ).textContent = this.startName;
       levels.canMove = true;
     }, 1300);
   }

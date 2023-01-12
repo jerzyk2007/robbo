@@ -16,10 +16,10 @@ class Levels {
 
     this.level1 = [26, 26];
     this.level1part1 = [...`         ########## !!!!! `];
-    this.level1part2 = [...`         ########## !!!!! `];
+    this.level1part2 = [...`CCCC     ########## !!!!! `];
     this.level1part3 = [...` @ A#        AAAAA !!!!! *`];
-    this.level1part4 = [...`A#           AAAAA !!!!!  `];
-    this.level1part5 = [...`    %%  %%     qq  !!!!!  `];
+    this.level1part4 = [...`A#CCC        AAAAA !!!!!  `];
+    this.level1part5 = [...`    %% O%%     qq  !!!!!  `];
     this.level1part6 = [...`   %%%%%  %        !!!!!  `];
     this.level1part7 = [...`    %%N            !!!!!  `];
     this.level1part8 = [...`e       CCCCCCCCCC  !!!!! `];
