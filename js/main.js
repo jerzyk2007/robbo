@@ -218,12 +218,14 @@ function keyDownListener(direction) {
           return board.robbo.killRobbo();
       }
     } else {
-      if (direction == "shot") {
-        return board.robbo.makeShot();
-      } else if (direction == "esc") {
+      if (direction == "esc") {
         return board.robbo.killRobbo();
       } else {
-        return board.robbo.moveRobbo(direction);
+        if (levels.spaceShot) {
+          return board.robbo.makeShot(direction);
+        } else {
+          return board.robbo.moveRobbo(direction);
+        }
       }
     }
   };
@@ -238,6 +240,7 @@ function mobileKeyListener() {
   document
     .querySelector(".buttons__right")
     .addEventListener("touchstart", keyDownListener("right"));
+
   document
     .querySelector(".buttons__left")
     .addEventListener("touchstart", keyDownListener("left"));
@@ -249,7 +252,13 @@ function mobileKeyListener() {
     .addEventListener("touchstart", keyDownListener("down"));
   document
     .querySelector(".buttons__shot")
-    .addEventListener("touchstart", keyDownListener("shot"));
+    .addEventListener("touchstart", () => {
+      levels.spaceShot = true;
+    });
+  document.querySelector(".buttons__shot").addEventListener("touchend", () => {
+    levels.spaceShot = false;
+  });
+
   document
     .querySelector(".buttons__ESC")
     .addEventListener("touchstart", keyDownListener("esc"));
