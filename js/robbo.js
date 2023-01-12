@@ -34,6 +34,7 @@ class Robbo {
     ).textContent = this.startName;
   }
   scrollStart() {
+    levels.canMove = false;
     this.scrollTime = setInterval(() => {
       document
         .querySelector(`.class${this.scrollRow}x${this.scrollColumn}`)
