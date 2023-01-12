@@ -177,7 +177,6 @@ function destroyAllElements() {
 }
 // funkcja obsługująca klawisze sterujące
 function keyDownListener(direction) {
-  // levels.canMove = true;
   return function (event) {
     if (!levels.canMove) return false;
     levels.canMove = false;

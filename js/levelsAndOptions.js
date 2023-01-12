@@ -3,7 +3,7 @@ class Levels {
   constructor() {
     this.scorePoints = 0;
     this.robboLives = 3;
-    this.gameSpeed = 200;
+    this.gameSpeed = 150;
     this.canMove = false;
     this.canMoveSetTime;
     this.activeMagnet = null;
@@ -56,13 +56,13 @@ class Levels {
 // g - gun - shot up – laser
 // H - gun - shot down – single
 // h - gun - shot down – laser
-// I – gun - shot right - burner *
+// I – gun - shot right - burner                        *
 // i - gun - shot right – single, moving up-down
-// J - gun - shot left - burner *
+// J - gun - shot left - burner                         *
 // j - gun - shot left – single, moving up-down
-// K – gun - shot up - burner *
+// K – gun - shot up - burner                           *
 // k - gun - shot up – single, moving left-right
-// L – gun - shot down - burner *
+// L – gun - shot down - burner                         *
 // l - gun - shot down – single, moving left-right
 // M - gun - shot down – rotate, single shot
 // N - ant - left
@@ -70,10 +70,10 @@ class Levels {
 // P – bird vertical, no shot
 // Q - bird horiontal, no shot
 // q - bird horiontal, single shot
-// R –
-// S –
-// T -
-// U –
+// R – eyes                                              *
+// S – ?                                                 *
+// T - teleport                                          *
+// U – bench                                             *
 // V -
 // W -
 // X – black hole – empty space
