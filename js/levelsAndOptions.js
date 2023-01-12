@@ -3,7 +3,7 @@ class Levels {
   constructor() {
     this.scorePoints = 0;
     this.robboLives = 3;
-    this.gameSpeed = 250;
+    this.gameSpeed = 200;
     this.canMove = false;
     this.canMoveSetTime;
     this.activeMagnet = null;
@@ -16,12 +16,12 @@ class Levels {
     this.level1 = [26, 26];
     this.level1part1 = [...`         ########## !!!!! `];
     this.level1part2 = [...`         ########## !!!!! `];
-    this.level1part3 = [...` @ A#   AAAAAAAAAA !!!!! *`];
-    this.level1part4 = [...`A#      AAAAAAAAAA !!!!!  `];
-    this.level1part5 = [...`       %%%%%%%%%%  !!!!!  `];
-    this.level1part6 = [...`       %%%%%%%%%%  !!!!!  `];
-    this.level1part7 = [...`  %     %%%%%%%%%% !!!!!  `];
-    this.level1part8 = [...`   %    %%%%%%%%%%  !!!!! `];
+    this.level1part3 = [...` @ A#        AAAAA !!!!! *`];
+    this.level1part4 = [...`A#           AAAAA !!!!!  `];
+    this.level1part5 = [...`    %%  %%   %%%%  !!!!!  `];
+    this.level1part6 = [...`   %%%%%  %   %%%  !!!!!  `];
+    this.level1part7 = [...`    %%N      %%%%% !!!!!  `];
+    this.level1part8 = [...`        %%%%%%%%%%  !!!!! `];
     this.level1part9 = [...`    %      %%%%%%%%%%!!!!!`];
     this.level1part10 = [...`    %    %%%%%%%%%%!!!!#  `];
     this.level1part11 = [...`     %   %%%%%%%%%%!!!### `];
