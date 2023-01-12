@@ -8,6 +8,7 @@ class Levels {
     this.canMoveSetTime;
     this.activeMagnet = null;
     this.spaceShot = false;
+    this.mobileMoveInterval;
 
     this.levelCounter = 1;
     this.lastLevel = 1;
@@ -18,15 +19,15 @@ class Levels {
     this.level1part2 = [...`         ########## !!!!! `];
     this.level1part3 = [...` @ A#        AAAAA !!!!! *`];
     this.level1part4 = [...`A#           AAAAA !!!!!  `];
-    this.level1part5 = [...`    %%  %%   %%%%  !!!!!  `];
-    this.level1part6 = [...`   %%%%%  %   %%%  !!!!!  `];
-    this.level1part7 = [...`    %%N      %%%%% !!!!!  `];
-    this.level1part8 = [...`        %%%%%%%%%%  !!!!! `];
-    this.level1part9 = [...`    %      %%%%%%%%%%!!!!!`];
-    this.level1part10 = [...`    %    %%%%%%%%%%!!!!#  `];
-    this.level1part11 = [...`     %   %%%%%%%%%%!!!### `];
-    this.level1part12 = [...`      %   #######!!!!!### `];
-    this.level1part13 = [...`       %  ######!!!!!#### `];
+    this.level1part5 = [...`    %%  %%     qq  !!!!!  `];
+    this.level1part6 = [...`   %%%%%  %        !!!!!  `];
+    this.level1part7 = [...`    %%N            !!!!!  `];
+    this.level1part8 = [...`e       CCCCCCCCCC  !!!!! `];
+    this.level1part9 = [...`    %      CCCCCCCCCC!!!!!`];
+    this.level1part10 = [...`    %    CCCCCCCCCC!!!!#  `];
+    this.level1part11 = [...`     %   CCCCCCCCCC!!!### `];
+    this.level1part12 = [...`      %   CCCCCCCCCC!!### `];
+    this.level1part13 = [...`       %  CCCCCCCCCC!#### `];
     this.level1part14 = [...`        % ######!!!!!#### `];
     this.level1part15 = [...`         % #####!!!!!#####`];
     this.level1part16 = [...` %        #######!!!!!### `];

@@ -223,7 +223,9 @@ function keyDownListener(direction) {
         if (levels.spaceShot) {
           return board.robbo.makeShot(direction);
         } else {
-          return board.robbo.moveRobbo(direction);
+          board.robbo.moveRobbo(direction);
+
+          // return board.robbo.moveRobbo(direction);
         }
       }
     }
@@ -234,7 +236,7 @@ document.addEventListener("keyup", function (event) {
     levels.spaceShot = false;
   }
 });
-
+// mobile key
 function mobileKeyListener() {
   document
     .querySelector(".buttons__right")
@@ -243,12 +245,15 @@ function mobileKeyListener() {
   document
     .querySelector(".buttons__left")
     .addEventListener("touchstart", keyDownListener("left"));
+
   document
     .querySelector(".buttons__up")
     .addEventListener("touchstart", keyDownListener("up"));
+
   document
     .querySelector(".buttons__down")
     .addEventListener("touchstart", keyDownListener("down"));
+
   document
     .querySelector(".buttons__shot")
     .addEventListener("touchstart", () => {
