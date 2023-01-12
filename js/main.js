@@ -188,15 +188,32 @@ function keyDownListener(direction) {
     if (!direction) {
       switch (event.keyCode) {
         case 39:
+        if (levels.spaceShot) {
+          return board.robbo.makeShot("right");
+        } else {
           return board.robbo.moveRobbo("right");
+        }
         case 40:
+        if (levels.spaceShot) {
+          return board.robbo.makeShot("down");
+        } else {
           return board.robbo.moveRobbo("down");
+        }  
         case 37:
+           if (levels.spaceShot) {
+          return board.robbo.makeShot("left");
+        } else {
           return board.robbo.moveRobbo("left");
+        }
         case 38:
+                 if (levels.spaceShot) {
+          return board.robbo.makeShot("up");
+        } else {
           return board.robbo.moveRobbo("up");
+        }
         case 32:
-          return board.robbo.makeShot();
+         levels.spaceShot = true;
+              break;
         case 27:
           return board.robbo.killRobbo();
       }
@@ -211,6 +228,11 @@ function keyDownListener(direction) {
     }
   };
 }
+document.addEventListener("keyup", function(event) {
+  if (event.keyCode === 32) {
+    levels.spaceShot = false;
+  }
+});
 
 function mobileKeyListener() {
   document

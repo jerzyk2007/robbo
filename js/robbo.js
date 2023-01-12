@@ -21,6 +21,7 @@ class Robbo {
     //    this.shotNumber = 1;
     this.flag = true;
       this.robboShot = "robboShot"
+      this.robboScrollStart = this.scrollStart();
     // this.stop = true;
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
@@ -28,15 +29,40 @@ class Robbo {
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = this.startName;
-    document
-      .querySelector(
+//    document
+//      .querySelector(
+//        `.class${this.startRowPosition}x${this.startColumnPosition}`
+//      )
+//      .scrollIntoView({
+//        block: "center",
+//        inline: "center",
+//      });
+  }
+    scrollStart(){
+        console.log(this.startRowPosition)
+        
+        for (let i = 0; i<this.startRowPosition; i++) {
+  setTimeout(function() {
+      
+
+      
+      
+    console.log(i);
+  }, 200 *i);
+ setTimeout(()=>{
+       document.querySelector(
         `.class${this.startRowPosition}x${this.startColumnPosition}`
       )
       .scrollIntoView({
         block: "center",
         inline: "center",
-      });
-  }
+      });  
+     
+ }, 1000)           
+}
+
+    
+    }
   move(moveDirection) {}
   killRobbo() {
     this.flag = false;
@@ -47,35 +73,47 @@ class Robbo {
     }, 800);
   }
 
-  makeShot() {
+  makeShot(shotDirection) {
+      this.moveDirection = shotDirection;
+      this.counter;
     if (board.scoreBoard.ammo > 0) {
       board.scoreBoard.changeCount("shot");
       let row = 0;
       let column = 0;
 
-      if (this.moveDirection) {
-        if (this.moveDirection == "left") {
+      if (shotDirection) {
+        if (shotDirection == "left") {
           column = -1;
+            this.counter=4;
         }
-        if (this.moveDirection == "right") {
+        if (shotDirection == "right") {
           column = 1;
-        }
-        if (this.moveDirection == "up") {
-          row = -1;
-        }
-        if (this.moveDirection == "down") {
-          row = 1;
-        }
+        this.counter=6;
 
+        }
+        if (shotDirection == "up") {
+          row = -1;
+        this.counter=2;
+
+        }
+        if (shotDirection == "down") {
+          row = 1;
+            this.counter=0;
+
+        }
+    document.querySelector(
+      `.class${this.startRowPosition}x${this.startColumnPosition}`
+    ).style.backgroundImage = this.images[0+this.counter];
+          
         this.checkMove = checkAction(
-          this.moveDirection,
+          shotDirection,
           this.startRowPosition,
           this.startColumnPosition
         );
         if (this.checkMove.textContent != "SHOT") {
           eval(
             `board.robbo${board.elementContainer.shotNumber} = new Shot(
-            this.moveDirection,
+            shotDirection,
             this.startRowPosition + row,
             this.startColumnPosition + column,
             "board.robbo${board.elementContainer.shotNumber}",

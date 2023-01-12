@@ -7,20 +7,39 @@ class Levels {
     this.canMove = true;
     this.canMoveSetTime;
     this.activeMagnet = null;
+    this.spaceShot=false;
 
     this.levelCounter = 1;
     this.lastLevel = 1;
     // level 1
 
-    this.level1 = [8, 11];
+    this.level1 = [26, 11];
     this.level1part1 = [...`           `];
     this.level1part2 = [...`&#         `];
-    this.level1part3 = [...` @ A#     *`];
+    this.level1part3 = [...`   A#     *`];
     this.level1part4 = [...`A#         `];
     this.level1part5 = [...`           `];
-    this.level1part6 = [...`E         F`];
-    this.level1part7 = [...`       k   `];
-    this.level1part8 = [...`CCCCCCCCCCC`];
+    this.level1part6 = [...`           `];
+    this.level1part7 = [...`           `];
+    this.level1part8 = [...`           `];
+    this.level1part9 = [...`           `];
+    this.level1part10 = [...`           `];
+    this.level1part11 = [...`           `];
+    this.level1part12 = [...`           `];
+    this.level1part13 = [...`           `];
+    this.level1part14 = [...`           `];
+    this.level1part15 = [...`           `];
+    this.level1part16 = [...`           `];
+    this.level1part17 = [...`           `];
+    this.level1part18 = [...`           `];
+    this.level1part19 = [...`           `];
+    this.level1part20 = [...`           `];
+    this.level1part21 = [...`           `];
+    this.level1part22 = [...`           `];
+    this.level1part23 = [...`           `];
+    this.level1part24 = [...`           `];
+    this.level1part25 = [...`         @ `];
+    this.level1part26 = [...`CCCCCCCCCCC`];
 
     // level 2
   }
