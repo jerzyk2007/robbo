@@ -47,10 +47,16 @@ class Shot {
     } else if (this.moveDirection === "right") {
       this.column = -1;
     }
+       
     this.checkMove = checkAction(
       this.moveDirection,
       this.startRowPosition + this.row,
       this.startColumnPosition + this.column
+    );
+        this.emptySpaceForShotAnim = checkAction(
+      this.moveDirection,
+      this.startRowPosition + this.row+ this.row,
+      this.startColumnPosition + this.column+ this.column
     );
 
     if (this.checkMove) {
@@ -76,11 +82,12 @@ class Shot {
               this.startColumnPosition + this.column
             }`
           ).style.backgroundImage = "";
-          document.querySelector(
-            `.class${this.startRowPosition + this.row}x${
-              this.startColumnPosition + this.column
-            }`
-          ).style.backgroundImage = "";
+          
+//          document.querySelector(
+//            `.class${this.startRowPosition + this.row}x${
+//              this.startColumnPosition + this.column
+//            }`
+//          ).style.backgroundImage = "";
           document.querySelector(
             `.class${this.startRowPosition + this.row}x${
               this.startColumnPosition + this.column
@@ -88,18 +95,19 @@ class Shot {
           ).textContent = "GO";
           return this.startShot();
         }, levels.gameSpeed);
-      } else if (this.checkMove.textContent == "STOP") {
+      } else if (this.checkMove.textContent == "STOP"  ) {
         animShot(
           this.startRowPosition + this.row,
           this.startColumnPosition + this.column
         );
         board.elementContainer.deleteNameObjects(this.startName);
       } else if (this.checkMove.textContent == "SHOT") {
-        animShot(this.startRowPosition, this.startColumnPosition);
+
+        animShot(this.startRowPosition+ this.row, this.startColumnPosition+ this.column);
         board.elementContainer.deleteNameObjects(this.startName);
       } else {
         clearTimeout(this.time);
-        eval(this.checkMove.textContent).shot(this.robboShot);
+        eval(this.checkMove.textContent).shot(this.robboShot,this.emptySpaceForShotAnim.textContent,  (this.startRowPosition + this.row), (this.startColumnPosition + this.column));
 
         if (
           document.querySelector(
@@ -108,10 +116,15 @@ class Shot {
             }`
           ).textContent == "GO"
         ) {
-          animShot(
-            this.startRowPosition + this.row,
-            this.startColumnPosition + this.column
-          );
+//            console.log('sprawdź')
+            ///// ******
+            
+//          animShot(
+//            this.startRowPosition + this.row,
+//            this.startColumnPosition + this.column
+//          );
+            
+        ///// ******      
           board.elementContainer.deleteNameObjects(this.startName);
         }
       }
@@ -130,7 +143,9 @@ class Shot {
       this.startColumnPosition + this.column
     );
   }
-  shot() {}
+      shot(robboShot, checkMove, row, column) {
+     
+  }
   move(movedirection) {}
   direction(movedirection) {}
   nextLevel() {

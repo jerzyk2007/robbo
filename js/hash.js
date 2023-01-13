@@ -99,7 +99,10 @@ class Hash {
     animExplosion(this.startRowPosition, this.startColumnPosition);
     board.elementContainer.deleteNameObjects(this.startName);
   }
-  shot() {}
+     shot(robboShot, checkMove, row, column) {
+      if (checkMove == "GO"){
+   animShot(row, column);} 
+  }
   nextLevel() {
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`

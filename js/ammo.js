@@ -28,7 +28,16 @@ class Ammo {
         animExplosion(this.startRowPosition, this.startColumnPosition);
         board.elementContainer.deleteNameObjects(this.startName);
     }
-  shot() {}
+  shot(robboShot) {
+animExplosion(this.startRowPosition, this.startColumnPosition);
+    
+if (robboShot=="robboShot"){
+
+    board.scoreBoard.scores += 50;
+    board.scoreBoard.changeCount("scores");
+    }
+      board.elementContainer.deleteNameObjects(this.startName); 
+  }
   nextLevel() {
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`

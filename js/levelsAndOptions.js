@@ -14,33 +14,17 @@ class Levels {
     this.lastLevel = 1;
     // level 1
 
-    this.level1 = [26, 26];
-    this.level1part1 = [...`         ########## !!!!! `];
-    this.level1part2 = [...`CCCC     ########## !!!!! `];
-    this.level1part3 = [...` @ A#        AAAAA !!!!! *`];
-    this.level1part4 = [...`A#CCC        AAAAA !!!!!  `];
-    this.level1part5 = [...`    %% O%%     qq  !!!!!  `];
-    this.level1part6 = [...`   %%%%%  %        !!!!!  `];
-    this.level1part7 = [...`    %%N            !!!!!  `];
-    this.level1part8 = [...`e       CCCCCCCCCC  !!!!! `];
-    this.level1part9 = [...`    %      CCCCCCCCCC!!!!!`];
-    this.level1part10 = [...`    %    CCCCCCCCCC!!!!#  `];
-    this.level1part11 = [...`     %   CCCCCCCCCC!!!### `];
-    this.level1part12 = [...`      %   CCCCCCCCCC!!### `];
-    this.level1part13 = [...`       %  CCCCCCCCCC!#### `];
-    this.level1part14 = [...`        % ######!!!!!#### `];
-    this.level1part15 = [...`         % #####!!!!!#####`];
-    this.level1part16 = [...` %        #######!!!!!### `];
-    this.level1part17 = [...`  %       ######!!!!!#### `];
-    this.level1part18 = [...`   %     ########!!!!!##  `];
-    this.level1part19 = [...`    %     #######!!!!!### `];
-    this.level1part20 = [...`     %   #######!!!!!###  `];
-    this.level1part21 = [...`      % & ######!!!!!#### `];
-    this.level1part22 = [...`       %  #####!!!!!##### `];
-    this.level1part23 = [...`        %  #####!!!!!#####`];
-    this.level1part24 = [...`         % #####!!!!!#####`];
-    this.level1part25 = [...`  %%%%%%%% #####!!!!!#####`];
-    this.level1part26 = [...`CCCCCCCCCCC######!!!!!####`];
+    this.level1 = [10, 9];
+    this.level1part1 = [...`         `];
+    this.level1part2 = [...`      AAA`];
+    this.level1part3 = [...` @   h XX`];
+    this.level1part4 = [...`        *`];
+    this.level1part5 = [...`        *`];
+    this.level1part6 = [...`  ##    *`];
+    this.level1part7 = [...`        *`];
+    this.level1part8 = [...`         `];
+    this.level1part9 = [...`         `];
+    this.level1part10 = [...`    ##& `];
 
     // level 2
   }

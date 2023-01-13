@@ -75,7 +75,8 @@ if (robboShot=="robboShot"){
 
     board.scoreBoard.scores += 150;
     board.scoreBoard.changeCount("scores");
-    board.elementContainer.deleteNameObjects(this.startName);}
+    }
+      board.elementContainer.deleteNameObjects(this.startName);
   }
   moveElement() {
     this.time = setTimeout(() => {

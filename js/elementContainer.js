@@ -18,6 +18,7 @@ class ElemenntContainer {
     this.beetle = 0;
     this.wall = 0;
     this.door = 0;
+      this.blackHole =0;
     this.objects = [];
     this.staticObjects = ["board.elementContainer", "board.scoreBoard"];
     this.explosionAnim = [

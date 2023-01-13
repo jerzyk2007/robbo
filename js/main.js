@@ -119,7 +119,7 @@ function searchRobbo(rowPosition, columnPosition) {
 function animExplosion(rowPosition, columnPosition) {
   //
   document.querySelector(`.class${rowPosition}x${columnPosition}`).textContent =
-    "STOP";
+    "SHOT";
   //
   let counter = 0;
   // console.log(startName);

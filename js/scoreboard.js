@@ -46,6 +46,11 @@ class ScoreBoard {
 
       this.changeScoreBoard(this.scores, "000000", ".score--number");
     }
+         if (counter == "bomb") {
+      this.scores += 100;
+
+      this.changeScoreBoard(this.scores, "000000", ".score--number");
+    }
     if (counter == "scores") {
       // this.scores += 250;
       this.changeScoreBoard(this.scores, "000000", ".score--number");

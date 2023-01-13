@@ -80,7 +80,7 @@ class Bomb {
         }
       }
            if (robboShot=="robboShot"){
-      board.scoreBoard.changeCount("kill");
+      board.scoreBoard.changeCount("bomb");
       board.elementContainer.deleteNameObjects(this.startName);
            }
     }, 200);

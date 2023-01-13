@@ -41,6 +41,7 @@ class Magnet {
         this.startMagneticRowPosition,
         this.startMagneticColumnPosition
       );
+
       if (this.checkMove) {
         if (this.checkMove.textContent == "GO") {
           if (direction == "left") {
@@ -82,9 +83,14 @@ class Magnet {
           this.startMagneticColumnPosition = this.startColumnPosition;
           setTimeout(() => {
             this.startMagnet(direction);
-          }, 150);
+          }, 100);
         }
+      } else {
+          this.startMagneticRowPosition = this.startRowPosition
+         this.startMagneticColumnPosition = this.startColumnPosition 
+         this.startMagnet(direction);
       }
+      
     }, 0);
   }
 
@@ -98,7 +104,10 @@ class Magnet {
     //         animExplosion(this.startRowPosition, this.startColumnPosition);
     //    board.elementContainer.deleteNameObjects(this.startName);
   }
-  shot() {}
+    shot(robboShot, checkMove, row, column) {
+      if (checkMove == "GO"){
+   animShot(row, column);} 
+  }
   nextLevel() {
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`

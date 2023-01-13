@@ -14,7 +14,10 @@ class Border {
     ).textContent = this.startName;
   }
   move(moveDirection) {}
-  shot() {}
+    shot(robboShot, checkMove, row, column) {
+      if (checkMove == "GO"){
+   animShot(row, column);} 
+  }
   destroy() {}
   bomb() {}
   nextLevel() {

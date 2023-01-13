@@ -280,7 +280,9 @@ class Board {
           this.elementContainer.objects.push(
             `board.lives${this.elementContainer.lives}`
           );
-        } else if (
+        } 
+          
+          else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "^"
         ) {
           this.elementContainer.keys++;
@@ -290,11 +292,17 @@ class Board {
           this.elementContainer.objects.push(
             `board.keys${this.elementContainer.keys}`
           );
-        } else if (
+        } 
+          
+          else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "X"
         ) {
-          // this.elementContainer.keys++;
-          eval(`this.blackHole = new BlackHole(i+1, j+1, "board.blackHole")`);
+           this.elementContainer.blackHole++;
+          eval(`this.blackHole${this.elementContainer.blackHole} = new BlackHole(i+1, j+1, "board.blackHole${this.elementContainer.blackHole}")`);
+               this.elementContainer.objects.push(
+            `board.blackHole${this.elementContainer.blackHole}`
+          ); 
+              
         } else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "C"
         ) {

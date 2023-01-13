@@ -24,7 +24,10 @@ class Screw {
   destroy() {
     animExplosion(this.startRowPosition, this.startColumnPosition);
   }
-  shot() {}
+     shot(robboShot, checkMove, row, column) {
+      if (checkMove == "GO"){
+   animShot(row, column);} 
+  }
    bomb(){
         animExplosion(this.startRowPosition, this.startColumnPosition);
         board.elementContainer.deleteNameObjects(this.startName);

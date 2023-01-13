@@ -34,7 +34,7 @@ class Gun {
     this.checkMove;
     this.frequentlyShot = 500;
     this.shotDirection = ["up", "down", "left", "right"];
-    this.course = "vertical";
+//    this.course = "vertical";
     this.gunImage = this.startGunImage(direction);
     this.startDirection = this.startDirection();
     this.shotLength = 0;
@@ -122,31 +122,31 @@ class Gun {
       eval(this.shotRoad[i]).classList.remove(`${this.nameAnimShot}`);
     }
   }
-  shot() {}
+      shot(robboShot, checkMove, row, column) {
+      if (checkMove == "GO"){
+   animShot(row, column);} 
+  }
 
   moveShot() {
     if (this.type == "laser") {
-      this.timeShot = setTimeout(() => {
+//      this.timeShot = setTimeout(() => {
         if (this.runDirection == "up" || this.runDirection == "down") {
-          this.shotImage = this.shotImages[0];
-          this.nameAnimShot = "gunAnimShotUD";
+          this.shotImage = this.shotImage===this.shotImages[0]?this.shotImages[1]:this.shotImages[0];
+//          this.nameAnimShot = "gunAnimShotUD";
         }
         if (this.runDirection == "left" || this.runDirection == "right") {
           this.shotImage = this.shotImages[3];
-          this.nameAnimShot = "gunAnimShotLR";
+//          this.nameAnimShot = "gunAnimShotLR";
         }
         this.checkMove = checkAction(
           this.runDirection,
           this.startShotRowPosition,
           this.startShotColumnPosition
         );
+
         if (this.checkMove) {
-          if (this.checkMove.textContent == "GO") {
-            this.shotRoad.push(this.checkMove);
-            this.checkMove.classList.add(`${this.nameAnimShot}`);
-            this.checkMove.textContent = "SHOT";
-            this.shotLength++;
-            if (this.runDirection == "up") {
+          if (this.checkMove.textContent == "GO") {  
+           if (this.runDirection == "up") {
               this.startShotRowPosition--;
             } else if (this.runDirection == "down") {
               this.startShotRowPosition++;
@@ -155,33 +155,81 @@ class Gun {
             } else if (this.runDirection == "right") {
               this.startShotColumnPosition++;
             }
+            document.querySelector(
+      `.class${this.startShotRowPosition}x${this.startShotColumnPosition}`
+    ).style.backgroundImage = this.shotImage;
+              console.log("row "+this.startShotRowPosition)  
+            this.shotLength++;
+               console.log(this.shotLength) 
+          setTimeout(() => {
             this.moveShot();
-          } else if (
-            this.checkMove.textContent == "SHOT" ||
-            this.checkMove.textContent == "STOP"
-          ) {
-            clearTimeout(this.time);
-
-            if (this.shotLength == 0) {
-              return this.moveShot();
-            } else {
-              return this.moveShotBack();
-            }
+          }, levels.gameSpeed*3)
           } else {
-            eval(this.checkMove.textContent).shot();
-            if (this.shotLength == 0) {
-              this.timeShotBack = setTimeout(() => {
-                clearTimeout(this.time);
-                return this.moveShot();
-              }, 2000);
-            } else {
-              return this.moveShotBack();
-            }
+//              for (let i=0; i<this.shotLength; i++){
+//               
+////                   setTimeout(function () {
+//                       
+//  document.querySelector(
+//      `.class${this.startShotRowPosition}x${this.startShotColumnPosition}`
+//    ).style.backgroundImage = ""
+//    this.startShotRowPosition--;  
+//     
+////  }, 250);
+//    
+//          }
+              setTimeout(() => {
+                  this.shotLength=0
+//              this.moveShot();
+                    }, 250)
           }
-        } else {
-          return this.moveShotBack();
+                  for (let i=this.shotLength; i>0; i--){
+               
+              }
+          
+            
+
         }
-      }, levels.gameSpeed);
+//          if (this.checkMove.textContent == "GO") {
+//            this.shotRoad.push(this.checkMove);
+//            this.checkMove.classList.add(`${this.nameAnimShot}`);
+//            this.checkMove.textContent = "SHOT";
+//            this.shotLength++;
+//            if (this.runDirection == "up") {
+//              this.startShotRowPosition--;
+//            } else if (this.runDirection == "down") {
+//              this.startShotRowPosition++;
+//            } else if (this.runDirection == "left") {
+//              this.startShotColumnPosition--;
+//            } else if (this.runDirection == "right") {
+//              this.startShotColumnPosition++;
+//            }
+//            this.moveShot();
+//          } else if (
+//            this.checkMove.textContent == "SHOT" ||
+//            this.checkMove.textContent == "STOP"
+//          ) {
+//            clearTimeout(this.time);
+//
+//            if (this.shotLength == 0) {
+//              return this.moveShot();
+//            } else {
+//              return this.moveShotBack();
+//            }
+//          } else {
+//            eval(this.checkMove.textContent).shot();
+//            if (this.shotLength == 0) {
+//              this.timeShotBack = setTimeout(() => {
+//                clearTimeout(this.time);
+//                return this.moveShot();
+//              }, 2000);
+//            } else {
+//              return this.moveShotBack();
+//            }
+//          }
+//        } else {
+//          return this.moveShotBack();
+//        }
+//      }, levels.gameSpeed);
     } else if (this.type == "single") {
       this.singleShot(this.startShotDirection);
     }

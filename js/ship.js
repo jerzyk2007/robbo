@@ -75,7 +75,10 @@ class Ship {
     animExplosion(this.startRowPosition, this.startColumnPosition);
   }
   bomb() {}
-  shot() {}
+    shot(robboShot, checkMove, row, column) {
+      if (checkMove == "GO"){
+   animShot(row, column);} 
+  }
   nextLevel() {
     clearTimeout(this.time);
     document.querySelector(

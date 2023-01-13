@@ -37,11 +37,9 @@ class Door {
         animExplosion(this.startRowPosition, this.startColumnPosition);
         board.elementContainer.deleteNameObjects(this.startName);
     }
-  shot() {
-    // board.elementContainer.deleteNameObjects(this.startName);
-    // animExplosion(this.startRowPosition, this.startColumnPosition);
-    // board.scoreBoard.scores += 100;
-    // board.scoreBoard.changeCount("scores");
+    shot(robboShot, checkMove, row, column) {
+      if (checkMove == "GO"){
+   animShot(row, column);} 
   }
   nextLevel() {
     document.querySelector(

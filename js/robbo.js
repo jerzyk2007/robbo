@@ -120,6 +120,7 @@ class Robbo {
           this.startRowPosition,
           this.startColumnPosition
         );
+          if (this.checkMove){
         if (this.checkMove.textContent != "SHOT") {
           eval(
             `board.robbo${board.elementContainer.shotNumber} = new Shot(
@@ -130,7 +131,7 @@ class Robbo {
             this.robboShot
           )`
           );
-        }
+        }}
         board.elementContainer.shotNumber++;
         // }
       }
@@ -191,7 +192,11 @@ class Robbo {
             inline: "center",
           });
         } else if (this.checkMove.textContent == "SHOT") {
-        } else if (this.checkMove.textContent !== "GO") {
+        } 
+          else if (this.checkMove.textContent == "STOP") {
+        } 
+          
+          else if (this.checkMove.textContent !== "GO") {
           const newPosition = document.querySelector(
             `.class${this.startRowPosition}x${this.startColumnPosition}`
           );
