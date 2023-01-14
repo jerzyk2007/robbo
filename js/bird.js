@@ -71,12 +71,11 @@ class Bird {
       this.startColumnPosition,
       this.startName
     );
-if (robboShot=="robboShot"){
-
-    board.scoreBoard.scores += 150;
-    board.scoreBoard.changeCount("scores");
+    if (robboShot == "robboShot") {
+      board.scoreBoard.scores += 150;
+      board.scoreBoard.changeCount("scores");
     }
-      board.elementContainer.deleteNameObjects(this.startName);
+    board.elementContainer.deleteNameObjects(this.startName);
   }
   moveElement() {
     this.time = setTimeout(() => {
@@ -98,7 +97,6 @@ if (robboShot=="robboShot"){
       );
       if (this.checkMove) {
         if (this.checkMove.textContent == "GO") {
-
           move(
             this.runDirection,
             this.startRowPosition,

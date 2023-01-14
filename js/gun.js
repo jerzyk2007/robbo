@@ -214,7 +214,12 @@ class Gun {
             return eval(this.checkMove.textContent).shot();
           } else if (this.checkMove.textContent == "SHOT") {
           } else {
-            eval(this.checkMove.textContent).shot();
+            eval(this.checkMove.textContent).shot(
+              "gun",
+              this.checkMove.textContent,
+              this.startShotRowPosition,
+              this.startShotColumnPosition
+            );
           }
           if (this.shotLength == 0) {
             this.timeShot = setTimeout(() => {
