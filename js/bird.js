@@ -13,7 +13,7 @@ class Bird {
     this.course = course;
     this.armedBird = shot;
     this.startDirection = this.startDirection();
-    this.runElement = this.moveElement();
+    this.runElement = (this.moveElement(), this.changeImageAnim());
     this.time;
     this.timeStartShot;
     document.querySelector(
@@ -23,7 +23,15 @@ class Bird {
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = this.startName;
   }
-
+  changeImageAnim() {
+    this.timeAnim = setInterval(() => {
+      this.imageMove =
+        this.imageMove === this.images[0] ? this.images[1] : this.images[0];
+      document.querySelector(
+        `.class${this.startRowPosition}x${this.startColumnPosition}`
+      ).style.backgroundImage = this.imageMove;
+    }, levels.gameSpeed * 2);
+  }
   startDirection() {
     if (this.course == "vertical") {
       this.runDirection = this.moveDirection[2];
@@ -51,6 +59,7 @@ class Bird {
     clearTimeout(this.time);
     clearTimeout(this.timeShot);
     clearTimeout(this.timeStartShot);
+    clearInterval(this.timeAnim);
     animExplosion(
       this.startRowPosition,
       this.startColumnPosition,
@@ -59,6 +68,9 @@ class Bird {
   }
   bomb() {
     clearTimeout(this.time);
+    clearTimeout(this.timeShot);
+    clearTimeout(this.timeStartShot);
+    clearInterval(this.timeAnim);
     animExplosion(this.startRowPosition, this.startColumnPosition);
     board.elementContainer.deleteNameObjects(this.startName);
   }
@@ -66,6 +78,8 @@ class Bird {
     clearTimeout(this.time);
     clearTimeout(this.timeShot);
     clearTimeout(this.timeStartShot);
+    clearInterval(this.timeAnim);
+
     animExplosion(
       this.startRowPosition,
       this.startColumnPosition,
@@ -84,11 +98,11 @@ class Bird {
       } else if (this.course == "horizontal") {
         this.counter = 0;
       }
-      this.imageMove =
-        this.imageMove === this.images[0] ? this.images[1] : this.images[0];
-      document.querySelector(
-        `.class${this.startRowPosition}x${this.startColumnPosition}`
-      ).style.backgroundImage = this.imageMove;
+      // this.imageMove =
+      //   this.imageMove === this.images[0] ? this.images[1] : this.images[0];
+      // document.querySelector(
+      //   `.class${this.startRowPosition}x${this.startColumnPosition}`
+      // ).style.backgroundImage = this.imageMove;
 
       this.checkMove = checkAction(
         this.runDirection,
@@ -157,6 +171,8 @@ class Bird {
     clearTimeout(this.time);
     clearTimeout(this.timeShot);
     clearTimeout(this.timeStartShot);
+    clearInterval(this.timeAnim);
+
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";

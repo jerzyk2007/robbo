@@ -211,6 +211,7 @@ class Gun {
           }, levels.gameSpeed);
         } else {
           if (this.checkMove.textContent == "board.robbo") {
+            this.moveShotBack();
             return eval(this.checkMove.textContent).shot();
           } else if (this.checkMove.textContent == "SHOT") {
           } else {
