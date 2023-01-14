@@ -19,13 +19,13 @@ class Levels {
     this.level1part2 = [...`      AAA`];
     this.level1part3 = [...`       XX`];
     this.level1part4 = [...`        *`];
-    this.level1part5 = [...`    B   *`];
+    this.level1part5 = [...`   B    *`];
     this.level1part6 = [...`   #    *`];
     this.level1part7 = [...`        *`];
-    this.level1part8 = [...`@        `];
+    this.level1part8 = [...`@   g    `];
     this.level1part9 = [...`e        `];
     this.level1part10 = [...`        f`];
-    this.level1part11 = [...`         `];
+    this.level1part11 = [...`   h     `];
     this.level1part12 = [...`         `];
     this.level1part13 = [...`         `];
     this.level1part14 = [...`         `];
