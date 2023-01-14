@@ -20,16 +20,16 @@ class Levels {
     this.level1part3 = [...`       XX`];
     this.level1part4 = [...`        *`];
     this.level1part5 = [...`    B   *`];
-    this.level1part6 = [...`  ##  h *`];
+    this.level1part6 = [...`   #    *`];
     this.level1part7 = [...`        *`];
     this.level1part8 = [...`@        `];
-    this.level1part9 = [...`         `];
-    this.level1part10 = [...`         `];
+    this.level1part9 = [...`e        `];
+    this.level1part10 = [...`        f`];
     this.level1part11 = [...`         `];
     this.level1part12 = [...`         `];
     this.level1part13 = [...`         `];
     this.level1part14 = [...`         `];
-    this.level1part15 = [...`    ##& `];
+    this.level1part15 = [...`    # & `];
 
     // level 2
   }

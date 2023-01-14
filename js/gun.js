@@ -116,15 +116,28 @@ class Gun {
   destroyShotRoad() {
     if (this.type == "laser") {
       for (let i = 0; i < this.shotLength; i++) {
-        console.log(i);
+        if (this.runDirection == "up") {
+          this.rowRoad = i;
+          this.columnRoad = 0;
+        } else if (this.runDirection == "down") {
+          this.rowRoad = -i;
+          this.columnRoad = 0;
+        } else if (this.runDirection == "right") {
+          this.rowRoad = 0;
+          this.columnRoad = -i;
+        } else if (this.runDirection == "left") {
+          this.rowRoad = 0;
+          this.columnRoad = i;
+        }
+
         document.querySelector(
-          `.class${this.startShotRowPosition - i}x${
-            this.startShotColumnPosition
+          `.class${this.startShotRowPosition + this.rowRoad}x${
+            this.startShotColumnPosition + this.columnRoad
           }`
         ).style.backgroundImage = "";
         document.querySelector(
-          `.class${this.startShotRowPosition - i}x${
-            this.startShotColumnPosition
+          `.class${this.startShotRowPosition + this.rowRoad}x${
+            this.startShotColumnPosition + this.columnRoad
           }`
         ).textContent = "GO";
       }
@@ -168,16 +181,51 @@ class Gun {
             this.startShotColumnPosition++;
           }
           for (let i = this.shotLength; i >= 0; i--) {
-            document.querySelector(
-              `.class${this.startShotRowPosition - i}x${
-                this.startShotColumnPosition
-              }`
-            ).style.backgroundImage = this.shotAnimationMove();
-            document.querySelector(
-              `.class${this.startShotRowPosition - i}x${
-                this.startShotColumnPosition
-              }`
-            ).textContent = "SHOT";
+            if (this.runDirection == "up") {
+              document.querySelector(
+                `.class${this.startShotRowPosition + i}x${
+                  this.startShotColumnPosition
+                }`
+              ).style.backgroundImage = this.shotAnimationMove();
+              document.querySelector(
+                `.class${this.startShotRowPosition + i}x${
+                  this.startShotColumnPosition
+                }`
+              ).textContent = "SHOT";
+            } else if (this.runDirection == "down") {
+              document.querySelector(
+                `.class${this.startShotRowPosition - i}x${
+                  this.startShotColumnPosition
+                }`
+              ).style.backgroundImage = this.shotAnimationMove();
+              document.querySelector(
+                `.class${this.startShotRowPosition - i}x${
+                  this.startShotColumnPosition
+                }`
+              ).textContent = "SHOT";
+            } else if (this.runDirection == "right") {
+              document.querySelector(
+                `.class${this.startShotRowPosition}x${
+                  this.startShotColumnPosition - i
+                }`
+              ).style.backgroundImage = this.shotAnimationMove();
+              document.querySelector(
+                `.class${this.startShotRowPosition}x${
+                  this.startShotColumnPosition - i
+                }`
+              ).textContent = "SHOT";
+            } else if (this.runDirection == "left") {
+              document.querySelector(
+                `.class${this.startShotRowPosition}x${
+                  this.startShotColumnPosition + i
+                }`
+              ).style.backgroundImage = this.shotAnimationMove();
+              document.querySelector(
+                `.class${this.startShotRowPosition}x${
+                  this.startShotColumnPosition + i
+                }`
+              ).textContent = "SHOT";
+            }
           }
           this.shotLength++;
 
@@ -202,6 +250,9 @@ class Gun {
           }
         }
       } else {
+        this.timeShot = setTimeout(() => {
+          this.moveShotBack();
+        }, levels.gameSpeed);
       }
     } else if (this.type == "single") {
       this.singleShot(this.startShotDirection);
@@ -209,9 +260,51 @@ class Gun {
   }
   moveShotBack() {
     for (let i = 0; i < this.shotLength; i++) {
-      document.querySelector(
-        `.class${this.startShotRowPosition - i}x${this.startShotColumnPosition}`
-      ).style.backgroundImage = this.shotAnimationMove();
+      if (this.runDirection == "up") {
+        document.querySelector(
+          `.class${this.startShotRowPosition + i}x${
+            this.startShotColumnPosition
+          }`
+        ).style.backgroundImage = this.shotAnimationMove();
+        document.querySelector(
+          `.class${this.startShotRowPosition + i}x${
+            this.startShotColumnPosition
+          }`
+        ).textContent = "SHOT";
+      } else if (this.runDirection == "down") {
+        document.querySelector(
+          `.class${this.startShotRowPosition - i}x${
+            this.startShotColumnPosition
+          }`
+        ).style.backgroundImage = this.shotAnimationMove();
+        document.querySelector(
+          `.class${this.startShotRowPosition - i}x${
+            this.startShotColumnPosition
+          }`
+        ).textContent = "SHOT";
+      } else if (this.runDirection == "right") {
+        document.querySelector(
+          `.class${this.startShotRowPosition}x${
+            this.startShotColumnPosition - i
+          }`
+        ).style.backgroundImage = this.shotAnimationMove();
+        document.querySelector(
+          `.class${this.startShotRowPosition}x${
+            this.startShotColumnPosition - i
+          }`
+        ).textContent = "SHOT";
+      } else if (this.runDirection == "left") {
+        document.querySelector(
+          `.class${this.startShotRowPosition}x${
+            this.startShotColumnPosition + i
+          }`
+        ).style.backgroundImage = this.shotAnimationMove();
+        document.querySelector(
+          `.class${this.startShotRowPosition}x${
+            this.startShotColumnPosition + i
+          }`
+        ).textContent = "SHOT";
+      }
     }
     document.querySelector(
       `.class${this.startShotRowPosition}x${this.startShotColumnPosition}`
@@ -232,8 +325,15 @@ class Gun {
     // console.log("row back " + this.startShotRowPosition);
 
     if (this.shotLength == 0) {
-      animShot(this.startShotRowPosition + 1, this.startShotColumnPosition);
-
+      if (this.runDirection == "up") {
+        animShot(this.startShotRowPosition - 1, this.startShotColumnPosition);
+      } else if (this.runDirection == "down") {
+        animShot(this.startShotRowPosition + 1, this.startShotColumnPosition);
+      } else if (this.runDirection == "right") {
+        animShot(this.startShotRowPosition, this.startShotColumnPosition + 1);
+      } else if (this.runDirection == "left") {
+        animShot(this.startShotRowPosition, this.startShotColumnPosition - 1);
+      }
       this.timeShot = setTimeout(() => {
         return this.moveShot();
       }, 2000);
