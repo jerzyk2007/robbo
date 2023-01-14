@@ -33,16 +33,16 @@ class Gun {
     this.shotImages;
     this.checkMove;
     this.frequentlyShot = 500;
+    this.shotRoad;
     this.shotDirection = ["up", "down", "left", "right"];
-//    this.course = "vertical";
+    //    this.course = "vertical";
     this.gunImage = this.startGunImage(direction);
     this.startDirection = this.startDirection();
     this.shotLength = 0;
     this.runElement = (this.moveShot(), this.moveElement());
     this.timeShot;
-    this.timeShotBack;
+
     this.singleShotInterval;
-    this.shotRoad = [];
     this.explosionInterval;
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
@@ -100,180 +100,149 @@ class Gun {
     }
   }
   destroy() {
-    this.clearBombRoad();
     clearTimeout(this.timeShot);
     clearInterval(this.singleShotInterval);
     clearInterval(this.timeMoving);
+    this.destroyShotRoad();
     animExplosion(this.startRowPosition, this.startColumnPosition);
   }
   bomb() {
     clearTimeout(this.timeShot);
     clearInterval(this.singleShotInterval);
     clearInterval(this.timeMoving);
-    this.clearBombRoad();
     animExplosion(this.startRowPosition, this.startColumnPosition);
     board.elementContainer.deleteNameObjects(this.startName);
   }
-  clearBombRoad() {
-    clearTimeout(this.timeShot);
-    clearTimeout(this.timeShotBack);
-    for (let i = 0; i < this.shotRoad.length; i++) {
-      eval(this.shotRoad[i]).textContent = "GO";
-      eval(this.shotRoad[i]).classList.remove(`${this.nameAnimShot}`);
+  destroyShotRoad() {
+    if (this.type == "laser") {
+      for (let i = 0; i < this.shotLength; i++) {
+        console.log(i);
+        document.querySelector(
+          `.class${this.startShotRowPosition - i}x${
+            this.startShotColumnPosition
+          }`
+        ).style.backgroundImage = "";
+        document.querySelector(
+          `.class${this.startShotRowPosition - i}x${
+            this.startShotColumnPosition
+          }`
+        ).textContent = "GO";
+      }
     }
   }
-      shot(robboShot, checkMove, row, column) {
-      if (checkMove == "GO"){
-   animShot(row, column);} 
+  shot(robboShot, checkMove, row, column) {
+    if (checkMove == "GO") {
+      animShot(row, column);
+    }
   }
-
+  shotAnimationMove() {
+    if (this.runDirection == "up" || this.runDirection == "down") {
+      return (this.shotImage =
+        this.shotImage === this.shotImages[0]
+          ? this.shotImages[1]
+          : this.shotImages[0]);
+    } else if (this.runDirection == "left" || this.runDirection == "right") {
+      return (this.shotImage =
+        this.shotImage === this.shotImages[2]
+          ? this.shotImages[3]
+          : this.shotImages[2]);
+    }
+  }
   moveShot() {
     if (this.type == "laser") {
-//      this.timeShot = setTimeout(() => {
-        if (this.runDirection == "up" || this.runDirection == "down") {
-          this.shotImage = this.shotImage===this.shotImages[0]?this.shotImages[1]:this.shotImages[0];
-//          this.nameAnimShot = "gunAnimShotUD";
-        }
-        if (this.runDirection == "left" || this.runDirection == "right") {
-          this.shotImage = this.shotImages[3];
-//          this.nameAnimShot = "gunAnimShotLR";
-        }
-        this.checkMove = checkAction(
-          this.runDirection,
-          this.startShotRowPosition,
-          this.startShotColumnPosition
-        );
+      this.checkMove = checkAction(
+        this.runDirection,
+        this.startShotRowPosition,
+        this.startShotColumnPosition
+      );
 
-        if (this.checkMove) {
-          if (this.checkMove.textContent == "GO") {  
-           if (this.runDirection == "up") {
-              this.startShotRowPosition--;
-            } else if (this.runDirection == "down") {
-              this.startShotRowPosition++;
-            } else if (this.runDirection == "left") {
-              this.startShotColumnPosition--;
-            } else if (this.runDirection == "right") {
-              this.startShotColumnPosition++;
-            }
-            document.querySelector(
-      `.class${this.startShotRowPosition}x${this.startShotColumnPosition}`
-    ).style.backgroundImage = this.shotImage;
-              console.log("row "+this.startShotRowPosition)  
-            this.shotLength++;
-               console.log(this.shotLength) 
-          setTimeout(() => {
-            this.moveShot();
-          }, levels.gameSpeed*3)
-          } else {
-//              for (let i=0; i<this.shotLength; i++){
-//               
-////                   setTimeout(function () {
-//                       
-//  document.querySelector(
-//      `.class${this.startShotRowPosition}x${this.startShotColumnPosition}`
-//    ).style.backgroundImage = ""
-//    this.startShotRowPosition--;  
-//     
-////  }, 250);
-//    
-//          }
-              setTimeout(() => {
-                  this.shotLength=0
-//              this.moveShot();
-                    }, 250)
+      if (this.checkMove) {
+        if (this.checkMove.textContent == "GO") {
+          if (this.runDirection == "up") {
+            this.startShotRowPosition--;
+          } else if (this.runDirection == "down") {
+            this.startShotRowPosition++;
+          } else if (this.runDirection == "left") {
+            this.startShotColumnPosition--;
+          } else if (this.runDirection == "right") {
+            this.startShotColumnPosition++;
           }
-                  for (let i=this.shotLength; i>0; i--){
-               
-              }
-          
-            
+          for (let i = this.shotLength; i >= 0; i--) {
+            document.querySelector(
+              `.class${this.startShotRowPosition - i}x${
+                this.startShotColumnPosition
+              }`
+            ).style.backgroundImage = this.shotAnimationMove();
+            document.querySelector(
+              `.class${this.startShotRowPosition - i}x${
+                this.startShotColumnPosition
+              }`
+            ).textContent = "SHOT";
+          }
+          this.shotLength++;
 
+          this.timeShot = setTimeout(() => {
+            this.moveShot();
+          }, levels.gameSpeed);
+        } else {
+          if (this.checkMove.textContent == "board.robbo") {
+            return eval(this.checkMove.textContent).shot();
+          } else if (this.checkMove.textContent == "SHOT") {
+          } else {
+            eval(this.checkMove.textContent).shot();
+          }
+          if (this.shotLength == 0) {
+            this.timeShot = setTimeout(() => {
+              this.moveShot();
+            }, levels.gameSpeed);
+          } else {
+            this.timeShot = setTimeout(() => {
+              this.moveShotBack();
+            }, levels.gameSpeed);
+          }
         }
-//          if (this.checkMove.textContent == "GO") {
-//            this.shotRoad.push(this.checkMove);
-//            this.checkMove.classList.add(`${this.nameAnimShot}`);
-//            this.checkMove.textContent = "SHOT";
-//            this.shotLength++;
-//            if (this.runDirection == "up") {
-//              this.startShotRowPosition--;
-//            } else if (this.runDirection == "down") {
-//              this.startShotRowPosition++;
-//            } else if (this.runDirection == "left") {
-//              this.startShotColumnPosition--;
-//            } else if (this.runDirection == "right") {
-//              this.startShotColumnPosition++;
-//            }
-//            this.moveShot();
-//          } else if (
-//            this.checkMove.textContent == "SHOT" ||
-//            this.checkMove.textContent == "STOP"
-//          ) {
-//            clearTimeout(this.time);
-//
-//            if (this.shotLength == 0) {
-//              return this.moveShot();
-//            } else {
-//              return this.moveShotBack();
-//            }
-//          } else {
-//            eval(this.checkMove.textContent).shot();
-//            if (this.shotLength == 0) {
-//              this.timeShotBack = setTimeout(() => {
-//                clearTimeout(this.time);
-//                return this.moveShot();
-//              }, 2000);
-//            } else {
-//              return this.moveShotBack();
-//            }
-//          }
-//        } else {
-//          return this.moveShotBack();
-//        }
-//      }, levels.gameSpeed);
+      } else {
+      }
     } else if (this.type == "single") {
       this.singleShot(this.startShotDirection);
     }
   }
   moveShotBack() {
-    clearTimeout(this.timeShot);
-    this.timeShotBack = setTimeout(() => {
-      eval(this.shotRoad[this.shotLength - 1]).textContent = "GO";
-      eval(this.shotRoad[this.shotLength - 1]).classList.remove(
-        `${this.nameAnimShot}`
-      );
-      this.shotLength--;
-      if (this.runDirection == "up") {
-        this.startShotRowPosition++;
-        this.row = -1;
-        this.column = 0;
-      } else if (this.runDirection == "down") {
-        this.startShotRowPosition--;
-        this.row = 1;
-        this.column = 0;
-      } else if (this.runDirection == "left") {
-        this.startShotColumnPosition++;
-        this.row = 0;
-        this.column = -1;
-      } else if (this.runDirection == "right") {
-        this.startShotColumnPosition--;
-        this.row = 0;
-        this.column = 1;
-      }
-      if (this.shotLength == 0) {
-        animShot(
-          this.startShotRowPosition + this.row,
-          this.startShotColumnPosition + this.column
-        );
-        this.shotRoad = [];
-        this.timeShot = setTimeout(() => {
-          return this.moveShot();
-        }, 2000);
-      } else {
-        this.moveShotBack();
-      }
-    }, levels.gameSpeed);
-  }
+    for (let i = 0; i < this.shotLength; i++) {
+      document.querySelector(
+        `.class${this.startShotRowPosition - i}x${this.startShotColumnPosition}`
+      ).style.backgroundImage = this.shotAnimationMove();
+    }
+    document.querySelector(
+      `.class${this.startShotRowPosition}x${this.startShotColumnPosition}`
+    ).style.backgroundImage = "";
+    document.querySelector(
+      `.class${this.startShotRowPosition}x${this.startShotColumnPosition}`
+    ).textContent = "GO";
+    this.shotLength--;
+    if (this.runDirection == "up") {
+      this.startShotRowPosition++;
+    } else if (this.runDirection == "down") {
+      this.startShotRowPosition--;
+    } else if (this.runDirection == "left") {
+      this.startShotColumnPosition++;
+    } else if (this.runDirection == "right") {
+      this.startShotColumnPosition--;
+    }
+    // console.log("row back " + this.startShotRowPosition);
 
+    if (this.shotLength == 0) {
+      animShot(this.startShotRowPosition + 1, this.startShotColumnPosition);
+
+      this.timeShot = setTimeout(() => {
+        return this.moveShot();
+      }, 2000);
+    } else {
+      this.timeShot = setTimeout(() => {
+        this.moveShotBack();
+      }, levels.gameSpeed);
+    }
+  }
   singleShot(direction) {
     if (direction) {
       if (this.startShotDirection == "left") {
@@ -386,7 +355,6 @@ class Gun {
   }
 
   nextLevel() {
-    this.clearBombRoad();
     clearTimeout(this.timeShot);
     clearInterval(this.singleShotInterval);
     clearInterval(this.timeMoving);

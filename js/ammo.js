@@ -18,25 +18,24 @@ class Ammo {
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";
     board.scoreBoard.changeCount("ammo");
-        board.elementContainer.deleteNameObjects(this.startName);
-      board.robbo.moveRobbo(moveDirection);
+    board.elementContainer.deleteNameObjects(this.startName);
+    board.robbo.moveRobbo(moveDirection);
   }
   destroy() {
     animExplosion(this.startRowPosition, this.startColumnPosition);
   }
-    bomb(){
-        animExplosion(this.startRowPosition, this.startColumnPosition);
-        board.elementContainer.deleteNameObjects(this.startName);
-    }
+  bomb() {
+    animExplosion(this.startRowPosition, this.startColumnPosition);
+    board.elementContainer.deleteNameObjects(this.startName);
+  }
   shot(robboShot) {
-animExplosion(this.startRowPosition, this.startColumnPosition);
-    
-if (robboShot=="robboShot"){
+    animShot(this.startRowPosition, this.startColumnPosition);
 
-    board.scoreBoard.scores += 50;
-    board.scoreBoard.changeCount("scores");
+    if (robboShot == "robboShot") {
+      board.scoreBoard.scores += 50;
+      board.scoreBoard.changeCount("scores");
     }
-      board.elementContainer.deleteNameObjects(this.startName); 
+    board.elementContainer.deleteNameObjects(this.startName);
   }
   nextLevel() {
     document.querySelector(
