@@ -304,6 +304,16 @@ class Board {
             `board.wall${this.elementContainer.wall}`
           );
         } else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "U"
+        ) {
+          this.elementContainer.bench++;
+          eval(
+            `this.bench${this.elementContainer.bench} = new Bench(i+1, j+1, "board.bench${this.elementContainer.bench}")`
+          );
+          this.elementContainer.objects.push(
+            `board.bench${this.elementContainer.bench}`
+          );
+        } else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "D"
         ) {
           this.elementContainer.door++;

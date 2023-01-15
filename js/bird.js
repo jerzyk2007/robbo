@@ -16,9 +16,7 @@ class Bird {
     this.runElement = (this.moveElement(), this.changeImageAnim());
     this.time;
     this.timeStartShot;
-    document.querySelector(
-      `.class${this.startRowPosition}x${this.startColumnPosition}`
-    ).style.backgroundImage = this.imageMove;
+
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = this.startName;

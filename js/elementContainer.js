@@ -2,23 +2,22 @@
 class ElemenntContainer {
   constructor() {
     this.screws = 0;
-      this.bird=0;
+    this.bird = 0;
     this.hash = 0;
-    // this.shot = 0;
-//    this.makeShotName;
     this.shotNumber = 0;
     this.ammo = 0;
     this.border = 0;
     this.lives = 0;
     this.keys = 0;
     this.bombs = 0;
-      this.gun=0;
-      this.magnet = 0;
+    this.gun = 0;
+    this.magnet = 0;
     this.ship = 0;
     this.beetle = 0;
     this.wall = 0;
     this.door = 0;
-      this.blackHole =0;
+    this.blackHole = 0;
+    this.bench = 0;
     this.objects = [];
     this.staticObjects = ["board.elementContainer", "board.scoreBoard"];
     this.explosionAnim = [
@@ -41,13 +40,13 @@ class ElemenntContainer {
     }
   }
   nextLevel() {
-    this.screws = 0;
-    this.birdHorizontal = 0;
-    this.birdVertical = 0;
-    this.hash = 0;
-    this.autoHash = 0;
-    this.ammo = 0;
-    this.wall = 0;
+    // this.screws = 0;
+    // this.birdHorizontal = 0;
+    // this.birdVertical = 0;
+    // this.hash = 0;
+    // this.autoHash = 0;
+    // this.ammo = 0;
+    // this.wall = 0;
     this.objects = [];
   }
 }
