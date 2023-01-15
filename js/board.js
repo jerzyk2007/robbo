@@ -3,10 +3,9 @@ class Board {
   constructor(row, column) {
     this.rowCounter = row;
     this.columnCounter = column;
-    this.elementContainer = new ElemenntContainer();
+    this.elementContainer = new ElementContainer();
     this.createBoard(this.rowCounter, this.columnCounter);
     this.createElement(this.rowCounter, this.columnCounter);
-
     /// flaga pozwala tylko na jednorazowe zabicie robbo w danej sytuacji
     this.flag = true;
   }
@@ -219,6 +218,46 @@ class Board {
           this.elementContainer.gun++;
           eval(
             `this.gun${this.elementContainer.gun} = new Gun(i+1, j+1, "board.gun${this.elementContainer.gun}", "down", "single", "moving")`
+          );
+          this.elementContainer.objects.push(
+            `board.gun${this.elementContainer.gun}`
+          );
+        } else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "I"
+        ) {
+          this.elementContainer.gun++;
+          eval(
+            `this.gun${this.elementContainer.gun} = new Gun(i+1, j+1, "board.gun${this.elementContainer.gun}", "right", "burner")`
+          );
+          this.elementContainer.objects.push(
+            `board.gun${this.elementContainer.gun}`
+          );
+        } else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "J"
+        ) {
+          this.elementContainer.gun++;
+          eval(
+            `this.gun${this.elementContainer.gun} = new Gun(i+1, j+1, "board.gun${this.elementContainer.gun}", "left", "burner")`
+          );
+          this.elementContainer.objects.push(
+            `board.gun${this.elementContainer.gun}`
+          );
+        } else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "K"
+        ) {
+          this.elementContainer.gun++;
+          eval(
+            `this.gun${this.elementContainer.gun} = new Gun(i+1, j+1, "board.gun${this.elementContainer.gun}", "up", "burner")`
+          );
+          this.elementContainer.objects.push(
+            `board.gun${this.elementContainer.gun}`
+          );
+        } else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "L"
+        ) {
+          this.elementContainer.gun++;
+          eval(
+            `this.gun${this.elementContainer.gun} = new Gun(i+1, j+1, "board.gun${this.elementContainer.gun}", "down", "burner")`
           );
           this.elementContainer.objects.push(
             `board.gun${this.elementContainer.gun}`

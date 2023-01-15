@@ -1,5 +1,5 @@
 // klasa która przecgowuje wszytskie aktualne elementy wyświetlające się na stronie
-class ElemenntContainer {
+class ElementContainer {
   constructor() {
     this.screws = 0;
     this.bird = 0;
@@ -21,7 +21,6 @@ class ElemenntContainer {
     this.objects = [];
     this.staticObjects = ["board.elementContainer", "board.scoreBoard"];
     this.explosionAnim = [
-      "",
       "url(pictures/boom1.png)",
       "url(pictures/boom2.png)",
       "url(pictures/boom3.png)",
@@ -29,8 +28,19 @@ class ElemenntContainer {
       "url(pictures/boom5.png)",
       "url(pictures/boom6.png)",
       "url(pictures/boom7.png)",
-      "",
     ];
+
+    // this.explosionAnim = [
+    //   "",
+    //   "url(pictures/boom1.png)",
+    //   "url(pictures/boom2.png)",
+    //   "url(pictures/boom3.png)",
+    //   "url(pictures/boom4.png)",
+    //   "url(pictures/boom5.png)",
+    //   "url(pictures/boom6.png)",
+    //   "url(pictures/boom7.png)",
+    //   "",
+    // ];
   }
   deleteNameObjects(startName) {
     for (let i = 0; i < this.objects.length; i++) {

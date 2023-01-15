@@ -120,9 +120,7 @@ function animExplosion(rowPosition, columnPosition) {
   //
   document.querySelector(`.class${rowPosition}x${columnPosition}`).textContent =
     "SHOT";
-  //
   let counter = 0;
-  // console.log(startName);
   let animInterval = setInterval(() => {
     if (document.querySelector(`.class${rowPosition}x${columnPosition}`)) {
       document.querySelector(
@@ -130,7 +128,6 @@ function animExplosion(rowPosition, columnPosition) {
       ).style.backgroundImage = board.elementContainer.explosionAnim[counter];
       if (counter == board.elementContainer.explosionAnim.length) {
         clearInterval(animInterval);
-
         document.querySelector(
           `.class${rowPosition}x${columnPosition}`
         ).style.backgroundImage = "";
@@ -146,10 +143,8 @@ function animExplosion(rowPosition, columnPosition) {
 // funkcja wywołująca animację wybuchu strzału
 function animShot(rowPosition, columnPosition) {
   let counter = 3;
-  //
   document.querySelector(`.class${rowPosition}x${columnPosition}`).textContent =
     "SHOT";
-  //
   let animInterval = setInterval(() => {
     if (document.querySelector(`.class${rowPosition}x${columnPosition}`)) {
       document.querySelector(
@@ -226,8 +221,6 @@ function keyDownListener(direction) {
           return board.robbo.makeShot(direction);
         } else {
           board.robbo.moveRobbo(direction);
-
-          // return board.robbo.moveRobbo(direction);
         }
       }
     }

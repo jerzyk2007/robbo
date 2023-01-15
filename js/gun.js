@@ -35,7 +35,9 @@ class Gun {
     this.frequentlyShot = 500;
     this.shotRoad;
     this.shotDirection = ["up", "down", "left", "right"];
-    //    this.course = "vertical";
+    this.burnerCounter = 0;
+    this.burnerColumn = 0;
+    this.burnerRoad = [];
     this.gunImage = this.startGunImage(direction);
     this.startDirection = this.startDirection();
     this.shotLength = 0;
@@ -233,12 +235,84 @@ class Gun {
           }
         }
       } else {
-        this.timeShot = setTimeout(() => {
-          this.moveShotBack();
-        }, levels.gameSpeed);
+        if (this.shotLength > 0) {
+          this.timeShot = setTimeout(() => {
+            this.moveShotBack();
+          }, levels.gameSpeed);
+        }
       }
     } else if (this.type == "single") {
       this.singleShot(this.startShotDirection);
+    }
+    /////////////////////////
+
+    //////////////////////
+    else if (this.type == "burner") {
+      this.checkMove = checkAction(
+        this.runDirection,
+        this.startShotRowPosition,
+        this.startShotColumnPosition + this.burnerColumn
+      );
+      // console.log(this.checkMove.textContent);
+
+      if (this.checkMove) {
+        if (this.checkMove.textContent == "GO") {
+          this.burnerRoad.push(this.checkMove);
+          this.burnerColumn++;
+          for (let i = this.burnerRoad.length; i > 0; i--) {
+            setTimeout(() => {
+              this.burnerRoad[
+                this.burnerRoad.length - i
+              ].style.backgroundImage =
+                board.elementContainer.explosionAnim[this.burnerCounter];
+              this.burnerRoad[this.burnerRoad.length - i].textContent = "SHOT";
+              this.burnerCounter++;
+
+              if (this.burnerCounter == 7) {
+                this.burnerCounter = 0;
+              }
+              if (this.burnerRoad.length == 7) {
+                this.burnerRoad.shift();
+                if (
+                  this.startShotColumnPosition +
+                    this.burnerColumn -
+                    this.burnerRoad.length -
+                    1 !=
+                  this.startShotColumnPosition
+                ) {
+                  document.querySelector(
+                    `.class${this.startShotRowPosition}x${
+                      this.startShotColumnPosition +
+                      this.burnerColumn -
+                      this.burnerRoad.length -
+                      1
+                    }`
+                  ).style.backgroundImage = "";
+                  document.querySelector(
+                    `.class${this.startShotRowPosition}x${
+                      this.startShotColumnPosition +
+                      this.burnerColumn -
+                      this.burnerRoad.length -
+                      1
+                    }`
+                  ).textContent = "GO";
+                }
+              }
+            }, 0);
+          }
+          this.burnerCounter = 0;
+
+          setTimeout(() => {
+            this.moveShot();
+          }, levels.gameSpeed * 1);
+        } else {
+          setTimeout(() => {
+            this.moveShot();
+          }, levels.gameSpeed * 1);
+        }
+      } else {
+        console.log(this.burnerRoad);
+      }
     }
   }
   moveShotBack() {
@@ -326,7 +400,7 @@ class Gun {
         this.startRowPosition,
         this.startColumnPosition
       );
-      if (this.checkMove) {
+      if (this.checkMove && this.checkMove.textContent != "SHOT") {
         setTimeout(() => {
           eval(
             `this.makeShot${board.elementContainer.shotNumber} = new Shot(
@@ -340,7 +414,9 @@ class Gun {
         }, 0);
       }
       this.frequentlyShot =
-        Math.floor(Math.floor(Math.random() * (3500 + 1)) / 250) * 500;
+        Math.floor((Math.random() * (2000 - 250 + 1)) / levels.gameSpeed) *
+          levels.gameSpeed +
+        levels.gameSpeed;
       this.timeShot = setTimeout(() => {
         if (this.typeMove == "rotate") {
           this.rotateGun();
