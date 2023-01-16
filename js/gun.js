@@ -35,7 +35,6 @@ class Gun {
     this.frequentlyShot = 500;
     this.shotRoad;
     this.shotDirection = ["up", "down", "left", "right"];
-    this.burnerCounter = 0;
     this.burnerColumn = 0;
     this.burnerRoad = [];
     this.gunImage = this.startGunImage(direction);
@@ -259,59 +258,62 @@ class Gun {
         if (this.checkMove.textContent == "GO") {
           this.burnerRoad.push(this.checkMove);
           this.burnerColumn++;
-          for (let i = this.burnerRoad.length; i > 0; i--) {
+     if (this.burnerRoad.length == 8) {
+          
+            this.burnerRoad[0].style.backgroundImage="";
+            this.burnerRoad[0].textContent = "GO";
+                
+             this.burnerRoad.shift();
+
+              }
+              for (let i = 0; i <this.burnerRoad.length; i++) {
+
             setTimeout(() => {
               this.burnerRoad[
-                this.burnerRoad.length - i
+                this.burnerRoad.length - i-1
               ].style.backgroundImage =
-                board.elementContainer.explosionAnim[this.burnerCounter];
-              this.burnerRoad[this.burnerRoad.length - i].textContent = "SHOT";
-              this.burnerCounter++;
-
-              if (this.burnerCounter == 7) {
-                this.burnerCounter = 0;
-              }
-              if (this.burnerRoad.length == 7) {
-                this.burnerRoad.shift();
-                if (
-                  this.startShotColumnPosition +
-                    this.burnerColumn -
-                    this.burnerRoad.length -
-                    1 !=
-                  this.startShotColumnPosition
-                ) {
-                  document.querySelector(
-                    `.class${this.startShotRowPosition}x${
-                      this.startShotColumnPosition +
-                      this.burnerColumn -
-                      this.burnerRoad.length -
-                      1
-                    }`
-                  ).style.backgroundImage = "";
-                  document.querySelector(
-                    `.class${this.startShotRowPosition}x${
-                      this.startShotColumnPosition +
-                      this.burnerColumn -
-                      this.burnerRoad.length -
-                      1
-                    }`
-                  ).textContent = "GO";
-                }
-              }
+                board.elementContainer.explosionAnim[i];
+              this.burnerRoad[this.burnerRoad.length - i-1].textContent = "SHOT";
+   
             }, 0);
           }
-          this.burnerCounter = 0;
-
           setTimeout(() => {
             this.moveShot();
-          }, levels.gameSpeed * 1);
+          }, levels.gameSpeed * 15);
         } else {
+                this.burnerRoad[0].style.backgroundImage="";
+            this.burnerRoad[0].textContent = "GO";
+                      this.burnerRoad.splice(0,1)
+
+console.log(this.burnerRoad)
+console.log(this.burnerRoad[0])
+// do poprawy 
+                   for (let i = 0; i<this.burnerRoad.length; i++) {
+              this.burnerRoad[i].style.backgroundImage =
+                board.elementContainer.explosionAnim[this.burnerRoad.length-i];
+                   }
+/// do poprawy 
+           if(this.burnerRoad.length>0){
+            
           setTimeout(() => {
             this.moveShot();
-          }, levels.gameSpeed * 1);
+          }, levels.gameSpeed * 15);}
         }
       } else {
-        console.log(this.burnerRoad);
+//               this.burnerRoad[0].style.backgroundImage="";
+//            this.burnerRoad[0].textContent = "GO";
+//
+//          this.burnerRoad.splice(0,1)
+//                   for (let i = 0; i<this.burnerRoad.length; i++) {
+//              this.burnerRoad[i].style.backgroundImage =
+//                board.elementContainer.explosionAnim[i];
+//                   }
+//           if(this.burnerRoad.length>0){
+//            
+//          setTimeout(() => {
+//            this.moveShot();
+//          }, levels.gameSpeed * 15);}
+
       }
     }
   }
