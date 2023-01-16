@@ -96,12 +96,6 @@ class Bird {
       } else if (this.course == "horizontal") {
         this.counter = 0;
       }
-      // this.imageMove =
-      //   this.imageMove === this.images[0] ? this.images[1] : this.images[0];
-      // document.querySelector(
-      //   `.class${this.startRowPosition}x${this.startColumnPosition}`
-      // ).style.backgroundImage = this.imageMove;
-
       this.checkMove = checkAction(
         this.runDirection,
         this.startRowPosition,
@@ -150,7 +144,8 @@ class Bird {
             direction,
             this.startRowPosition +1,
             this.startColumnPosition ,
-            "${this.startName}.makeShot${board.elementContainer.shotNumber}"
+            "${this.startName}.makeShot${board.elementContainer.shotNumber}",
+            "birdShot", "single"
           )`
           );
           board.elementContainer.shotNumber++;

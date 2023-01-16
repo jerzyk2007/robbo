@@ -128,7 +128,7 @@ class Robbo {
             this.startRowPosition + row,
             this.startColumnPosition + column,
             "board.robbo${board.elementContainer.shotNumber}",
-            this.robboShot
+            this.robboShot, "single"
           )`
             );
           }

@@ -38,6 +38,7 @@ class Gun {
     this.burnerCounter = 0;
     this.resetBurenrCounter = 0;
     this.burnerColumn = 0;
+    this.burnerRow = 0;
     this.burnerRoad = [];
     this.gunImage = this.startGunImage(direction);
     this.startDirection = this.startDirection();
@@ -243,92 +244,102 @@ class Gun {
         }
       }
     } else if (this.type == "single") {
-      this.singleShot(this.startShotDirection);
+      this.singleBurnerShot(this.startShotDirection, "single");
     }
     /////////////////////////
 
     //////////////////////
     else if (this.type == "burner") {
-      this.checkMove = checkAction(
-        this.runDirection,
-        this.startShotRowPosition,
-        this.startShotColumnPosition + this.burnerColumn
-      );
-      // console.log(this.checkMove.textContent);
+      this.singleBurnerShot(this.startShotDirection, "burner");
 
-      if (this.checkMove) {
-        if (this.checkMove.textContent == "GO") {
-          this.burnerRoad.push(this.checkMove);
-          this.burnerColumn++;
-          if (this.burnerRoad.length == 8) {
-            this.burnerRoad[0].style.backgroundImage = "";
-            this.burnerRoad[0].textContent = "GO";
-
-            this.burnerRoad.shift();
-          }
-          for (let i = 0; i < this.burnerRoad.length; i++) {
-            setTimeout(() => {
-              this.burnerRoad[
-                this.burnerRoad.length - i - 1
-              ].style.backgroundImage = board.elementContainer.explosionAnim[i];
-              this.burnerRoad[this.burnerRoad.length - i - 1].textContent =
-                "SHOT";
-            }, 0);
-          }
-          setTimeout(() => {
-            this.moveShot();
-          }, levels.gameSpeed * 1);
-        } else {
-          // console.log(this.burnerRoad.length);
-          setTimeout(() => {
-            if (this.burnerRoad.length < 7) {
-              this.burnerInterval = setInterval(() => {
-                for (let i = this.burnerRoad.length - 1; i >= 0; i--) {
-                  this.burnerRoad[i].style.backgroundImage =
-                    board.elementContainer.explosionAnim[this.burnerCounter];
-                  this.burnerCounter++;
-                  if (this.burnerCounter > 7) {
-                    this.burnerRoad[0].style.backgroundImage = "";
-                    this.burnerRoad[0].textContent = "GO";
-                    this.burnerRoad.splice(0, 1);
-                  }
-                }
-                this.resetBurenrCounter++;
-                this.burnerCounter = this.resetBurenrCounter;
-                if (this.burnerRoad.length == 0) {
-                  clearInterval(this.burnerInterval);
-                }
-              }, levels.gameSpeed * 1);
-            } else {
-              this.burnerInterval = setInterval(() => {
-                this.burnerRoad[0].style.backgroundImage = "";
-                this.burnerRoad[0].textContent = "GO";
-                this.burnerRoad.splice(0, 1);
-                for (let i = 0; i < this.burnerRoad.length; i++) {
-                  this.burnerRoad[i].style.backgroundImage =
-                    board.elementContainer.explosionAnim[i];
-                }
-                if (this.burnerRoad.length == 0) {
-                  clearInterval(this.burnerInterval);
-                }
-              }, levels.gameSpeed * 1);
-            }
-          }, 0);
-        }
-      } else {
-        this.burnerInterval = setInterval(() => {
-          this.burnerRoad[0].style.backgroundImage = "";
-          this.burnerRoad[0].textContent = "GO";
-          this.burnerRoad.splice(0, 1);
-          for (let i = 0; i < this.burnerRoad.length; i++) {
-            this.burnerRoad[i].style.backgroundImage =
-              board.elementContainer.explosionAnim[i];
-          }
-          if (this.burnerRoad.length == 0) {
-            clearInterval(this.burnerInterval);
-          }
-        }, levels.gameSpeed * 1);
-      }
+      //działa - skopiować do shot
+      // console.log(this.runDirection);
+      // this.checkMove = checkAction(
+      //   this.runDirection,
+      //   this.startShotRowPosition + this.burnerRow,
+      //   this.startShotColumnPosition + this.burnerColumn
+      // );
+      // // console.log(this.checkMove.textContent);
+      // if (this.checkMove) {
+      //   if (this.checkMove.textContent == "GO") {
+      //     this.burnerRoad.push(this.checkMove);
+      //     if (this.runDirection == "right") {
+      //       this.burnerColumn++;
+      //     } else if (this.runDirection == "left") {
+      //       this.burnerColumn--;
+      //     } else if (this.runDirection == "up") {
+      //       this.burnerRow--;
+      //     } else if (this.runDirection == "down") {
+      //       this.burnerRow++;
+      //     }
+      //     if (this.burnerRoad.length == 8) {
+      //       this.burnerRoad[0].style.backgroundImage = "";
+      //       this.burnerRoad[0].textContent = "GO";
+      //       this.burnerRoad.shift();
+      //     }
+      //     for (let i = 0; i < this.burnerRoad.length; i++) {
+      //       setTimeout(() => {
+      //         this.burnerRoad[
+      //           this.burnerRoad.length - i - 1
+      //         ].style.backgroundImage = board.elementContainer.explosionAnim[i];
+      //         this.burnerRoad[this.burnerRoad.length - i - 1].textContent =
+      //           "SHOT";
+      //       }, 0);
+      //     }
+      //     setTimeout(() => {
+      //       this.moveShot();
+      //     }, levels.gameSpeed * 1);
+      //   } else {
+      //     // console.log(this.burnerRoad.length);
+      //     setTimeout(() => {
+      //       if (this.burnerRoad.length < 7) {
+      //         this.burnerInterval = setInterval(() => {
+      //           for (let i = this.burnerRoad.length - 1; i >= 0; i--) {
+      //             this.burnerRoad[i].style.backgroundImage =
+      //               board.elementContainer.explosionAnim[this.burnerCounter];
+      //             this.burnerCounter++;
+      //             if (this.burnerCounter > 7) {
+      //               this.burnerRoad[0].style.backgroundImage = "";
+      //               this.burnerRoad[0].textContent = "GO";
+      //               this.burnerRoad.splice(0, 1);
+      //             }
+      //           }
+      //           this.resetBurenrCounter++;
+      //           this.burnerCounter = this.resetBurenrCounter;
+      //           if (this.burnerRoad.length == 0) {
+      //             clearInterval(this.burnerInterval);
+      //           }
+      //         }, levels.gameSpeed * 1);
+      //       } else {
+      //         this.burnerInterval = setInterval(() => {
+      //           this.burnerRoad[0].style.backgroundImage = "";
+      //           this.burnerRoad[0].textContent = "GO";
+      //           this.burnerRoad.splice(0, 1);
+      //           for (let i = 0; i < this.burnerRoad.length; i++) {
+      //             this.burnerRoad[i].style.backgroundImage =
+      //               board.elementContainer.explosionAnim[i];
+      //           }
+      //           if (this.burnerRoad.length == 0) {
+      //             clearInterval(this.burnerInterval);
+      //           }
+      //         }, levels.gameSpeed * 1);
+      //       }
+      //     }, 0);
+      //   }
+      // } else {
+      //   this.burnerInterval = setInterval(() => {
+      //     this.burnerRoad[0].style.backgroundImage = "";
+      //     this.burnerRoad[0].textContent = "GO";
+      //     this.burnerRoad.splice(0, 1);
+      //     for (let i = 0; i < this.burnerRoad.length; i++) {
+      //       this.burnerRoad[i].style.backgroundImage =
+      //         board.elementContainer.explosionAnim[i];
+      //     }
+      //     if (this.burnerRoad.length == 0) {
+      //       clearInterval(this.burnerInterval);
+      //     }
+      //   }, levels.gameSpeed * 1);
+      // }
     }
   }
   moveShotBack() {
@@ -393,7 +404,7 @@ class Gun {
       }, levels.gameSpeed);
     }
   }
-  singleShot(direction) {
+  singleBurnerShot(direction, type) {
     if (direction) {
       if (this.startShotDirection == "left") {
         this.column = -1;
@@ -418,21 +429,38 @@ class Gun {
       );
       if (this.checkMove && this.checkMove.textContent != "SHOT") {
         setTimeout(() => {
-          eval(
-            `this.makeShot${board.elementContainer.shotNumber} = new Shot(
+          if (type == "single") {
+            eval(
+              `this.makeShot${board.elementContainer.shotNumber} = new Shot(
             this.startShotDirection,
             this.startRowPosition + this.row,
             this.startColumnPosition + this.column,
             "${this.startName}.makeShot${board.elementContainer.shotNumber}",
+            "gunShot", "single"
                      )`
-          );
+            );
+          } else if (type == "burner") {
+            eval(
+              `this.makeShot${board.elementContainer.shotNumber} = new Shot(
+            this.startShotDirection,
+            this.startRowPosition,
+            this.startColumnPosition,
+            "${this.startName}.makeShot${board.elementContainer.shotNumber}",
+            "gunShot", "burner"
+                     )`
+            );
+          }
           board.elementContainer.shotNumber++;
         }, 0);
       }
-      this.frequentlyShot =
-        Math.floor((Math.random() * (2000 - 250 + 1)) / levels.gameSpeed) *
-          levels.gameSpeed +
-        levels.gameSpeed;
+      if (type == "single") {
+        this.frequentlyShot =
+          Math.floor((Math.random() * (2000 - 250 + 1)) / levels.gameSpeed) *
+            levels.gameSpeed +
+          levels.gameSpeed;
+      } else if (type == "burner") {
+        this.frequentlyShot = 2500;
+      }
       this.timeShot = setTimeout(() => {
         if (this.typeMove == "rotate") {
           this.rotateGun();
