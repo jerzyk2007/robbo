@@ -459,7 +459,8 @@ class Gun {
             levels.gameSpeed +
           levels.gameSpeed;
       } else if (type == "burner") {
-        this.frequentlyShot = 2500;
+        this.frequentlyShot =
+          Math.floor((Math.random() * (6000 - 1500 + 1)) / 1500) * 1500 + 1500;
       }
       this.timeShot = setTimeout(() => {
         if (this.typeMove == "rotate") {
