@@ -11,15 +11,14 @@ class Robbo {
       "url(pictures/robbo-right-first.png)",
       "url(pictures/robbo-right-second.png)",
     ];
-    this.imageMove;
     this.checkMove;
     this.startName = name;
     this.startRowPosition = row;
     this.startColumnPosition = column;
-    this.action = ["empty"];
+    // this.action = ["empty"];
     this.moveDirection;
-    //    this.shotNumber = 1;
     this.flag = true;
+    this.imageMove = this.changeImageMove(this.moveDirection);
     this.robboShot = "robboShot";
     this.robboScrollStart = this.scrollStart();
     this.scrollRow = levels[`level${levels.levelCounter}`][0];
@@ -138,7 +137,28 @@ class Robbo {
       }
     }
   }
-
+  changeImageMove(moveDirection) {
+    let image1 = 0;
+    let image2 = 0;
+    if (moveDirection === "down") {
+      image1 = 0;
+      image2 = 1;
+    } else if (moveDirection === "up") {
+      image1 = 2;
+      image2 = 3;
+    } else if (moveDirection === "left") {
+      image1 = 4;
+      image2 = 5;
+    } else if (moveDirection === "right") {
+      image1 = 6;
+      image2 = 7;
+    }
+    this.changeImage =
+      this.changeImage === this.images[image2]
+        ? this.images[image1]
+        : this.images[image2];
+    return this.changeImage;
+  }
   moveRobbo(moveDirection) {
     if (this.flag) {
       let row = 0;
@@ -183,11 +203,12 @@ class Robbo {
           oldPosition.textContent = "GO";
           oldPosition.style.backgroundImage = "";
           newPosition.textContent = this.startName;
-          this.imageMove =
-            this.imageMove === this.images[image2]
-              ? this.images[image1]
-              : this.images[image2];
-          newPosition.style.backgroundImage = this.imageMove;
+          // this.imageMove =
+          //   this.imageMove === this.images[image2]
+          //     ? this.images[image1]
+          //     : this.images[image2];
+          newPosition.style.backgroundImage =
+            this.changeImageMove(moveDirection);
           newPosition.scrollIntoView({
             block: "center",
             inline: "center",
@@ -199,9 +220,10 @@ class Robbo {
             `.class${this.startRowPosition}x${this.startColumnPosition}`
           );
           newPosition.style.backgroundImage =
-            this.imageMove === this.images[image2]
-              ? this.images[image1]
-              : this.images[image2];
+            this.changeImageMove(moveDirection);
+          // this.imageMove === this.images[image2]
+          //   ? this.images[image1]
+          //   : this.images[image2];
           if (this.checkMove.textContent !== "STOP") {
             eval(this.checkMove.textContent).move(moveDirection);
           }
@@ -212,16 +234,18 @@ class Robbo {
   }
   position() {}
   destroy() {}
-  teleport(row, column, place) {
-    levels.canMove = false;
+  teleport(row, column, place, moveDirection) {
+    this.flag = false;
 
-    console.log("teleport");
     document.querySelector(`.class${row}x${column}`).textContent = "GO";
     document.querySelector(`.class${row}x${column}`).style.backgroundImage = "";
-    animShot(row, column + 2);
+    setTimeout(() => {
+      animShot(row, column + 2);
+    }, 120);
     setTimeout(() => {
       place.textContent = this.startName;
-      place.style.backgroundImage = this.imageMove;
+      place.style.backgroundImage = this.changeImageMove(moveDirection);
+      this.flag = true;
     }, levels.gameSpeed * 3);
     this.startRowPosition = row;
     this.startColumnPosition = column + 2;

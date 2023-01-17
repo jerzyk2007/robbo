@@ -34,18 +34,14 @@ class Teleport {
         this.startRowPosition,
         this.startColumnPosition
       );
-      //   this.checkMove.style.backgroundColor = "red";
-      console.log(this.checkMove.textContent);
-      console.log(this.startRowPosition, this.startColumnPosition - 1);
-
       board.robbo.teleport(
         this.startRowPosition,
         this.startColumnPosition - 1,
-        this.checkMove
+        this.checkMove,
+        direction
       );
       animShot(this.startRowPosition, this.startColumnPosition - 1);
     }
-    console.log(direction);
   }
   direction(moveDirection) {}
   destroy() {
