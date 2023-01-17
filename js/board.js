@@ -414,6 +414,20 @@ class Board {
           this.elementContainer.objects.push(
             `board.beetle${this.elementContainer.beetle}`
           );
+        } else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "j"
+        ) {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "A0")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("A0");
         }
       }
     }

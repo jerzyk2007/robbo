@@ -211,11 +211,22 @@ class Robbo {
     }
   }
   position() {}
-  destroy() {
-      
-      
-      
+  destroy() {}
+  teleport(row, column, place) {
+    levels.canMove = false;
+
+    console.log("teleport");
+    document.querySelector(`.class${row}x${column}`).textContent = "GO";
+    document.querySelector(`.class${row}x${column}`).style.backgroundImage = "";
+    animShot(row, column + 2);
+    setTimeout(() => {
+      place.textContent = this.startName;
+      place.style.backgroundImage = this.imageMove;
+    }, levels.gameSpeed * 3);
+    this.startRowPosition = row;
+    this.startColumnPosition = column + 2;
   }
+
   bomb() {
     this.killRobbo();
     clearTimeout(this.time);
@@ -228,21 +239,21 @@ class Robbo {
   shot() {
     this.killRobbo();
   }
-    burner(){
-        clearInterval(this.scrollTime);
+  burner() {
+    clearInterval(this.scrollTime);
     this.flag = false;
     board.scoreBoard.changeCount("lostLives");
-           document.querySelector(
+    document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
-    ).style.backgroundImage = ""; 
+    ).style.backgroundImage = "";
     setTimeout(() => {
       destroyAllElements();
-    }, 800);   
-        return "GO"
-    }
+    }, 800);
+    return "GO";
+  }
   nextLevel() {
     clearInterval(this.scrollTime);
 

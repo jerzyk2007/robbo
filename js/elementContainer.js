@@ -12,9 +12,11 @@ class ElementContainer {
     this.bombs = 0;
     this.gun = 0;
     this.magnet = 0;
+    this.teleport = 0;
+    this.teleportName = [];
+    this.teleportPair = [];
     this.ship = 0;
-      this.shipReady = [];
-
+    this.shipReady = [];
     this.beetle = 0;
     this.wall = 0;
     this.door = 0;

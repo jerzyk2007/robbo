@@ -16,11 +16,11 @@ class Levels {
 
     this.level1 = [10, 10];
     this.level1part1 = [...`2222222222`];
-    this.level1part2 = [...`2@       2`];
+    this.level1part2 = [...`2@    AA 2`];
     this.level1part3 = [...`2        2`];
     this.level1part4 = [...`2        2`];
-    this.level1part5 = [...`2        2`];
-    this.level1part6 = [...`2        2`];
+    this.level1part5 = [...`2    B   2`];
+    this.level1part6 = [...`2   j    2`];
     this.level1part7 = [...`2        2`];
     this.level1part8 = [...`2        2`];
     this.level1part9 = [...`2       $2`];
