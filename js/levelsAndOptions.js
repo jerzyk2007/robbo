@@ -14,70 +14,84 @@ class Levels {
     this.lastLevel = 1;
     // level 1
 
-    this.level1 = [5, 5];
-    this.level1part1 = ["*1","@","  ","  ", "*2"];
-    this.level1part2 = ["A","  ","  ","  ", "  "];
-    this.level1part3 = ["","","","", " "];
-    this.level1part4 = ["","","","", " "];
-    this.level1part5 = ["*3","&","","", "*4"];
+    this.level1 = [10, 10];
+    this.level1part1 = [...`2222222222`];
+    this.level1part2 = [...`2@       2`];
+    this.level1part3 = [...`2        2`];
+    this.level1part4 = [...`2        2`];
+    this.level1part5 = [...`2        2`];
+    this.level1part6 = [...`2        2`];
+    this.level1part7 = [...`2        2`];
+    this.level1part8 = [...`2        2`];
+    this.level1part9 = [...`2       $2`];
+    this.level1part10 = [...`2222222222`];
 
-//   this.level1 = [5, 5];
-//    this.level1part1 = [...` @   `];
-//    this.level1part2 = [...`     `];
-//    this.level1part3 = [...`     `];
-//    this.level1part4 = [...`     `];
-//    this.level1part5 = [...`    &`];
     // level 2
   }
 }
-// A – ammo
-// B – bomb
-// C - wall
-// D – door
-// E - gun - shot right – single
-// e - gun - shot right – laser
-// F - gun - shot left – single
-// f - gun - shot left – laser
-// G - gun – shot up – single
-// g - gun - shot up – laser
-// H - gun - shot down – single
-// h - gun - shot down – laser
-// I – gun - shot right - burner                        
-// i - gun - shot right – single, moving up-down
-// J - gun - shot left - burner                         
-// j - gun - shot left – single, moving up-down
-// K – gun - shot up - burner                           
-// k - gun - shot up – single, moving left-right
-// L – gun - shot down - burner                         
-// l - gun - shot down – single, moving left-right
-// M - gun - shot down – rotate, single shot
-// N - ant - left
-// O - beetle - right
-// P – bird vertical, no shot
-// Q - bird horiontal, no shot
-// q - bird horiontal, single shot
-// R – eyes                                              *
-// S – ?                                                 *
-// T - teleport                                          *
-// U – bench                                             *
-// V -
-// W -
-// X – black hole – empty space
-// Y –
-// Z –
-// ! – live
-// @ - robbo
-// # - hash
-// $ - sliding hash
-// % - screw - suggest max 99
-// ^ - key
-// & - ship
-// * - *1, *2, *3, *4 another border
-// ( -
-// ) –
-// - -
-// _ -
-// + -
-// = -
-// < - magnet right
-// > - magnet left
+
+// @ - robbo-
+// $ - ship-
+// # - hash simple-
+// % - hash mobile-
+// ? - ?                         *
+// 1 - first border-
+// 2- second border-
+// 3 - third border-
+// 4 - fourth border-
+// A - ammo-
+// B - bomb-
+// C - black hole – empty space-
+// D - door-
+// E - eyes                      *
+// F - key-
+// G - live-
+// H - bench-                     *
+// I - screw - suggest max 99-
+// J - wall-
+// K - ant - left-
+// L - beetle - right-
+// M - bird vertical, no shot-
+// N - bird horiontal, no shot-
+// O - bird horiontal, single shot-
+// P - magnet left-
+// Q - magnet right-
+// R - gun - shot right – single-
+// S - gun - shot left – single-
+// T - gun - shot up – single-
+// U - gun - shot down – single-
+// V - gun - shot right – laser-
+// W - gun - shot left – laser-
+// X - gun - shot up – laser-
+// Y - gun - shot down – laser-
+// Z - gun - shot right – single, moving up-down-
+// a - gun - shot left – single, moving up-down-
+// b - gun - shot up – single, moving up-down-
+// c - gun - shot down – single, moving up-down-
+// d - gun - shot right – burner-
+// e - gun - shot left – burner-
+// f - gun - shot up – burner-
+// g - gun - shot down – burner-
+// h - gun - shot down – rotate, single shot-
+// teleport - use as a pair or just one - max 10    *
+//
+// j - teleport A0 - 0A
+// k - teleport 0A - A0
+// l - teleport A1 - 1A
+// m - teleport 1A - A1
+// n - teleport A2 - 2A
+// o - teleport 2A - A2
+// p - teleport A3 - 3A
+// q - teleport 3A - A3
+// r - teleport A4 - 4A
+// s - teleport 4A - A4
+// t - teleport A5 - 5A
+// u - teleport 5A - A5
+// v - teleport A6 - 6A
+// w - teleport 6A - A6
+// x - teleport A7 - 7A
+// y - teleport 7A - A7
+// z - teleport A8 - 8A
+// , - teleport 8A - A8
+// . - teleport A9 - 9A
+// - - teleport 9A - A9

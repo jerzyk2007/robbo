@@ -25,25 +25,35 @@ class Board {
   createElement(rowCounter, columnCounter) {
     for (let i = 0; i < rowCounter; i++) {
       for (let j = 0; j < columnCounter; j++) {
-        if (eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "*1") {
-          eval(`this.border = new Border(i + 1, j + 1, "board.border", "border1")`);
-        } 
-          else  if (eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "*2") {
-          eval(`this.border = new Border(i + 1, j + 1, "board.border", "border2")`);
-        } 
-           else  if (eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "*3") {
-          eval(`this.border = new Border(i + 1, j + 1, "board.border", "border3")`);
-        }
-           else  if (eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "*4") {
-          eval(`this.border = new Border(i + 1, j + 1, "board.border", "border4")`);
-        }
-          else if (
+        if (eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "1") {
+          eval(
+            `this.border = new Border(i + 1, j + 1, "board.border", "border1")`
+          );
+        } else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "2"
+        ) {
+          eval(
+            `this.border = new Border(i + 1, j + 1, "board.border", "border2")`
+          );
+        } else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "3"
+        ) {
+          eval(
+            `this.border = new Border(i + 1, j + 1, "board.border", "border3")`
+          );
+        } else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "4"
+        ) {
+          eval(
+            `this.border = new Border(i + 1, j + 1, "board.border", "border4")`
+          );
+        } else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "@"
         ) {
           this.robbo = new Robbo(i + 1, j + 1, "board.robbo");
           this.elementContainer.objects.push(`board.robbo`);
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "%"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "I"
         ) {
           this.elementContainer.screws++;
           eval(
@@ -53,7 +63,7 @@ class Board {
             `board.screw${this.elementContainer.screws}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "Q"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "N"
         ) {
           this.elementContainer.bird++;
           eval(
@@ -63,7 +73,7 @@ class Board {
             `board.bird${this.elementContainer.bird}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "P"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "M"
         ) {
           this.elementContainer.bird++;
           eval(
@@ -73,7 +83,7 @@ class Board {
             `board.bird${this.elementContainer.bird}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "q"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "O"
         ) {
           this.elementContainer.bird++;
           eval(
@@ -83,7 +93,7 @@ class Board {
             `board.bird${this.elementContainer.bird}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === ">"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "P"
         ) {
           this.elementContainer.magnet++;
           eval(
@@ -93,7 +103,7 @@ class Board {
             `board.magnet${this.elementContainer.magnet}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "<"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "Q"
         ) {
           this.elementContainer.magnet++;
           eval(
@@ -103,7 +113,7 @@ class Board {
             `board.magnet${this.elementContainer.magnet}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "h"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "Y"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -113,7 +123,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "f"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "W"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -123,7 +133,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "e"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "V"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -133,7 +143,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "E"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "R"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -143,7 +153,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "H"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "U"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -153,7 +163,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "G"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "T"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -163,7 +173,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "F"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "S"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -173,7 +183,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "g"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "X"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -183,7 +193,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "M"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "h"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -193,7 +203,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "k"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "b"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -203,7 +213,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "i"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "Z"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -213,7 +223,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "j"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "a"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -223,7 +233,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "l"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "c"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -233,7 +243,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "I"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "d"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -243,7 +253,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "J"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "e"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -253,7 +263,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "K"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "f"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -263,7 +273,7 @@ class Board {
             `board.gun${this.elementContainer.gun}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "L"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "g"
         ) {
           this.elementContainer.gun++;
           eval(
@@ -283,7 +293,7 @@ class Board {
             `board.hash${this.elementContainer.hash}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "$"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "%"
         ) {
           this.elementContainer.hash++;
           eval(
@@ -313,7 +323,7 @@ class Board {
             `board.bomb${this.elementContainer.bombs}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "!"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "G"
         ) {
           this.elementContainer.lives++;
           eval(
@@ -323,7 +333,7 @@ class Board {
             `board.lives${this.elementContainer.lives}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "^"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "F"
         ) {
           this.elementContainer.keys++;
           eval(
@@ -333,7 +343,7 @@ class Board {
             `board.keys${this.elementContainer.keys}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "X"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "C"
         ) {
           this.elementContainer.blackHole++;
           eval(
@@ -343,7 +353,7 @@ class Board {
             `board.blackHole${this.elementContainer.blackHole}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "C"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "J"
         ) {
           this.elementContainer.wall++;
           eval(
@@ -353,7 +363,7 @@ class Board {
             `board.wall${this.elementContainer.wall}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "U"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "H"
         ) {
           this.elementContainer.bench++;
           eval(
@@ -362,8 +372,7 @@ class Board {
           this.elementContainer.objects.push(
             `board.bench${this.elementContainer.bench}`
           );
-        } 
-          else if (
+        } else if (
           eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "D"
         ) {
           this.elementContainer.door++;
@@ -373,23 +382,20 @@ class Board {
           this.elementContainer.objects.push(
             `board.door${this.elementContainer.door}`
           );
-        } 
-          
-       else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "&"
+        } else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "$"
         ) {
           this.ship = new Ship(i + 1, j + 1, "board.ship");
           this.elementContainer.objects.push(`board.ship`);
-        } 
-           else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "&?"
-        ) {
-          this.ship1 = new Ship(i + 1, j + 1, "board.ship1", "shipReady");
-          this.elementContainer.objects.push(`board.ship1`);
-        } 
-          
-          else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "N"
+        }
+        //  else if (
+        //   eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "&?"
+        // ) {
+        //   this.ship1 = new Ship(i + 1, j + 1, "board.ship1", "shipReady");
+        //   this.elementContainer.objects.push(`board.ship1`);
+        // }
+        else if (
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "K"
         ) {
           this.elementContainer.beetle++;
           eval(
@@ -399,7 +405,7 @@ class Board {
             `board.beetle${this.elementContainer.beetle}`
           );
         } else if (
-          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "O"
+          eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "L"
         ) {
           this.elementContainer.beetle++;
           eval(
@@ -413,7 +419,6 @@ class Board {
     }
     this.scoreBoard = new ScoreBoard(this.elementContainer.screws);
     if (this.elementContainer.screws == 0) {
-
       this.ship.shipReady();
     }
   }
