@@ -246,100 +246,10 @@ class Gun {
     } else if (this.type == "single") {
       this.singleBurnerShot(this.startShotDirection, "single");
     }
-    /////////////////////////
-
-    //////////////////////
+  
     else if (this.type == "burner") {
       this.singleBurnerShot(this.startShotDirection, "burner");
 
-      //działa - skopiować do shot
-      // console.log(this.runDirection);
-      // this.checkMove = checkAction(
-      //   this.runDirection,
-      //   this.startShotRowPosition + this.burnerRow,
-      //   this.startShotColumnPosition + this.burnerColumn
-      // );
-      // // console.log(this.checkMove.textContent);
-      // if (this.checkMove) {
-      //   if (this.checkMove.textContent == "GO") {
-      //     this.burnerRoad.push(this.checkMove);
-      //     if (this.runDirection == "right") {
-      //       this.burnerColumn++;
-      //     } else if (this.runDirection == "left") {
-      //       this.burnerColumn--;
-      //     } else if (this.runDirection == "up") {
-      //       this.burnerRow--;
-      //     } else if (this.runDirection == "down") {
-      //       this.burnerRow++;
-      //     }
-      //     if (this.burnerRoad.length == 8) {
-      //       this.burnerRoad[0].style.backgroundImage = "";
-      //       this.burnerRoad[0].textContent = "GO";
-      //       this.burnerRoad.shift();
-      //     }
-      //     for (let i = 0; i < this.burnerRoad.length; i++) {
-      //       setTimeout(() => {
-      //         this.burnerRoad[
-      //           this.burnerRoad.length - i - 1
-      //         ].style.backgroundImage = board.elementContainer.explosionAnim[i];
-      //         this.burnerRoad[this.burnerRoad.length - i - 1].textContent =
-      //           "SHOT";
-      //       }, 0);
-      //     }
-      //     setTimeout(() => {
-      //       this.moveShot();
-      //     }, levels.gameSpeed * 1);
-      //   } else {
-      //     // console.log(this.burnerRoad.length);
-      //     setTimeout(() => {
-      //       if (this.burnerRoad.length < 7) {
-      //         this.burnerInterval = setInterval(() => {
-      //           for (let i = this.burnerRoad.length - 1; i >= 0; i--) {
-      //             this.burnerRoad[i].style.backgroundImage =
-      //               board.elementContainer.explosionAnim[this.burnerCounter];
-      //             this.burnerCounter++;
-      //             if (this.burnerCounter > 7) {
-      //               this.burnerRoad[0].style.backgroundImage = "";
-      //               this.burnerRoad[0].textContent = "GO";
-      //               this.burnerRoad.splice(0, 1);
-      //             }
-      //           }
-      //           this.resetBurenrCounter++;
-      //           this.burnerCounter = this.resetBurenrCounter;
-      //           if (this.burnerRoad.length == 0) {
-      //             clearInterval(this.burnerInterval);
-      //           }
-      //         }, levels.gameSpeed * 1);
-      //       } else {
-      //         this.burnerInterval = setInterval(() => {
-      //           this.burnerRoad[0].style.backgroundImage = "";
-      //           this.burnerRoad[0].textContent = "GO";
-      //           this.burnerRoad.splice(0, 1);
-      //           for (let i = 0; i < this.burnerRoad.length; i++) {
-      //             this.burnerRoad[i].style.backgroundImage =
-      //               board.elementContainer.explosionAnim[i];
-      //           }
-      //           if (this.burnerRoad.length == 0) {
-      //             clearInterval(this.burnerInterval);
-      //           }
-      //         }, levels.gameSpeed * 1);
-      //       }
-      //     }, 0);
-      //   }
-      // } else {
-      //   this.burnerInterval = setInterval(() => {
-      //     this.burnerRoad[0].style.backgroundImage = "";
-      //     this.burnerRoad[0].textContent = "GO";
-      //     this.burnerRoad.splice(0, 1);
-      //     for (let i = 0; i < this.burnerRoad.length; i++) {
-      //       this.burnerRoad[i].style.backgroundImage =
-      //         board.elementContainer.explosionAnim[i];
-      //     }
-      //     if (this.burnerRoad.length == 0) {
-      //       clearInterval(this.burnerInterval);
-      //     }
-      //   }, levels.gameSpeed * 1);
-      // }
     }
   }
   moveShotBack() {
@@ -461,6 +371,7 @@ class Gun {
       } else if (type == "burner") {
         this.frequentlyShot =
           Math.floor((Math.random() * (6000 - 1500 + 1)) / 1500) * 1500 + 1500;
+//           this.frequentlyShot =600000
       }
       this.timeShot = setTimeout(() => {
         if (this.typeMove == "rotate") {
@@ -534,7 +445,7 @@ class Gun {
       }, levels.gameSpeed * 1.5);
     }
   }
-
+burner(){}
   nextLevel() {
     clearTimeout(this.timeShot);
     clearInterval(this.singleShotInterval);

@@ -211,7 +211,11 @@ class Robbo {
     }
   }
   position() {}
-  destroy() {}
+  destroy() {
+      
+      
+      
+  }
   bomb() {
     this.killRobbo();
     clearTimeout(this.time);
@@ -224,6 +228,21 @@ class Robbo {
   shot() {
     this.killRobbo();
   }
+    burner(){
+        clearInterval(this.scrollTime);
+    this.flag = false;
+    board.scoreBoard.changeCount("lostLives");
+           document.querySelector(
+      `.class${this.startRowPosition}x${this.startColumnPosition}`
+    ).textContent = "GO";
+    document.querySelector(
+      `.class${this.startRowPosition}x${this.startColumnPosition}`
+    ).style.backgroundImage = ""; 
+    setTimeout(() => {
+      destroyAllElements();
+    }, 800);   
+        return "GO"
+    }
   nextLevel() {
     clearInterval(this.scrollTime);
 

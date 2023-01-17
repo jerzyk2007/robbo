@@ -13,6 +13,16 @@ class Wall {
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = this.startName;
   }
+    
+    burner(){ document.querySelector(
+      `.class${this.startRowPosition}x${this.startColumnPosition}`
+    ).textContent = "GO";
+    document.querySelector(
+      `.class${this.startRowPosition}x${this.startColumnPosition}`
+    ).style.backgroundImage = "";
+          board.elementContainer.deleteNameObjects(this.startName);
+        return "GO"
+    }
   move(moveDirection) {}
   destroy() {
     animExplosion(this.startRowPosition, this.startColumnPosition);

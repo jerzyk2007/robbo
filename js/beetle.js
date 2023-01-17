@@ -258,6 +258,15 @@ if (this.type == "ant") {
     }, levels.gameSpeed);
   }
   move(moveDirection) {}
+   burner(){ document.querySelector(
+      `.class${this.startRowPosition}x${this.startColumnPosition}`
+    ).textContent = "GO";
+    document.querySelector(
+      `.class${this.startRowPosition}x${this.startColumnPosition}`
+    ).style.backgroundImage = "";
+          board.elementContainer.deleteNameObjects(this.startName);
+        return "GO"
+    }
   nextLevel() {
     clearTimeout(this.time);
     document.querySelector(

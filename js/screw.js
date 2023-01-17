@@ -32,6 +32,7 @@ class Screw {
         animExplosion(this.startRowPosition, this.startColumnPosition);
         board.elementContainer.deleteNameObjects(this.startName);
     }
+    burner(){}
   nextLevel() {
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`

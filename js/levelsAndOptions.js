@@ -14,18 +14,19 @@ class Levels {
     this.lastLevel = 1;
     // level 1
 
-    this.level1 = [10, 22];
-    this.level1part1 = [...`     ##########    L  `];
-    this.level1part2 = [...`  B# ##########     AA`];
-    this.level1part3 = [...`     #####B####       `];
-    this.level1part4 = [...`  &  #####C####       `];
-    this.level1part5 = [...`     #####C####       `];
-    this.level1part6 = [...`     #####C####CCCC   `];
-    this.level1part7 = [...`     #####C##### #    `];
-    this.level1part8 = [...`                    @ `];
-    this.level1part9 = [...`               J      `];
-    this.level1part10 = [...`      #### #####  ##  `];
+    this.level1 = [5, 5];
+    this.level1part1 = ["*1","@","  ","  ", "*2"];
+    this.level1part2 = ["A","  ","  ","  ", "  "];
+    this.level1part3 = ["","","","", " "];
+    this.level1part4 = ["","","","", " "];
+    this.level1part5 = ["*3","&","","", "*4"];
 
+//   this.level1 = [5, 5];
+//    this.level1part1 = [...` @   `];
+//    this.level1part2 = [...`     `];
+//    this.level1part3 = [...`     `];
+//    this.level1part4 = [...`     `];
+//    this.level1part5 = [...`    &`];
     // level 2
   }
 }
@@ -41,13 +42,13 @@ class Levels {
 // g - gun - shot up – laser
 // H - gun - shot down – single
 // h - gun - shot down – laser
-// I – gun - shot right - burner                        *
+// I – gun - shot right - burner                        
 // i - gun - shot right – single, moving up-down
-// J - gun - shot left - burner                         *
+// J - gun - shot left - burner                         
 // j - gun - shot left – single, moving up-down
-// K – gun - shot up - burner                           *
+// K – gun - shot up - burner                           
 // k - gun - shot up – single, moving left-right
-// L – gun - shot down - burner                         *
+// L – gun - shot down - burner                         
 // l - gun - shot down – single, moving left-right
 // M - gun - shot down – rotate, single shot
 // N - ant - left
@@ -71,7 +72,7 @@ class Levels {
 // % - screw - suggest max 99
 // ^ - key
 // & - ship
-// * - border
+// * - *1, *2, *3, *4 another border
 // ( -
 // ) –
 // - -

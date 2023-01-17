@@ -1,13 +1,13 @@
 // klasa tworząca pojazd Robbo do przeniesienia na następny poziom
 class Ship {
-  constructor(row, column, name) {
+  constructor(row, column, name, shipReady) {
     this.images = ["url(pictures/ship.png)", "url(pictures/shipReady.png)"];
     this.startRowPosition = row;
     this.startColumnPosition = column;
     this.startName = name;
     this.checkMove;
     this.imageMove = this.images[0];
-    // this.action = ["empty"];
+    this.newShip = this.startNewShip(shipReady)
     this.endLevel = false;
     this.time;
     this.flag = true;
@@ -18,7 +18,11 @@ class Ship {
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = this.startName;
   }
-
+startNewShip(shipReady){
+    if (shipReady == "shipReady"){
+        this.shipReady()
+    }
+}
   shipReady() {
     this.time = setTimeout(() => {
       this.imageMove =
@@ -27,7 +31,7 @@ class Ship {
         `.class${this.startRowPosition}x${this.startColumnPosition}`
       ).style.backgroundImage = this.imageMove;
       this.shipReady();
-    }, 350);
+    }, levels.gameSpeed*2);
     this.endLevel = true;
   }
 
@@ -79,6 +83,7 @@ class Ship {
       if (checkMove == "GO"){
    animShot(row, column);} 
   }
+    burner(){}
   nextLevel() {
     clearTimeout(this.time);
     document.querySelector(

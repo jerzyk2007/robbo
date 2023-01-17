@@ -39,6 +39,15 @@ if (robboShot=="robboShot"){
     }
       board.elementContainer.deleteNameObjects(this.startName); 
   }
+    burner(){ document.querySelector(
+      `.class${this.startRowPosition}x${this.startColumnPosition}`
+    ).textContent = "GO";
+    document.querySelector(
+      `.class${this.startRowPosition}x${this.startColumnPosition}`
+    ).style.backgroundImage = "";
+          board.elementContainer.deleteNameObjects(this.startName);
+        return "GO"
+    }
   nextLevel() {
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`

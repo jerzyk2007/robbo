@@ -41,6 +41,7 @@ class Door {
       if (checkMove == "GO"){
    animShot(row, column);} 
   }
+    burner(){}
   nextLevel() {
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
