@@ -9,43 +9,46 @@ class Levels {
     this.activeMagnet = null;
     this.spaceShot = false;
     this.mobileMoveInterval;
+    /// flaga pozwala tylko na jednorazowe zabicie robbo w danej sytuacji
+    this.robboOneKillFlag = true;
 
     this.levelCounter = 1;
     this.lastLevel = 1;
     // level 1
 
-    this.level1 = [31, 16];
-    this.level1part1 = [...`2222222222222222`];
-    this.level1part2 = [...`2Y2 2Y2 2Y2 2 O2`];
-    this.level1part3 = [...`2 2 2 2 2 2 2  2`];
-    this.level1part4 = [...`2 2 I 2 I 2 2  2`];
-    this.level1part5 = [...`2 2 2 2 2 2 2  2`];
-    this.level1part6 = [...`2I2 2 2 2 2 2 #2`];
-    this.level1part7 = [...`2 2 2 2 2 2 I  P`];
-    this.level1part8 = [...`2 2 2 2 2 2 2  2`];
-    this.level1part9 = [...`2 2 2 2 2 2 2 #2`];
-    this.level1part10 = [...`2 2 2 2 2 2 2  2`];
-    this.level1part11 = [...`2 2 2 2 2 2 2  P`];
-    this.level1part12 = [...`2 I 2 I 2 I 2 #2`];
-    this.level1part13 = [...`2 2 2 2 2 2 2 @2`];
-    this.level1part14 = [...`2 2X2 2X2 2X2  2`];
-    this.level1part15 = [...`2222222222222  2`];
-    this.level1part16 = [...`2$22I22 22M22  2`];
-    this.level1part17 = [...`2M22M22 22 22  2`];
-    this.level1part18 = [...`2 22 22I22 22  2`];
-    this.level1part19 = [...`2 22 22M22 22  2`];
-    this.level1part20 = [...`2 22    22 22  2`];
-    this.level1part21 = [...`2 22 22 22 22  2`];
-    this.level1part22 = [...`2 22 22    22  2`];
-    this.level1part23 = [...`2 22 22 22 22  2`];
-    this.level1part24 = [...`2 22 22 22     2`];
-    this.level1part25 = [...`2 22 22 22 22  2`];
-    this.level1part26 = [...`2    22 22I22  2`];
-    this.level1part27 = [...`2 22 22 22 22  2`];
-    this.level1part28 = [...`2I22 22 22 22  2`];
-    this.level1part29 = [...`2 22 22 22 22  2`];
-    this.level1part30 = [...`2 22 22 22 22  2`];
-    this.level1part31 = [...`2222 22222222222`];
+    this.level1 = [
+      [...`2222222222222222`],
+      [...`2Y2 2Y2 2Y2 2 O2`],
+      [...`2 2 2 2 2 2 2  2`],
+      [...`2 2 I 2 I 2 2  2`],
+      [...`2 2 2 2 2 2 2  2`],
+      [...`2I2 2 2 2 2 2 #2`],
+      [...`2 2 2 2 2 2 I  P`],
+      [...`2 2 2 2 2 2 2  2`],
+      [...`2 2 2 2 2 2 2 #2`],
+      [...`2 2 2 2 2 2 2  2`],
+      [...`2 2 2 2 2 2 2  P`],
+      [...`2 I 2 I 2 I 2 #2`],
+      [...`2 2 2 2 2 2 2 @2`],
+      [...`2 2X2 2X2 2X2  2`],
+      [...`2222222222222  2`],
+      [...`2$22I22 22M22  2`],
+      [...`2M22M22 22 22  2`],
+      [...`2 22 22I22 22  2`],
+      [...`2 22 22M22 22  2`],
+      [...`2 22    22 22  2`],
+      [...`2 22 22 22 22  2`],
+      [...`2 22 22    22  2`],
+      [...`2 22 22 22 22  2`],
+      [...`2 22 22 22     2`],
+      [...`2 22 22 22 22  2`],
+      [...`2    22 22I22  2`],
+      [...`2 22 22 22 22  2`],
+      [...`2I22 22 22 22  2`],
+      [...`2 22 22 22 22  2`],
+      [...`2 22 22 22 22  2`],
+      [...`2222 22222222222`],
+    ];
 
     // this.level1 = [10, 10];
     // this.level1part1 = [...`2222222222`];
