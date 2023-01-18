@@ -148,7 +148,7 @@ class Gun {
   }
   shot(robboShot, checkMove, row, column) {
     if (checkMove == "GO") {
-      animShot(row, column);
+      // animShot(row, column);
     }
   }
   shotAnimationMove() {
@@ -245,11 +245,8 @@ class Gun {
       }
     } else if (this.type == "single") {
       this.singleBurnerShot(this.startShotDirection, "single");
-    }
-  
-    else if (this.type == "burner") {
+    } else if (this.type == "burner") {
       this.singleBurnerShot(this.startShotDirection, "burner");
-
     }
   }
   moveShotBack() {
@@ -371,7 +368,7 @@ class Gun {
       } else if (type == "burner") {
         this.frequentlyShot =
           Math.floor((Math.random() * (6000 - 1500 + 1)) / 1500) * 1500 + 1500;
-//           this.frequentlyShot =600000
+        //           this.frequentlyShot =600000
       }
       this.timeShot = setTimeout(() => {
         if (this.typeMove == "rotate") {
@@ -445,7 +442,7 @@ class Gun {
       }, levels.gameSpeed * 1.5);
     }
   }
-burner(){}
+  burner() {}
   nextLevel() {
     clearTimeout(this.timeShot);
     clearInterval(this.singleShotInterval);
