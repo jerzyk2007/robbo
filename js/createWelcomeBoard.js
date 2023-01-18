@@ -64,7 +64,6 @@ function createWelcomeBoard() {
     [...`Pamiętaj, że każdą planetę można przejść`],
     [...`Miłej zabawy życzy Ci autor.`],
   ];
-  // this.infoCounter = 21;
   this.indexTyping = null;
   this.HTMLSectionaName = [
     "container__title",
