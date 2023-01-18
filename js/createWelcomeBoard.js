@@ -3,58 +3,68 @@ function createWelcomeBoard() {
   this.counter = 0;
   this.indexText = 0;
   this.addLetterTime = 50;
+
   // create letter "R"
-  this.letterR0 = ["X", "X", "X", "X", "X", "X", " ", " "];
-  this.letterR1 = ["X", "X", "X", " ", " ", "X", "X", " "];
-  this.letterR2 = ["X", "X", "X", " ", " ", " ", "X", "X"];
-  this.letterR3 = ["X", "X", "X", " ", " ", " ", "X", "X"];
-  this.letterR4 = ["X", "X", "X", " ", " ", "X", "X", " "];
-  this.letterR5 = ["X", "X", "X", "X", "X", "X", " ", " "];
-  this.letterR6 = ["X", "X", "X", " ", " ", "X", "X", " "];
-  this.letterR7 = ["X", "X", "X", " ", " ", " ", "X", "X"];
+  this.letterR = [
+    [...`XXXXXX  `],
+    [...`XXX  XX `],
+    [...`XXX   XX`],
+    [...`XXX   XX`],
+    [...`XXX  XX `],
+    [...`XXXXXX  `],
+    [...`XXX  XX `],
+    [...`XXX   XX`],
+  ];
   // create letter "O"
-  this.letterO0 = [" ", " ", " ", " ", " ", " ", " ", " "];
-  this.letterO1 = [" ", " ", "X", "X", "X", "X", " ", " "];
-  this.letterO2 = [" ", "X", "X", "X", " ", "X", "X", " "];
-  this.letterO3 = ["X", "X", "X", " ", " ", " ", "X", "X"];
-  this.letterO4 = ["X", "X", "X", " ", " ", " ", "X", "X"];
-  this.letterO5 = ["X", "X", "X", " ", " ", " ", "X", "X"];
-  this.letterO6 = ["X", "X", "X", " ", " ", " ", "X", "X"];
-  this.letterO7 = [" ", "X", "X", "X", "X", "X", "X", " "];
+  this.letterO = [
+    [...`        `],
+    [...`  XXX  `],
+    [...` XXX XX `],
+    [...`XXX   XX`],
+    [...`XXX   XX`],
+    [...`XXX   XX`],
+    [...`XXX   XX`],
+    [...` XXXXXX `],
+  ];
   // create letter "B"
-  this.letterB0 = ["X", "X", "X", " ", " ", " ", " ", " "];
-  this.letterB1 = ["X", "X", "X", "X", "X", "X", " ", " "];
-  this.letterB2 = ["X", "X", "X", " ", " ", "X", "X", " "];
-  this.letterB3 = ["X", "X", "X", " ", " ", " ", "X", "X"];
-  this.letterB4 = ["X", "X", "X", " ", " ", " ", "X", "X"];
-  this.letterB5 = ["X", "X", "X", " ", " ", " ", "X", "X"];
-  this.letterB6 = ["X", "X", "X", " ", " ", " ", "X", "X"];
-  this.letterB7 = ["X", "X", "X", "X", "X", "X", "X", " "];
+  this.letterB = [
+    [...`XXX     `],
+    [...`XXXXXX  `],
+    [...`XXX  XX `],
+    [...`XXX   XX`],
+    [...`XXX   XX`],
+    [...`XXX   XX`],
+    [...`XXX   XX`],
+    [...`XXXXXXX `],
+  ];
   this.class = ["R", "O1", "B1", "B2", "O2"];
   this.title = ["R", "O", "B", "B", "O"];
   // textContent for scrolling text
-  this.info0 = " Instrukcja: ";
-  this.info1 = "     Robbo  musi  przebyć  trudną  drogę";
-  this.info2 = "przez   56  planet,   aby  wydostać  się";
-  this.info3 = "z  wrogiego   układu   planetarnego,  na";
-  this.info4 = "którym  został   podstępnie   uwięziony.";
-  this.info5 = "     Na każdej  planecie czeka  na niego";
-  this.info6 = "mała kapsuła, którą  może przelecieć  na";
-  this.info7 = "następną  planetę.  Niestety,  większość";
-  this.info8 = "kapsuł jest  niekompletna, dlatego Robbo";
-  this.info9 = "musi zebrać  odpowiednią  liczbę  części";
-  this.info10 = "rozrzuconych  po całej planecie. Będą mu";
-  this.info11 = "w  tym   przeszkadzać   złe   stworki  –";
-  this.info12 = "mieszkańcy  systemu.  W swojej  wędrówce";
-  this.info13 = "Robbo znajdzie różne przedmioty.  Odkryj";
-  this.info14 = "ich  przeznaczenie.   Próbuj  je  pchać,";
-  this.info15 = "zbierać  lub  strzelać  do  nich.  Jeśli";
-  this.info16 = "Robbo   znajdzie  się   w  sytuacji  bez";
-  this.info17 = "wyjścia, wciśnij klawisz: ";
-  this.info18 = "ESC";
-  this.info19 = "Pamiętaj, że każdą planetę można przejść";
-  this.info20 = "Miłej zabawy życzy Ci autor.";
-  this.infoCounter = 21;
+
+  this.info = [
+    [...` Instrukcja: `],
+    [...`     Robbo  musi  przebyć  trudną  drogę`],
+    [...`przez   56  planet,   aby  wydostać  się`],
+    [...`z  wrogiego   układu   planetarnego,  na`],
+    [...`którym  został   podstępnie   uwięziony.`],
+    [...`     Na każdej  planecie czeka  na niego`],
+    [...`mała kapsuła, którą  może przelecieć  na`],
+    [...`następną  planetę.  Niestety,  większość`],
+    [...`kapsuł jest  niekompletna, dlatego Robbo`],
+    [...`musi zebrać  odpowiednią  liczbę  części`],
+    [...`rozrzuconych  po całej planecie. Będą mu`],
+    [...`w  tym   przeszkadzać   złe   stworki  -`],
+    [...`mieszkańcy  systemu.  W swojej  wędrówce`],
+    [...`Robbo znajdzie różne przedmioty.  Odkryj`],
+    [...`ich  przeznaczenie.   Próbuj  je  pchać,`],
+    [...`zbierać  lub  strzelać  do  nich.  Jeśli`],
+    [...`Robbo   znajdzie  się   w  sytuacji  bez`],
+    [...`wyjścia, wciśnij klawisz: `],
+    [...`ESC`],
+    [...`Pamiętaj, że każdą planetę można przejść`],
+    [...`Miłej zabawy życzy Ci autor.`],
+  ];
+  // this.infoCounter = 21;
   this.indexTyping = null;
   this.HTMLSectionaName = [
     "container__title",
@@ -111,7 +121,7 @@ function createWelcomeBoard() {
             letterElement.classList.add(
               `${this.class[counterTilte]}xclass${i}x${j}`
             );
-            if (eval(`this.letter${this.title[counterTilte]}${i}`)[j] === "X") {
+            if (eval(`this.letter${this.title[counterTilte]}[i][j]`) === "X") {
               const square = document.querySelector(
                 `.${this.class[counterTilte]}xclass${i}x${j}`
               );
@@ -173,7 +183,7 @@ function createWelcomeBoard() {
     }
   }
 
-  for (let i = 0; i < this.infoCounter; i++) {
+  for (let i = 0; i < this.info.length; i++) {
     const container = document.querySelector(".container");
     const infoText = document.createElement("span");
     container.appendChild(infoText);
@@ -185,7 +195,7 @@ function createWelcomeBoard() {
   const container = document.querySelector(".container");
   const spnText = document.querySelectorAll(".scroll");
   this.containerTopStep =
-    document.querySelector(".container").clientHeight / this.infoCounter;
+    document.querySelector(".container").clientHeight / this.info.length;
   this.containerTop =
     document.querySelector(".robboStory").clientHeight -
     this.containerTopStep -
@@ -195,7 +205,7 @@ function createWelcomeBoard() {
 
   function containerToTop() {
     setTimeout(() => {
-      if (counter < this.infoCounter) {
+      if (counter < this.info.length) {
         if (counter != 18) {
           container.style.top = `${containerTop}px`;
           containerTop -= containerTopStep;
@@ -209,12 +219,11 @@ function createWelcomeBoard() {
   function letterByLetter() {
     const addLetter = function () {
       spnText[counter - 1].setAttribute("data-value", " ");
-      spnText[counter - 1].textContent += eval(
-        `this.info${counter - 1}[indexText]`
-      );
+      spnText[counter - 1].textContent += this.info[counter - 1][indexText];
       indexText++;
-      if (indexText === eval(`this.info${counter - 1}.length`)) {
+      if (indexText === this.info[counter - 1].length) {
         spnText[counter - 1].setAttribute("data-value", "");
+
         clearInterval(indexTyping);
         containerToTop();
       }

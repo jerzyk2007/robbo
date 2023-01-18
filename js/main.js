@@ -27,8 +27,8 @@ function nextLevel(info) {
     this.pieceBoard.forEach((pieceBoard) => pieceBoard.remove());
 
     board = new Board(
-      eval(`levels.level${levels.levelCounter}[0]`),
-      eval(`levels.level${levels.levelCounter}[1]`)
+      eval(`levels.level${levels.levelCounter}.length`),
+      eval(`levels.level${levels.levelCounter}[0].length`)
     );
   }, 750);
   setTimeout(() => {
@@ -102,12 +102,12 @@ function searchRobbo(rowPosition, columnPosition) {
     let checkMove = checkAction(moveDirection[i], rowPosition, columnPosition);
     if (checkMove) {
       if (checkMove.textContent == "board.robbo") {
-        if (board.flag) {
-          board.flag = false;
+        if (levels.robboOneKillFlag) {
+          levels.robboOneKillFlag = false;
           eval("board.robbo.killRobbo()");
         } else {
           setTimeout(() => {
-            board.flag = true;
+            levels.robboOneKillFlag = true;
           }, 1000);
         }
       }
@@ -274,8 +274,8 @@ function closeWelcomeBoard() {
   document.body.appendChild(firstLevel);
   firstLevel.classList.add("firstLevel");
   board = new Board(
-    eval(`levels.level${levels.levelCounter}[0]`),
-    eval(`levels.level${levels.levelCounter}[1]`)
+    eval(`levels.level${levels.levelCounter}.length`),
+    eval(`levels.level${levels.levelCounter}[0].length`)
   );
   setTimeout(() => {
     document.querySelector(".firstLevel").remove();

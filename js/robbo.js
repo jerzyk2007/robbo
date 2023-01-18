@@ -21,8 +21,8 @@ class Robbo {
     this.imageMove = this.changeImageMove(this.moveDirection);
     this.robboShot = "robboShot";
     this.robboScrollStart = this.scrollStart();
-    this.scrollRow = levels[`level${levels.levelCounter}`][0];
-    this.scrollColumn = levels[`level${levels.levelCounter}`][1];
+    this.scrollRow = levels[`level${levels.levelCounter}`].length;
+    this.scrollColumn = levels[`level${levels.levelCounter}`][0].length;
 
     // this.stop = true;
     document.querySelector(

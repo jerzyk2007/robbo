@@ -24,30 +24,30 @@ class Lives {
   destroy() {
     animExplosion(this.startRowPosition, this.startColumnPosition);
   }
-    bomb(){
-        animExplosion(this.startRowPosition, this.startColumnPosition);
-        board.elementContainer.deleteNameObjects(this.startName);
-    }
-      
-        shot(robboShot) {
-animExplosion(this.startRowPosition, this.startColumnPosition);
-    
-if (robboShot=="robboShot"){
-
-    board.scoreBoard.scores += 50;
-    board.scoreBoard.changeCount("scores");
-    }
-      board.elementContainer.deleteNameObjects(this.startName); 
+  bomb() {
+    animExplosion(this.startRowPosition, this.startColumnPosition);
+    board.elementContainer.deleteNameObjects(this.startName);
   }
-    burner(){ document.querySelector(
+
+  shot(robboShot) {
+    animExplosion(this.startRowPosition, this.startColumnPosition);
+
+    if (robboShot == "robboShot") {
+      board.scoreBoard.scores += 50;
+      board.scoreBoard.changeCount("scores");
+    }
+    board.elementContainer.deleteNameObjects(this.startName);
+  }
+  burner() {
+    document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = "";
-          board.elementContainer.deleteNameObjects(this.startName);
-        return "GO"
-    }
+    board.elementContainer.deleteNameObjects(this.startName);
+    return "GO";
+  }
   nextLevel() {
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
