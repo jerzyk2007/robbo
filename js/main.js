@@ -96,22 +96,22 @@ function move(
 
 // funkcja która sprawdza czy obiekt który moze zabić robocika ma z nim kolizje
 function searchRobbo(rowPosition, columnPosition) {
-  let search = [1, -1, 0, 0];
   let moveDirection = ["left", "right", "up", "down"];
-  for (let i = 0; i < search.length; i++) {
-    let checkMove = checkAction(moveDirection[i], rowPosition, columnPosition);
-    if (checkMove) {
-      if (checkMove.textContent == "board.robbo") {
-        if (levels.robboOneKillFlag) {
-          levels.robboOneKillFlag = false;
-          eval("board.robbo.killRobbo()");
-        } else {
-          setTimeout(() => {
-            levels.robboOneKillFlag = true;
-          }, 1000);
+  for (let j = 0; j < moveDirection.length; j++) {
+    setTimeout(() => {
+      for (let i = 0; i < moveDirection.length; i++) {
+        let checkMove = checkAction(
+          moveDirection[i],
+          rowPosition,
+          columnPosition
+        );
+        if (checkMove) {
+          if (checkMove.textContent == "board.robbo") {
+            return eval("board.robbo.killRobbo()");
+          }
         }
       }
-    }
+    }, levels.gameSpeed * 0.2);
   }
 }
 

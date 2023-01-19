@@ -5,7 +5,6 @@ class Ammo {
     this.startRowPosition = row;
     this.startColumnPosition = column;
     this.startName = name;
-    this.action = ["empty"];
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = this.images;
@@ -37,15 +36,16 @@ class Ammo {
     }
     board.elementContainer.deleteNameObjects(this.startName);
   }
-    burner(){ document.querySelector(
+  burner() {
+    document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = "";
-          board.elementContainer.deleteNameObjects(this.startName);
-        return "GO"
-    }
+    board.elementContainer.deleteNameObjects(this.startName);
+    return "GO";
+  }
   nextLevel() {
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`

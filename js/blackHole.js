@@ -4,25 +4,25 @@ class BlackHole {
     this.images = ["url(pictures/blackHole.png)"];
     this.startRowPosition = row;
     this.startColumnPosition = column;
-     this.startName = name;
-    // this.action = ["empty"];
+    this.startName = name;
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = this.images[0];
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
-    ).textContent = this.startName
+    ).textContent = this.startName;
   }
   move(moveDirection) {}
   destroy() {}
   bomb() {}
   shot(robboShot, checkMove, row, column) {
-      if (checkMove == "GO"){
-   animShot(row, column);} 
+    if (checkMove == "GO") {
+      animShot(row, column);
+    }
   }
-    burner(){}
+  burner() {}
   nextLevel() {
-          document.querySelector(
+    document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";
     document.querySelector(

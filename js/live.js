@@ -5,7 +5,6 @@ class Lives {
     this.startRowPosition = row;
     this.startColumnPosition = column;
     this.startName = name;
-    this.action = ["empty"];
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = this.images;

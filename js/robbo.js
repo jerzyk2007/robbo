@@ -15,7 +15,6 @@ class Robbo {
     this.startName = name;
     this.startRowPosition = row;
     this.startColumnPosition = column;
-    // this.action = ["empty"];
     this.moveDirection;
     this.flag = true;
     this.imageMove = this.changeImageMove(this.moveDirection);
@@ -23,8 +22,6 @@ class Robbo {
     this.robboScrollStart = this.scrollStart();
     this.scrollRow = levels[`level${levels.levelCounter}`].length;
     this.scrollColumn = levels[`level${levels.levelCounter}`][0].length;
-
-    // this.stop = true;
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = "url(pictures/ship.png)";

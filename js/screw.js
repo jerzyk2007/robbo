@@ -5,7 +5,6 @@ class Screw {
     this.startRowPosition = row;
     this.startColumnPosition = column;
     this.startName = name;
-    this.action = ["empty"];
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = this.images;
@@ -24,15 +23,16 @@ class Screw {
   destroy() {
     animExplosion(this.startRowPosition, this.startColumnPosition);
   }
-     shot(robboShot, checkMove, row, column) {
-      if (checkMove == "GO"){
-   animShot(row, column);} 
-  }
-   bomb(){
-        animExplosion(this.startRowPosition, this.startColumnPosition);
-        board.elementContainer.deleteNameObjects(this.startName);
+  shot(robboShot, checkMove, row, column) {
+    if (checkMove == "GO") {
+      animShot(row, column);
     }
-    burner(){}
+  }
+  bomb() {
+    animExplosion(this.startRowPosition, this.startColumnPosition);
+    board.elementContainer.deleteNameObjects(this.startName);
+  }
+  burner() {}
   nextLevel() {
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`

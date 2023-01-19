@@ -2,54 +2,61 @@
 class Levels {
   constructor() {
     this.scorePoints = 0;
-    this.robboLives = 3;
-    this.gameSpeed = 150;
+    this.robboLives = 5;
+    this.gameSpeed = 200;
     this.canMove = false;
     this.canMoveSetTime;
     this.activeMagnet = null;
     this.spaceShot = false;
     this.mobileMoveInterval;
-    /// flaga pozwala tylko na jednorazowe zabicie robbo w danej sytuacji
-    this.robboOneKillFlag = true;
-
     this.levelCounter = 1;
     this.lastLevel = 3;
 
     // level 1
     this.level1 = [
-      [...`3333333333333333`],
-      [...`3              3`],
-      [...`3 3Q        3Y 3`],
-      [...`3   F3I3 I     3`],
-      [...`3V        3    3`],
-      [...`3BBBBBB BBBJ3  P`],
-      [...`3B  33 33  B  I3`],
-      [...`3BM  3 3   B3  3`],
-      [...`3B33  @   JB   3`],
-      [...`3BF3 3 3 3 B  33`],
-      [...`3B FD    33#   3`],
-      [...`3B   3 3  PB3DD3`],
-      [...`3B  33 33 gb   3`],
-      [...`3 BBBBB BBBB   3`],
-      [...`333 i33   3  3 3`],
-      [...`d    3  3 3    3`],
-      [...`33 i 3N        3`],
-      [...`33   3M       I3`],
-      [...`33   3M       I3`],
-      [...`3$333BBBBBBBBBB3`],
-      [...`3   IB I33 33 B3`],
-      [...`3    B   P 3  B3`],
-      [...`3 3  B3A      B3`],
-      [...`3    B33 h#3 333`],
-      [...`3   IB        P3`],
-      [...`3   IB   3 3I B3`],
-      [...`3    B3 33 33 B3`],
-      [...`K    BBBBBBBBBB3`],
-      [...`3      3  I 3  3`],
-      [...`3           D  3`],
-      [...`33K   K  K  3  3`],
-      [...`3333333333333333`],
+      [...`@              $`],
+      [...`                `],
+      [...`    N           `],
+      [...`                `],
+      [...`    N           `],
+      [...`                `],
+      [...`                `],
     ];
+
+    // this.level1 = [
+    //   [...`3333333333333333`],
+    //   [...`3              3`],
+    //   [...`3 3Q        3Y 3`],
+    //   [...`3   F3I3 I     3`],
+    //   [...`3V        3    3`],
+    //   [...`3BBBBBB BBBJ3  P`],
+    //   [...`3B  33 33  B  I3`],
+    //   [...`3BM  3 3   B3  3`],
+    //   [...`3B33  @   JB   3`],
+    //   [...`3BF3 3 3 3 B  33`],
+    //   [...`3B FD    33#   3`],
+    //   [...`3B   3 3  PB3DD3`],
+    //   [...`3B  33 33 gb   3`],
+    //   [...`3 BBBBB BBBB   3`],
+    //   [...`333 i33   3  3 3`],
+    //   [...`d    3  3 3    3`],
+    //   [...`33 i 3N        3`],
+    //   [...`33   3M       I3`],
+    //   [...`33   3M       I3`],
+    //   [...`3$333BBBBBBBBBB3`],
+    //   [...`3   IB I33 33 B3`],
+    //   [...`3    B   P 3  B3`],
+    //   [...`3 3  B3A      B3`],
+    //   [...`3    B33 h#3 333`],
+    //   [...`3   IB        P3`],
+    //   [...`3   IB   3 3I B3`],
+    //   [...`3    B3 33 33 B3`],
+    //   [...`3K   BBBBBBBBBB3`],
+    //   [...`3      3  I 3  3`],
+    //   [...`3           D  3`],
+    //   [...`33K   K  K  3  3`],
+    //   [...`3333333333333333`],
+    // ];
 
     // level 2
     this.level2 = [

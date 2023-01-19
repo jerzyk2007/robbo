@@ -7,7 +7,6 @@ class Bomb {
     this.startName = name;
     this.checkMove;
     this.imageMove = this.images[0];
-    this.action = ["empty"];
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = this.imageMove;
@@ -79,21 +78,22 @@ class Bomb {
           }
         }
       }
-           if (robboShot=="robboShot"){
-      board.scoreBoard.changeCount("bomb");
-      board.elementContainer.deleteNameObjects(this.startName);
-           }
+      if (robboShot == "robboShot") {
+        board.scoreBoard.changeCount("bomb");
+        board.elementContainer.deleteNameObjects(this.startName);
+      }
     }, 200);
   }
-    burner(){ document.querySelector(
+  burner() {
+    document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = "";
-          board.elementContainer.deleteNameObjects(this.startName);
-               return "GO"
-    }
+    board.elementContainer.deleteNameObjects(this.startName);
+    return "GO";
+  }
   nextLevel() {
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`

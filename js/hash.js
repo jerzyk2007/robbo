@@ -9,7 +9,6 @@ class Hash {
     this.checkMove;
     this.counter = 0;
     this.imageMove = this.startImage(type);
-    this.action = ["empty"];
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = this.imageMove;
@@ -99,11 +98,12 @@ class Hash {
     animExplosion(this.startRowPosition, this.startColumnPosition);
     board.elementContainer.deleteNameObjects(this.startName);
   }
-     shot(robboShot, checkMove, row, column) {
-      if (checkMove == "GO"){
-   animShot(row, column);} 
+  shot(robboShot, checkMove, row, column) {
+    if (checkMove == "GO") {
+      animShot(row, column);
+    }
   }
-    burner(){}
+  burner() {}
   nextLevel() {
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
