@@ -231,22 +231,6 @@ class Robbo {
   }
   position() {}
   destroy() {}
-  teleport(row, column, place, moveDirection) {
-    this.flag = false;
-
-    document.querySelector(`.class${row}x${column}`).textContent = "GO";
-    document.querySelector(`.class${row}x${column}`).style.backgroundImage = "";
-    setTimeout(() => {
-      animShot(row, column + 2);
-    }, 120);
-    setTimeout(() => {
-      place.textContent = this.startName;
-      place.style.backgroundImage = this.changeImageMove(moveDirection);
-      this.flag = true;
-    }, levels.gameSpeed * 3);
-    this.startRowPosition = row;
-    this.startColumnPosition = column + 2;
-  }
 
   bomb() {
     this.killRobbo();
