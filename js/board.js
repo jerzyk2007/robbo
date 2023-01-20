@@ -343,7 +343,235 @@ class Board {
           this.elementContainer.teleportName.push(
             `board.teleport${this.elementContainer.teleport}`
           );
+          this.elementContainer.teleportPair.push("0A");
+        } else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "k") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "0A")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
           this.elementContainer.teleportPair.push("A0");
+        } else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "l") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "A1")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("1A");
+        } else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "m") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "1A")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("A1");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "n") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "A1")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("1A");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "o") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "2A")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("A2");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "p") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "A3")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("3A");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "q") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "3A")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("A3");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "r") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "A4")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("4A");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "s") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "4A")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("A4");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "t") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "A5")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("5A");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "u") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "5A")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("A5");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "v") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "A6")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("6A");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "w") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "6A")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("A6");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "x") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "A7")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("7A");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "y") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "7A")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("A7");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "z") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "A8")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("8A");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === ",") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "8A")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("A8");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === ".") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "A9")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("9A");
+        }else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "-") {
+          this.elementContainer.teleport++;
+          eval(
+            `this.teleport${this.elementContainer.teleport} = new Teleport(i+1, j+1, "board.teleport${this.elementContainer.teleport}", "9A")`
+          );
+          this.elementContainer.objects.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportName.push(
+            `board.teleport${this.elementContainer.teleport}`
+          );
+          this.elementContainer.teleportPair.push("A9");
         }
       }
     }
