@@ -20,7 +20,7 @@ class ScoreBoard {
     this.ammo = 0;
     this.level = levels.levelCounter;
     this.shipReadyToStart = true;
-    this.board = this.createCounters();
+    this.board = (this.createCounters(), this.shipReady());
   }
   createCounters() {
     this.changeScoreBoard(this.scores, "000000", ".score--number");
@@ -37,7 +37,6 @@ class ScoreBoard {
       this.changeScoreBoard(this.scores, "000000", ".score--number");
       this.screws -= 1;
       this.changeScoreBoard(this.screws, "00", ".screws--number");
-
       this.shipReady();
     }
 
@@ -108,12 +107,20 @@ class ScoreBoard {
     }
   }
   shipReady() {
-    if (this.screws == 0 && this.shipReadyToStart) {
-      //      board.ship.shipReady();
-      //      board.ship.shipReadyAnim();
+    setTimeout(() => {
+      if (this.screws == 0 && this.shipReadyToStart) {
+        for (let i = 0; i < board.elementContainer.shipReady.length; i++) {
+          eval(board.elementContainer.shipReady[i]).shipReady();
+          eval(board.elementContainer.shipReady[i]).shipReadyAnim();
+        }
+      }
+
+      // board.ship.shipReady();
+      // board.ship.shipReadyAnim();
       this.shipReadyToStart = false;
-    }
+    }, 0);
   }
+
   changeScoreBoard(scores, elements, name) {
     let arrayElements = [...elements.toString()];
     let arrayScores = [...scores.toString()];

@@ -21,6 +21,8 @@ class Border {
       return ["url(pictures/border3.png)"];
     } else if (type == "border4") {
       return ["url(pictures/border4.png)"];
+    } else if (type == "border5") {
+      return ["url(pictures/border5.png)"];
     }
   }
   move(moveDirection) {}
