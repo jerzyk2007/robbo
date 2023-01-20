@@ -46,7 +46,7 @@ class ScoreBoard {
 
       this.changeScoreBoard(this.scores, "000000", ".score--number");
     }
-         if (counter == "bomb") {
+    if (counter == "bomb") {
       this.scores += 100;
 
       this.changeScoreBoard(this.scores, "000000", ".score--number");
@@ -109,8 +109,8 @@ class ScoreBoard {
   }
   shipReady() {
     if (this.screws == 0 && this.shipReadyToStart) {
-//      board.ship.shipReady();
-//      board.ship.shipReadyAnim();
+      //      board.ship.shipReady();
+      //      board.ship.shipReadyAnim();
       this.shipReadyToStart = false;
     }
   }

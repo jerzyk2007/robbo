@@ -66,7 +66,7 @@ class Bench {
   moveElement() {}
 
   move(moveDirection) {}
-    burner(){}
+  burner() {}
   nextLevel() {
     clearInterval(this.timeAnim);
 

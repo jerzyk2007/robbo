@@ -24,8 +24,6 @@ class Magnet {
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = this.startName;
   }
-  //
-
   startMagnetImage(direction) {
     if (direction == "left") {
       return this.images[0];

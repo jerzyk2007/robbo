@@ -18,12 +18,12 @@ class Levels {
       [...`           `],
       [...` @  j    l `],
       [...`      -  # `],
-      [...`        # #`],  
-      [...`          .`],      
-      [...`11111111111`],      
-      [...`           `],      
-      [...`           `],      
-      [...`           `],      
+      [...`        # #`],
+      [...`          .`],
+      [...`11111111111`],
+      [...`           `],
+      [...`           `],
+      [...`           `],
       [...`           `],
       [...`  m     k  `],
       [...`           `],
@@ -180,7 +180,7 @@ class Levels {
 // f - gun - shot up – burner-
 // g - gun - shot down – burner-
 // h - gun - shot down – rotate, single shot-
-// teleport - use as a pair or just one - max 10 pair   
+// teleport - use as a pair or just one - max 10 pair
 //
 // j - teleport A0 - 0A
 // k - teleport 0A - A0

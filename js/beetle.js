@@ -5,7 +5,7 @@ class Beetle {
       "url(pictures/beetle-first.png)",
       "url(pictures/beetle-second.png)",
       "url(pictures/ant-first.png)",
-      "url(pictures/ant-second.png)"
+      "url(pictures/ant-second.png)",
     ];
     this.startRowPosition = row;
     this.startColumnPosition = column;
@@ -30,7 +30,6 @@ class Beetle {
   }
 
   tryMove(moveDirection) {
-
     setTimeout(() => {
       this.search = [-1, 0, 1];
       this.arrayMove = [];
@@ -137,32 +136,30 @@ class Beetle {
         ["", "left", ""],
       ];
     }
-if (this.type == "ant") {
-    if (arrayMatrix[1][2] == "GO") {
-      this.tryDirection = this.possibleDirection[1][2];
-    } else if (arrayMatrix[1][2] != "GO" && arrayMatrix[0][1] == "GO") {
-      this.tryDirection = this.possibleDirection[0][1];
-    } else if (
-      arrayMatrix[1][2] != "GO" &&
-      arrayMatrix[0][1] != "GO" &&
-      arrayMatrix[1][0] == "GO"
-    ) {
-      this.tryDirection = this.possibleDirection[1][0];
-    }
-} 
-      else if (this.type == "beetle") {
-            if (arrayMatrix[1][0] == "GO") {
-      this.tryDirection = this.possibleDirection[1][0];
-    } else if (arrayMatrix[1][0] != "GO" && arrayMatrix[0][1] == "GO") {
-      this.tryDirection = this.possibleDirection[0][1];
-    } else if (
-      arrayMatrix[1][0] != "GO" &&
-      arrayMatrix[0][1] != "GO" &&
-      arrayMatrix[1][2] == "GO"
-    ) {
-        
-      this.tryDirection = this.possibleDirection[1][2];
-    }
+    if (this.type == "ant") {
+      if (arrayMatrix[1][2] == "GO") {
+        this.tryDirection = this.possibleDirection[1][2];
+      } else if (arrayMatrix[1][2] != "GO" && arrayMatrix[0][1] == "GO") {
+        this.tryDirection = this.possibleDirection[0][1];
+      } else if (
+        arrayMatrix[1][2] != "GO" &&
+        arrayMatrix[0][1] != "GO" &&
+        arrayMatrix[1][0] == "GO"
+      ) {
+        this.tryDirection = this.possibleDirection[1][0];
+      }
+    } else if (this.type == "beetle") {
+      if (arrayMatrix[1][0] == "GO") {
+        this.tryDirection = this.possibleDirection[1][0];
+      } else if (arrayMatrix[1][0] != "GO" && arrayMatrix[0][1] == "GO") {
+        this.tryDirection = this.possibleDirection[0][1];
+      } else if (
+        arrayMatrix[1][0] != "GO" &&
+        arrayMatrix[0][1] != "GO" &&
+        arrayMatrix[1][2] == "GO"
+      ) {
+        this.tryDirection = this.possibleDirection[1][2];
+      }
     }
     this.moveElement(this.tryDirection);
   }
@@ -202,11 +199,11 @@ if (this.type == "ant") {
   shot(robboShot) {
     clearTimeout(this.time);
     animExplosion(this.startRowPosition, this.startColumnPosition);
-                 if (robboShot=="robboShot"){
-
-    board.scoreBoard.scores += 150;
-    board.scoreBoard.changeCount("scores");
-    board.elementContainer.deleteNameObjects(this.startName);}
+    if (robboShot == "robboShot") {
+      board.scoreBoard.scores += 150;
+      board.scoreBoard.changeCount("scores");
+      board.elementContainer.deleteNameObjects(this.startName);
+    }
   }
   moveElement(tryDirection) {
     this.time = setTimeout(() => {
@@ -236,7 +233,7 @@ if (this.type == "ant") {
             this.imageMove,
             this.startName
           );
-            searchRobbo(this.startRowPosition, this.startColumnPosition);
+          searchRobbo(this.startRowPosition, this.startColumnPosition);
           this.tryMove(tryDirection);
         } else {
           this.tryMove(this.moveDirection[this.tryMoveCounter]);
@@ -245,28 +242,26 @@ if (this.type == "ant") {
             this.tryMoveCounter = 0;
           }
         }
-      } 
-        else {
-       
-          this.tryMove(this.moveDirection[this.tryMoveCounter]);
-          this.tryMoveCounter++;
-          if (this.tryMoveCounter == 4) {
-            this.tryMoveCounter = 0;
-          }
+      } else {
+        this.tryMove(this.moveDirection[this.tryMoveCounter]);
+        this.tryMoveCounter++;
+        if (this.tryMoveCounter == 4) {
+          this.tryMoveCounter = 0;
+        }
       }
-     
     }, levels.gameSpeed);
   }
   move(moveDirection) {}
-   burner(){ document.querySelector(
+  burner() {
+    document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = "";
-          board.elementContainer.deleteNameObjects(this.startName);
-        return "GO"
-    }
+    board.elementContainer.deleteNameObjects(this.startName);
+    return "GO";
+  }
   nextLevel() {
     clearTimeout(this.time);
     document.querySelector(

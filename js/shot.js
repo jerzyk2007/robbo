@@ -144,15 +144,14 @@ class Shot {
         );
         board.elementContainer.deleteNameObjects(this.startName);
       }
-    }
-    else if (this.typeShot == "burner") {
+    } else if (this.typeShot == "burner") {
       this.checkMove = checkAction(
         this.moveDirection,
         this.startRowPosition + this.burnerRow,
         this.startColumnPosition + this.burnerColumn
       );
-        if (this.checkMove){
-        if ( this.checkMove.textContent == "GO") {
+      if (this.checkMove) {
+        if (this.checkMove.textContent == "GO") {
           this.burnerRoad.push(this.checkMove);
           if (this.moveDirection == "right") {
             this.burnerColumn++;
@@ -180,75 +179,76 @@ class Shot {
           this.time = setTimeout(() => {
             this.startShot();
           }, levels.gameSpeed);
-        } else if ( this.checkMove.textContent == "SHOT" || this.checkMove.textContent == "STOP") {
-                    this.burnerRoadErase();
-        }
-            
-            else {
-            if (eval(this.checkMove.textContent).burner() == "GO"){
+        } else if (
+          this.checkMove.textContent == "SHOT" ||
+          this.checkMove.textContent == "STOP"
+        ) {
+          this.burnerRoadErase();
+        } else {
+          if (eval(this.checkMove.textContent).burner() == "GO") {
             this.startShot();
-               } else {
-                           this.burnerRoadErase();
+          } else {
+            this.burnerRoadErase();
+          }
         }
-        }
-    } else {
+      } else {
         this.burnerRoadErase();
-    }
+      }
     }
   }
-    burnerRoadErase(){
-        if (this.burnerRoad.length < 7) {
-                for (let i = this.burnerRoad.length - 1; i >= 0; i--) {
-                this.burnerRoad[i].style.backgroundImage =
-                  board.elementContainer.explosionAnim[this.burnerCounter];
-                this.burnerCounter++;
-                   if (this.burnerCounter > 7) {
-                  this.burnerRoad[0].style.backgroundImage = "";
-                  this.burnerRoad[0].textContent = "GO";
-                  this.burnerRoad.splice(0, 1);
-
-                }}
-              this.resetBurnerCounter++;
-              this.burnerCounter = this.resetBurnerCounter;
-            this.burnerInterval = setInterval(() => {
-              for (let i = this.burnerRoad.length - 1; i >= 0; i--) {
-                this.burnerRoad[i].style.backgroundImage =
-                  board.elementContainer.explosionAnim[this.burnerCounter];
-                this.burnerCounter++;
-                   if (this.burnerCounter > 7) {
-                  this.burnerRoad[0].style.backgroundImage = "";
-                  this.burnerRoad[0].textContent = "GO";
-                  this.burnerRoad.splice(0, 1);
-
-                }}
-              this.resetBurnerCounter++;
-              this.burnerCounter = this.resetBurnerCounter;
-              if (this.burnerRoad.length == 0) {
-                clearInterval(this.burnerInterval);
-              }
-            }, levels.gameSpeed*1);
-          } else {
+  burnerRoadErase() {
+    if (this.burnerRoad.length < 7) {
+      for (let i = this.burnerRoad.length - 1; i >= 0; i--) {
+        this.burnerRoad[i].style.backgroundImage =
+          board.elementContainer.explosionAnim[this.burnerCounter];
+        this.burnerCounter++;
+        if (this.burnerCounter > 7) {
+          this.burnerRoad[0].style.backgroundImage = "";
+          this.burnerRoad[0].textContent = "GO";
+          this.burnerRoad.splice(0, 1);
+        }
+      }
+      this.resetBurnerCounter++;
+      this.burnerCounter = this.resetBurnerCounter;
+      this.burnerInterval = setInterval(() => {
+        for (let i = this.burnerRoad.length - 1; i >= 0; i--) {
+          this.burnerRoad[i].style.backgroundImage =
+            board.elementContainer.explosionAnim[this.burnerCounter];
+          this.burnerCounter++;
+          if (this.burnerCounter > 7) {
             this.burnerRoad[0].style.backgroundImage = "";
             this.burnerRoad[0].textContent = "GO";
             this.burnerRoad.splice(0, 1);
-            for (let i = 0; i < this.burnerRoad.length; i++) {
-              this.burnerRoad[i].style.backgroundImage =
-                board.elementContainer.explosionAnim[i];
-            }
-            this.burnerInterval = setInterval(() => {
-              this.burnerRoad[0].style.backgroundImage = "";
-              this.burnerRoad[0].textContent = "GO";
-              this.burnerRoad.splice(0, 1);
-              for (let i = 0; i < this.burnerRoad.length; i++) {
-                this.burnerRoad[i].style.backgroundImage =
-                  board.elementContainer.explosionAnim[i];
-              }
-              if (this.burnerRoad.length == 0) {
-                clearInterval(this.burnerInterval);
-              }
-            }, levels.gameSpeed);
-          }  
+          }
+        }
+        this.resetBurnerCounter++;
+        this.burnerCounter = this.resetBurnerCounter;
+        if (this.burnerRoad.length == 0) {
+          clearInterval(this.burnerInterval);
+        }
+      }, levels.gameSpeed * 1);
+    } else {
+      this.burnerRoad[0].style.backgroundImage = "";
+      this.burnerRoad[0].textContent = "GO";
+      this.burnerRoad.splice(0, 1);
+      for (let i = 0; i < this.burnerRoad.length; i++) {
+        this.burnerRoad[i].style.backgroundImage =
+          board.elementContainer.explosionAnim[i];
+      }
+      this.burnerInterval = setInterval(() => {
+        this.burnerRoad[0].style.backgroundImage = "";
+        this.burnerRoad[0].textContent = "GO";
+        this.burnerRoad.splice(0, 1);
+        for (let i = 0; i < this.burnerRoad.length; i++) {
+          this.burnerRoad[i].style.backgroundImage =
+            board.elementContainer.explosionAnim[i];
+        }
+        if (this.burnerRoad.length == 0) {
+          clearInterval(this.burnerInterval);
+        }
+      }, levels.gameSpeed);
     }
+  }
   destroy() {
     clearTimeout(this.time);
     clearInterval(this.burnerInterval);
@@ -267,7 +267,7 @@ class Shot {
   shot(robboShot, checkMove, row, column) {}
   move(movedirection) {}
   direction(movedirection) {}
-    burner(){}
+  burner() {}
   nextLevel() {
     clearTimeout(this.time);
     clearInterval(this.burnerInterval);

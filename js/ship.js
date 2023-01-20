@@ -7,7 +7,7 @@ class Ship {
     this.startName = name;
     this.checkMove;
     this.imageMove = this.images[0];
-    this.newShip = this.startNewShip(shipReady)
+    this.newShip = this.startNewShip(shipReady);
     this.endLevel = false;
     this.time;
     this.flag = true;
@@ -18,11 +18,11 @@ class Ship {
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = this.startName;
   }
-startNewShip(shipReady){
-    if (shipReady == "shipReady"){
-        this.shipReady()
+  startNewShip(shipReady) {
+    if (shipReady == "shipReady") {
+      this.shipReady();
     }
-}
+  }
   shipReady() {
     this.time = setTimeout(() => {
       this.imageMove =
@@ -31,7 +31,7 @@ startNewShip(shipReady){
         `.class${this.startRowPosition}x${this.startColumnPosition}`
       ).style.backgroundImage = this.imageMove;
       this.shipReady();
-    }, levels.gameSpeed*2);
+    }, levels.gameSpeed * 2);
     this.endLevel = true;
   }
 
@@ -79,11 +79,12 @@ startNewShip(shipReady){
     animExplosion(this.startRowPosition, this.startColumnPosition);
   }
   bomb() {}
-    shot(robboShot, checkMove, row, column) {
-      if (checkMove == "GO"){
-   animShot(row, column);} 
+  shot(robboShot, checkMove, row, column) {
+    if (checkMove == "GO") {
+      animShot(row, column);
+    }
   }
-    burner(){}
+  burner() {}
   nextLevel() {
     clearTimeout(this.time);
     document.querySelector(
