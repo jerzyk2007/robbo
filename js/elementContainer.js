@@ -2,6 +2,7 @@
 class ElementContainer {
   constructor() {
     this.screws = 0;
+    this.ask = 0;
     this.bird = 0;
     this.hash = 0;
     this.shotNumber = 0;

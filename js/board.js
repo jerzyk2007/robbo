@@ -262,6 +262,14 @@ class Board {
           this.elementContainer.objects.push(
             `board.bomb${this.elementContainer.bombs}`
           );
+        } else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "?") {
+          this.elementContainer.ask++;
+          eval(
+            `this.ask${this.elementContainer.ask} = new Ask(i+1, j+1, "board.ask${this.elementContainer.ask}")`
+          );
+          this.elementContainer.objects.push(
+            `board.ask${this.elementContainer.ask}`
+          );
         } else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "G") {
           this.elementContainer.lives++;
           eval(

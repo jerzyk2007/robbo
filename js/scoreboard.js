@@ -113,11 +113,11 @@ class ScoreBoard {
           eval(board.elementContainer.shipReady[i]).shipReady();
           eval(board.elementContainer.shipReady[i]).shipReadyAnim();
         }
+        this.shipReadyToStart = false;
       }
 
       // board.ship.shipReady();
       // board.ship.shipReadyAnim();
-      this.shipReadyToStart = false;
     }, 0);
   }
 
