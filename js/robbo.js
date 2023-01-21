@@ -216,8 +216,8 @@ class Robbo {
           const newPosition = document.querySelector(
             `.class${this.startRowPosition}x${this.startColumnPosition}`
           );
-          newPosition.style.backgroundImage =
-            this.changeImageMove(moveDirection);
+          // newPosition.style.backgroundImage =
+          //   this.changeImageMove(moveDirection);
           // this.imageMove === this.images[image2]
           //   ? this.images[image1]
           //   : this.images[image2];
