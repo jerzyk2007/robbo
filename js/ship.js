@@ -2,10 +2,13 @@
 class Ship {
   constructor(row, column, name, shipReady) {
     this.images = ["url(pictures/ship.png)", "url(pictures/shipReady.png)"];
+
     this.startRowPosition = row;
     this.startColumnPosition = column;
     this.startName = name;
     this.checkMove;
+    this.shipReadyWave = new Audio("sound/shipReady.wav");
+    this.soundEndLevel = new Audio("sound/levelEnd.wav");
     this.imageMove = this.images[0];
     this.newShip = this.startNewShip(shipReady);
     this.endLevel = false;
@@ -67,6 +70,7 @@ class Ship {
         }
       }
     } else {
+      this.soundEndLevel.play();
       this.endLevel = false;
       board.robbo.flag = false;
       clearTimeout(this.time);
@@ -96,6 +100,7 @@ class Ship {
   }
 
   shipReadyAnim() {
+    this.shipReadyWave.play();
     const pieceBoard = document.querySelectorAll(".pieceBoard");
     pieceBoard.forEach((piece) => {
       piece.style.backgroundColor = "white";

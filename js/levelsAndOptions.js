@@ -22,17 +22,17 @@ class Levels {
     ];
     // this.elementContainer = new ElementContainer();
 
-    // this.level1 = [
-    //   [...`AAAAAAAA  $`],
-    //   [...`  @    I   `],
-    //   [...`           `],
-    //   [...`     ######`],
-    //   [...` ####E     `],
-    //   [...`V          `],
-    // ];
+    this.level1 = [
+      [...`AAAAAAAA  $`],
+      [...`  @    I   `],
+      [...`           `],
+      [...`   D  F ###`],
+      [...`  ###  j   `],
+      [...`          P`],
+    ];
 
     // level 1
-    this.level1 = [
+    this.level7 = [
       [...`1111111111111111`],
       [...`1   1   1I 1   1`],
       [...`1 @ 1 j 11 1 k 1`],

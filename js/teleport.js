@@ -5,6 +5,7 @@ class Teleport {
       "url(pictures/teleport-first.png)",
       "url(pictures/teleport-second.png)",
     ];
+    this.sound = new Audio("sound/teleport.wav");
     this.startRowPosition = row;
     this.startColumnPosition = column;
     this.startName = name;
@@ -80,6 +81,7 @@ class Teleport {
 
     if (this.checkMove) {
       if (this.checkMove.textContent == "GO") {
+        this.sound.play();
         animShot(board.robbo.startRowPosition, board.robbo.startColumnPosition);
         board.robbo.flag = false;
         this.teleportDirectionCounter = 0;

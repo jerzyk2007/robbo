@@ -121,7 +121,6 @@ function searchRobbo(rowPosition, columnPosition) {
 
 // funkcja wywołująca animację eksplozji
 function animExplosion(rowPosition, columnPosition) {
-  //
   document.querySelector(`.class${rowPosition}x${columnPosition}`).textContent =
     "SHOT";
   let counter = 0;
@@ -146,6 +145,7 @@ function animExplosion(rowPosition, columnPosition) {
 
 // funkcja wywołująca animację wybuchu strzału
 function animShot(rowPosition, columnPosition) {
+  board.elementContainer.soundEndShot.play();
   let counter = 3;
   document.querySelector(`.class${rowPosition}x${columnPosition}`).textContent =
     "SHOT";

@@ -35,6 +35,7 @@ class ElementContainer {
       "url(pictures/boom6.png)",
       "url(pictures/boom7.png)",
     ];
+    this.soundEndShot = new Audio("sound/shotExplosion.wav");
 
     // this.explosionAnim = [
     //   "",

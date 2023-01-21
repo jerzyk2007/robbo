@@ -7,6 +7,7 @@ class Shot {
       "url(pictures/shot-UD-first.png)",
       "url(pictures/shot-UD-second.png)",
     ];
+    this.soundStartShot = new Audio("sound/shot.wav");
     this.moveDirection = direction;
     this.startRowPosition = row;
     this.startColumnPosition = column;
@@ -29,6 +30,9 @@ class Shot {
   }
   addToObject() {
     board.elementContainer.objects.push(this.startName);
+    if (this.typeShot == "single") {
+      this.soundStartShot.play();
+    }
   }
   imageDirection() {
     if (this.moveDirection == "right" || this.moveDirection == "left") {

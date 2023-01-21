@@ -5,6 +5,7 @@ class Magnet {
       "url(pictures/magnetLeft.png)",
       "url(pictures/magnetRight.png)",
     ];
+    this.soundMagnet = new Audio("sound/magnet.wav");
     this.startRowPosition = row;
     this.startColumnPosition = column;
     this.startMagneticRowPosition = this.startRowPosition;
@@ -31,7 +32,6 @@ class Magnet {
       return this.images[1];
     }
   }
-
   startMagnet(direction) {
     this.setTimeMagnetic = setTimeout(() => {
       this.checkMove = checkAction(
@@ -68,6 +68,8 @@ class Magnet {
               ) {
                 return board.robbo.killRobbo();
               }
+              this.soundMagnet.play();
+
               board.robbo.moveRobbo(this.robboDirection);
               this.startMagnet(direction);
             }, levels.gameSpeed);

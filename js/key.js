@@ -2,6 +2,7 @@
 class Key {
   constructor(row, column, name) {
     this.images = ["url(pictures/key.png)"];
+    this.sound = new Audio("sound/key.wav");
     this.startRowPosition = row;
     this.startColumnPosition = column;
     this.startName = name;
@@ -13,6 +14,7 @@ class Key {
     ).textContent = this.startName;
   }
   move(moveDirection) {
+    this.sound.play();
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";
