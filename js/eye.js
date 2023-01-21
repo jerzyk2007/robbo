@@ -15,7 +15,7 @@ class Eye {
     this.timeMove;
     this.findNewWay = [];
     this.changeWay = ["left", "up", "right", "down"];
-    this.eyeMove();
+    this.waitForStart();
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = this.startName;
@@ -28,6 +28,11 @@ class Eye {
         `.class${this.startRowPosition}x${this.startColumnPosition}`
       ).style.backgroundImage = this.imageMove;
     }, levels.gameSpeed * 1.5);
+  }
+  waitForStart() {
+    setTimeout(() => {
+      this.eyeMove();
+    }, levels.gameSpeed * 15);
   }
   move(direction) {}
   eyeMove() {
@@ -95,7 +100,7 @@ class Eye {
           `.class${this.startRowPosition}x${this.startColumnPosition}`
         )
       );
-    }, levels.gameSpeed * 1);
+    }, levels.gameSpeed);
   }
   direction(moveDirection) {
     if (moveDirection === "down") {

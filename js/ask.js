@@ -17,6 +17,7 @@ class Ask {
       "board.key",
       "board.live",
       "board.gunRotate",
+      "board.eye",
     ];
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
@@ -139,6 +140,14 @@ class Ask {
         );
         board.elementContainer.objects.push(
           `board.gun${board.elementContainer.gun}`
+        );
+      } else if (this.draw == 9) {
+        board.elementContainer.eye++;
+        eval(
+          `board.eye${board.elementContainer.eye} = new Eye(${this.startRowPosition}, ${this.startColumnPosition}, "board.eye${board.elementContainer.eye}")`
+        );
+        board.elementContainer.objects.push(
+          `board.eye${board.elementContainer.eye}`
         );
       }
       if (robboShot == "robboShot") {
