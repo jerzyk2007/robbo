@@ -2,7 +2,7 @@
 class Ammo {
   constructor(row, column, name) {
     this.images = ["url(pictures/ammo.png)"];
-    this.sound = new Audio("sound/ammo.wav");
+    this.ammoSound = new Audio("sound/ammo.wav");
     this.startRowPosition = row;
     this.startColumnPosition = column;
     this.startName = name;
@@ -14,7 +14,7 @@ class Ammo {
     ).textContent = this.startName;
   }
   move(moveDirection) {
-    this.sound.play();
+    this.ammoSound.play();
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";

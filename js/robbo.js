@@ -14,7 +14,7 @@ class Robbo {
     this.soundKill = new Audio("sound/killRobbo.wav");
     this.soundStartLevel = new Audio("sound/levelStart.wav");
     this.soundExlopsion = new Audio("sound/bomb.wav");
-    this.soundRobboStep = new Audio("sound/robboStep.wav");
+    // this.soundRobboStep = new Audio("sound/robboStep.wav");
     this.checkMove;
     this.startName = name;
     this.startRowPosition = row;
@@ -193,7 +193,7 @@ class Robbo {
       }
       if (this.checkMove) {
         if (this.checkMove.textContent == "GO") {
-          this.soundRobboStep.play();
+          // this.soundRobboStep.play();
           this.startRowPosition = this.startRowPosition - row;
           this.startColumnPosition = this.startColumnPosition + column;
           const oldPosition = document.querySelector(
