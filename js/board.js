@@ -286,6 +286,14 @@ class Board {
           this.elementContainer.objects.push(
             `board.key${this.elementContainer.key}`
           );
+        } else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "E") {
+          this.elementContainer.eye++;
+          eval(
+            `this.eye${this.elementContainer.eye} = new Eye(i+1, j+1, "board.eye${this.elementContainer.eye}")`
+          );
+          this.elementContainer.objects.push(
+            `board.eye${this.elementContainer.eye}`
+          );
         } else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "C") {
           this.elementContainer.blackHole++;
           eval(

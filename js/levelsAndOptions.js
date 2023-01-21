@@ -16,16 +16,16 @@ class Levels {
     this.level1 = [
       [...`AAAAAAAA  $`],
       [...`       I   `],
-      [...` @  j    l `],
+      [...`    j    l `],
       [...`      -  # `],
       [...`  ?     # #`],
       [...`          .`],
       [...`11111111111`],
+      [...`#          `],
+      [...`     F     `],
+      [...`    @FE    `],
+      [...`  m  F  k  `],
       [...`           `],
-      [...`           `],
-      [...`   FFFFF   `],
-      [...`           `],
-      [...`  m     k  `],
       [...`           `],
     ];
 
@@ -192,7 +192,7 @@ class Levels {
 // $ - ship-
 // # - hash simple-
 // % - hash mobile-
-// ? - ?                         *
+// ? - ?
 // 1 - first border-
 // 2- second border-
 // 3 - third border-
@@ -201,7 +201,7 @@ class Levels {
 // B - bomb-
 // C - black hole – empty space-
 // D - door-
-// E - eyes                      *
+// E - eye                       *
 // F - key-
 // G - live-
 // H - bench-                     *

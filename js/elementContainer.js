@@ -10,6 +10,7 @@ class ElementContainer {
     this.border = 0;
     this.lives = 0;
     this.key = 0;
+    this.eye = 0;
     this.bomb = 0;
     this.gun = 0;
     this.magnet = 0;
