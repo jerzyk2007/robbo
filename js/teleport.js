@@ -130,6 +130,7 @@ class Teleport {
         }, 100);
         board.robbo.startRowPosition = teleportRow + this.rooboRow;
         board.robbo.startColumnPosition = teleportColumn + this.rooboColumn;
+        animShot(board.robbo.startRowPosition, board.robbo.startColumnPosition);
       } else {
         this.teleportNoPlace(
           this.teleportDirection,
