@@ -5,6 +5,8 @@ class Screw {
     this.startRowPosition = row;
     this.startColumnPosition = column;
     this.startName = name;
+    this.sound = new Audio("sound/screw.wav");
+
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = this.images;
@@ -13,6 +15,8 @@ class Screw {
     ).textContent = this.startName;
   }
   move(moveDirection) {
+    this.sound.play();
+
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";

@@ -7,6 +7,7 @@ class Bomb {
     this.startName = name;
     this.checkMove;
     this.imageMove = this.images[0];
+    this.soundExlopsion = new Audio("sound/bomb.wav");
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).style.backgroundImage = this.imageMove;
@@ -51,10 +52,12 @@ class Bomb {
     this.shot();
   }
   destroy() {
+    // this.soundExlopsion.play();
     animExplosion(this.startRowPosition, this.startColumnPosition);
   }
   shot(robboShot) {
     setTimeout(() => {
+      this.soundExlopsion.play();
       for (let i = -1; i <= 1; i++) {
         for (let j = -1; j <= 1; j++) {
           let checkRange = checkAction(
