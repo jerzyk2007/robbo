@@ -16,7 +16,7 @@ class ScoreBoard {
     this.scores = levels.scorePoints;
     this.screws = screw;
     this.lives = levels.robboLives;
-    this.keys = 0;
+    this.key = 0;
     this.ammo = 0;
     this.level = levels.levelCounter;
     this.shipReadyToStart = true;
@@ -26,7 +26,7 @@ class ScoreBoard {
     this.changeScoreBoard(this.scores, "000000", ".score--number");
     this.changeScoreBoard(this.screws, "00", ".screws--number");
     this.changeScoreBoard(this.lives, "00", ".lives--number");
-    this.changeScoreBoard(this.keys, "00", ".keys--number");
+    this.changeScoreBoard(this.key, "00", ".keys--number");
     this.changeScoreBoard(this.ammo, "00", ".ammo--number");
     this.changeScoreBoard(this.level, "00", ".level--number");
   }
@@ -35,7 +35,9 @@ class ScoreBoard {
       this.scores += 150;
 
       this.changeScoreBoard(this.scores, "000000", ".score--number");
-      this.screws -= 1;
+      if (this.screws > 0) {
+        this.screws -= 1;
+      }
       this.changeScoreBoard(this.screws, "00", ".screws--number");
       this.shipReady();
     }
@@ -81,8 +83,8 @@ class ScoreBoard {
     }
 
     if (counter == "key") {
-      this.keys += 1;
-      this.changeScoreBoard(this.keys, "00", ".keys--number");
+      this.key += 1;
+      this.changeScoreBoard(this.key, "00", ".keys--number");
       this.scores += 50;
       this.changeScoreBoard(this.scores, "000000", ".score--number");
     }
@@ -107,18 +109,11 @@ class ScoreBoard {
     }
   }
   shipReady() {
-    setTimeout(() => {
-      if (this.screws == 0 && this.shipReadyToStart) {
-        for (let i = 0; i < board.elementContainer.shipReady.length; i++) {
-          eval(board.elementContainer.shipReady[i]).shipReady();
-          eval(board.elementContainer.shipReady[i]).shipReadyAnim();
-        }
-        this.shipReadyToStart = false;
-      }
-
-      // board.ship.shipReady();
-      // board.ship.shipReadyAnim();
-    }, 0);
+    if (this.screws == 0 && this.shipReadyToStart) {
+      eval(`board.ship1`).shipReady();
+      eval(`board.ship1`).shipReadyAnim();
+      this.shipReadyToStart = false;
+    }
   }
 
   changeScoreBoard(scores, elements, name) {
@@ -138,7 +133,7 @@ class ScoreBoard {
     levels.robboLives = this.lives;
 
     //    this.lives = 3;
-    this.keys = 0;
+    this.key = 0;
     this.ammo = 0;
     this.level = 1;
     this.board = this.createCounters();

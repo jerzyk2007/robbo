@@ -9,8 +9,8 @@ class ElementContainer {
     this.ammo = 0;
     this.border = 0;
     this.lives = 0;
-    this.keys = 0;
-    this.bombs = 0;
+    this.key = 0;
+    this.bomb = 0;
     this.gun = 0;
     this.magnet = 0;
     this.teleport = 0;

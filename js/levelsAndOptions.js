@@ -11,10 +11,11 @@ class Levels {
     this.mobileMoveInterval;
     this.levelCounter = 1;
     this.lastLevel = 3;
+    this.elementContainer = new ElementContainer();
 
     this.level1 = [
-      [...`    A     $`],
-      [...`           `],
+      [...`AAAAAAAA  $`],
+      [...`       I   `],
       [...` @  j    l `],
       [...`      -  # `],
       [...`  ?     # #`],
@@ -22,7 +23,7 @@ class Levels {
       [...`11111111111`],
       [...`           `],
       [...`           `],
-      [...`     II    `],
+      [...`   FFFFF   `],
       [...`           `],
       [...`  m     k  `],
       [...`           `],

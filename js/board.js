@@ -255,12 +255,12 @@ class Board {
             `board.ammo${this.elementContainer.ammo}`
           );
         } else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "B") {
-          this.elementContainer.bombs++;
+          this.elementContainer.bomb++;
           eval(
-            `this.bomb${this.elementContainer.bombs} = new Bomb(i+1, j+1, "board.bomb${this.elementContainer.bombs}")`
+            `this.bomb${this.elementContainer.bomb} = new Bomb(i+1, j+1, "board.bomb${this.elementContainer.bomb}")`
           );
           this.elementContainer.objects.push(
-            `board.bomb${this.elementContainer.bombs}`
+            `board.bomb${this.elementContainer.bomb}`
           );
         } else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "?") {
           this.elementContainer.ask++;
@@ -279,12 +279,12 @@ class Board {
             `board.lives${this.elementContainer.lives}`
           );
         } else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "F") {
-          this.elementContainer.keys++;
+          this.elementContainer.key++;
           eval(
-            `this.keys${this.elementContainer.keys} = new Keys(i+1, j+1, "board.keys${this.elementContainer.keys}")`
+            `this.key${this.elementContainer.key} = new Key(i+1, j+1, "board.key${this.elementContainer.key}")`
           );
           this.elementContainer.objects.push(
-            `board.keys${this.elementContainer.keys}`
+            `board.key${this.elementContainer.key}`
           );
         } else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "C") {
           this.elementContainer.blackHole++;
@@ -318,18 +318,7 @@ class Board {
           this.elementContainer.objects.push(
             `board.door${this.elementContainer.door}`
           );
-        }
-        // else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "$") {
-        //   this.ship = new Ship(i + 1, j + 1, "board.ship");
-        //   this.elementContainer.objects.push(`board.ship`);
-        // }
-        //  else if (
-        //   eval(`levels.level${levels.levelCounter}part${i + 1}`)[j] === "$"
-        // ) {
-        //   this.ship1 = new Ship(i + 1, j + 1, "board.ship1", "shipReady");
-        //   this.elementContainer.objects.push(`board.ship1`);
-        // }
-        else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "$") {
+        } else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "$") {
           this.elementContainer.ship++;
           eval(
             `this.ship${this.elementContainer.ship} = new Ship(i+1, j+1, "board.ship${this.elementContainer.ship}")`
@@ -337,9 +326,9 @@ class Board {
           this.elementContainer.objects.push(
             `board.ship${this.elementContainer.ship}`
           );
-          this.elementContainer.shipReady.push(
-            `board.ship${this.elementContainer.ship}`
-          );
+          // this.elementContainer.shipReady.push(
+          //   `board.ship${this.elementContainer.ship}`
+          // );
         } else if (eval(`levels.level${levels.levelCounter}[i][j]`) === "K") {
           this.elementContainer.beetle++;
           eval(
@@ -600,5 +589,8 @@ class Board {
       }
     }
     this.scoreBoard = new ScoreBoard(this.elementContainer.screws);
+    if (this.elementContainer.screws == 0) {
+      this.ship1.shipReady();
+    }
   }
 }

@@ -1,5 +1,5 @@
 // klasa do tworzenie kluczy
-class Keys {
+class Key {
   constructor(row, column, name) {
     this.images = ["url(pictures/key.png)"];
     this.startRowPosition = row;

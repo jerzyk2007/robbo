@@ -13,10 +13,10 @@ class Door {
     ).textContent = this.startName;
   }
   move(moveDirection) {
-    if (board.scoreBoard.keys > 0) {
-      board.scoreBoard.keys--;
+    if (board.scoreBoard.key > 0) {
+      board.scoreBoard.key--;
       board.scoreBoard.changeScoreBoard(
-        board.scoreBoard.keys,
+        board.scoreBoard.key,
         "00",
         ".keys--number"
       );
