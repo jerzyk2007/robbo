@@ -100,7 +100,8 @@ class Ship {
     pieceBoard.forEach((piece) => {
       piece.style.backgroundColor = "white";
       setTimeout(() => {
-        piece.style.backgroundColor = "rgb(28, 109, 25)";
+        piece.style.backgroundColor =
+          levels.boardColor[levels.boardColorCounter];
       }, 30);
     });
   }

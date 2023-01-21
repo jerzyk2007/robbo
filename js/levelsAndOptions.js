@@ -11,14 +11,24 @@ class Levels {
     this.mobileMoveInterval;
     this.levelCounter = 1;
     this.lastLevel = 5;
-    this.elementContainer = new ElementContainer();
+    this.boardColorCounter = 0;
+    this.boardColor = [
+      "rgb(34, 87, 34)",
+      "rgb(25, 52, 109)",
+      "rgb(109, 107, 25)",
+      "rgb(102, 25, 109)",
+      "rgb(25, 109, 91)",
+      "rgb(109, 70, 25)",
+    ];
+    // this.elementContainer = new ElementContainer();
 
     // this.level1 = [
     //   [...`AAAAAAAA  $`],
     //   [...`  @    I   `],
     //   [...`           `],
-    //   [...`       l # `],
-    //   [...`  ?     # #`],
+    //   [...`     ######`],
+    //   [...` ####E     `],
+    //   [...`V          `],
     // ];
 
     // level 1

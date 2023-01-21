@@ -9,6 +9,8 @@ class Board {
   }
   createBoard(rowCounter, columnCounter) {
     const gameBoard = document.querySelector(".gameBoard");
+    gameBoard.style.backgroundColor =
+      levels.boardColor[levels.boardColorCounter];
     gameBoard.style.gridTemplateColumns = `repeat(${columnCounter}, 1fr)`;
     for (let i = 1; i <= rowCounter; i++) {
       for (let j = 1; j <= columnCounter; j++) {
@@ -17,6 +19,8 @@ class Board {
         pieceBoard.classList.add(`class${i}x${j}`);
         pieceBoard.classList.add("pieceBoard");
         pieceBoard.textContent = "GO";
+        pieceBoard.style.backgroundColor =
+          levels.boardColor[levels.boardColorCounter];
       }
     }
   }

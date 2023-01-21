@@ -159,7 +159,6 @@ class Teleport {
         if (this.teleportDirectionCounter == 4) {
           if (this.firstDirection == "right") {
             this.teleportNoPlaceBackToHomeTeleport("left");
-            //            this.firstDirection = "left";
           } else if (this.firstDirection == "left") {
             this.teleportNoPlaceBackToHomeTeleport("right");
           } else if (this.firstDirection == "up") {
@@ -214,7 +213,7 @@ class Teleport {
         this.firstDirection
       );
       board.robbo.flag = true;
-    }, levels.gameSpeed * 3);
+    }, levels.gameSpeed * 5);
   }
   direction(moveDirection) {}
   destroy() {

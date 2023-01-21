@@ -11,6 +11,10 @@ function nextLevel(info) {
       if (info == "nextLevel") {
         levels.levelCounter++;
         board.scoreBoard.changeCount("nextLevel");
+        levels.boardColorCounter++;
+        if (levels.boardColorCounter == levels.boardColor.length) {
+          levels.boardColorCounter = 0;
+        }
       }
     } else {
       levels.levelCounter = 1;
@@ -161,7 +165,7 @@ function animShot(rowPosition, columnPosition) {
       }
       counter--;
     }
-  }, 50);
+  }, 70);
 }
 
 // funkcja która po śmierci robocika wywołuje ekcpolzję wszystkich obiektów
