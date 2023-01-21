@@ -225,6 +225,15 @@ class Teleport {
     clearInterval(this.timeAnim);
     animExplosion(this.startRowPosition, this.startColumnPosition);
     board.elementContainer.deleteNameObjects(this.startName);
+    board.elementContainer.deleteTeleportName(this.startName);
+    board.elementContainer.deleteTeleportPair(this.pairTeleport);
+
+    // this.elementContainer.teleportName.push(
+    //   `board.teleport${this.elementContainer.teleport}`
+    // );
+    // this.elementContainer.teleportPair.push("0A");
+    // this.pairTeleport = pairTeleport;
+    // this.startName = name;
   }
   shot(robboShot) {}
   burner() {}

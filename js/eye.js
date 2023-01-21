@@ -124,7 +124,16 @@ class Eye {
     animExplosion(this.startRowPosition, this.startColumnPosition);
     board.elementContainer.deleteNameObjects(this.startName);
   }
-  shot(robboShot) {}
+  shot(robboShot) {
+    clearInterval(this.timeAnim);
+    clearInterval(this.timeMove);
+    animExplosion(this.startRowPosition, this.startColumnPosition);
+    if (robboShot == "robboShot") {
+      board.scoreBoard.scores += 150;
+      board.scoreBoard.changeCount("scores");
+    }
+    board.elementContainer.deleteNameObjects(this.startName);
+  }
   burner() {}
   nextLevel() {
     clearInterval(this.timeAnim);

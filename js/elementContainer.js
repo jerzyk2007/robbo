@@ -55,6 +55,20 @@ class ElementContainer {
       }
     }
   }
+  deleteTeleportName(name) {
+    for (let i = 0; i < this.teleportName.length; i++) {
+      if (this.teleportName[i] == name) {
+        this.teleportName.splice(i, 1);
+      }
+    }
+  }
+  deleteTeleportPair(name) {
+    for (let i = 0; i < this.teleportPair.length; i++) {
+      if (this.teleportPair[i] == name) {
+        this.teleportPair.splice(i, 1);
+      }
+    }
+  }
   nextLevel() {
     // this.screws = 0;
     // this.birdHorizontal = 0;
