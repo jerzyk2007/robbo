@@ -84,6 +84,7 @@ class Robbo {
     animExplosion(this.startRowPosition, this.startColumnPosition);
     board.scoreBoard.changeCount("lostLives");
     setTimeout(() => {
+      levels.robboOneKill = true;
       destroyAllElements();
     }, 800);
   }

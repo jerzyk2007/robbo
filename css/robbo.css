@@ -139,7 +139,6 @@ body {
   background-size: 100%;
   color: transparent;
   font-size: 0.001px;
-  background-image: url(/sound/ammo.wav);
 }
 @media (max-width: 1024px) {
   .pieceBoard {

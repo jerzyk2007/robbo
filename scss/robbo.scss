@@ -95,6 +95,8 @@ body {
         }
     }
     @keyframes nextLevel {
+        
+     
         100% {
             left: -130%;
         }
@@ -107,7 +109,6 @@ body {
     background-size: 100%;
     color: transparent;
     font-size: .001px;
-    background-image: url(/sound/ammo.wav);
     // color: black;
     // font-size: 8px;
     @media (max-width: 1024px){

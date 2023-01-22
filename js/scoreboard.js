@@ -110,9 +110,11 @@ class ScoreBoard {
   }
   shipReady() {
     if (this.screws == 0 && this.shipReadyToStart) {
-      eval(`board.ship1`).shipReady();
-      eval(`board.ship1`).shipReadyAnim();
-      this.shipReadyToStart = false;
+      setTimeout(() => {
+        board.ship1.shipReady();
+        board.ship1.shipReadyAnim();
+        this.shipReadyToStart = false;
+      }, 0);
     }
   }
 
