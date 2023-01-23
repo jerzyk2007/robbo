@@ -78,15 +78,18 @@ class Robbo {
   }
   move(moveDirection) {}
   killRobbo() {
-    this.soundKill.play();
-    clearInterval(this.scrollTime);
-    this.flag = false;
-    animExplosion(this.startRowPosition, this.startColumnPosition);
-    board.scoreBoard.changeCount("lostLives");
-    setTimeout(() => {
-      levels.robboOneKill = true;
-      destroyAllElements();
-    }, 800);
+    if (levels.oneKillRobbo) {
+      levels.oneKillRobbo = false;
+      this.soundKill.play();
+      clearInterval(this.scrollTime);
+      this.flag = false;
+      animExplosion(this.startRowPosition, this.startColumnPosition);
+      board.scoreBoard.changeCount("lostLives");
+      setTimeout(() => {
+        levels.oneKillRobbo = true;
+        destroyAllElements();
+      }, 800);
+    }
   }
 
   makeShot(shotDirection) {

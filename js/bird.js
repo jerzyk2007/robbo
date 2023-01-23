@@ -22,6 +22,7 @@ class Bird {
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = this.startName;
   }
+
   changeImageAnim() {
     this.timeAnim = setInterval(() => {
       this.imageMove =
@@ -116,9 +117,9 @@ class Bird {
           this.runDirection === this.moveDirection[0 + this.counter]
             ? this.moveDirection[1 + this.counter]
             : this.moveDirection[0 + this.counter];
-        searchRobbo(this.startRowPosition, this.startColumnPosition);
         this.moveElement();
       }
+      searchRobbo(this.startRowPosition, this.startColumnPosition);
     }, levels.gameSpeed);
   }
 

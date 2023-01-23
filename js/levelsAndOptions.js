@@ -12,6 +12,7 @@ class Levels {
     this.levelCounter = 1;
     this.lastLevel = 5;
     this.boardColorCounter = 0;
+    this.oneKillRobbo = true;
     this.boardColor = [
       "rgb(34, 87, 34)",
       "rgb(25, 52, 109)",
@@ -22,17 +23,18 @@ class Levels {
     ];
     // this.elementContainer = new ElementContainer();
 
-    // this.level1 = [
-    //   [...`11111111111111`],
-    //   [...`1 @    A     1`],
-    //   [...`1            1`],
-    //   [...`1$   II     % `],
-    //   [...`1###### ?   h `],
-    //   [...`              `],
-    // ];
+    this.level1 = [
+      [...`11111111111111`],
+      [...`1 @    A     1`],
+      [...`1            1`],
+      [...`1$            `],
+      [...`       N      `],
+      [...`1            1`],
+      [...`       N      `],
+    ];
 
     // level 1
-    this.level1 = [
+    this.level7 = [
       [...`1111111111111111`],
       [...`1   1   1I 1   1`],
       [...`1 @ 1 j 11 1 k 1`],

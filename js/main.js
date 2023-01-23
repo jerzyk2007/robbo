@@ -110,13 +110,11 @@ function searchRobbo(rowPosition, columnPosition) {
           rowPosition,
           columnPosition
         );
-        if (checkMove) {
-          if (checkMove.textContent == "board.robbo") {
-            return eval("board.robbo.killRobbo()");
-          }
+        if (checkMove && checkMove.textContent == "board.robbo") {
+          return board.robbo.killRobbo();
         }
       }
-    }, levels.gameSpeed * 0.2);
+    }, levels.gameSpeed * 0.1);
   }
 }
 
