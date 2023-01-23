@@ -1,5 +1,5 @@
 // klasa do tworzenie ikonki "nowe życie"
-class Lives {
+class Live {
   constructor(row, column, name) {
     this.images = ["url(pictures/lives.png)"];
     this.startRowPosition = row;

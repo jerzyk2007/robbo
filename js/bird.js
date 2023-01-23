@@ -13,7 +13,8 @@ class Bird {
     this.course = course;
     this.armedBird = shot;
     this.startDirection = this.startDirection();
-    this.runElement = (this.moveElement(), this.changeImageAnim());
+    this.runElement = this.moveElement();
+    this.changeImageAnim();
     this.time;
     this.timeStartShot;
 
@@ -101,29 +102,21 @@ class Bird {
         this.startRowPosition,
         this.startColumnPosition
       );
-      if (this.checkMove) {
-        if (this.checkMove.textContent == "GO") {
-          move(
-            this.runDirection,
-            this.startRowPosition,
-            this.startColumnPosition,
-            this.imageMove,
-            this.startName
-          );
-        } else {
-          this.runDirection =
-            this.runDirection === this.moveDirection[0 + this.counter]
-              ? this.moveDirection[1 + this.counter]
-              : this.moveDirection[0 + this.counter];
-        }
-
-        searchRobbo(this.startRowPosition, this.startColumnPosition);
+      if (this.checkMove && this.checkMove.textContent == "GO") {
+        move(
+          this.runDirection,
+          this.startRowPosition,
+          this.startColumnPosition,
+          this.imageMove,
+          this.startName
+        );
         this.moveElement();
       } else {
         this.runDirection =
           this.runDirection === this.moveDirection[0 + this.counter]
             ? this.moveDirection[1 + this.counter]
             : this.moveDirection[0 + this.counter];
+        searchRobbo(this.startRowPosition, this.startColumnPosition);
         this.moveElement();
       }
     }, levels.gameSpeed);

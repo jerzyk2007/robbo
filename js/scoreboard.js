@@ -14,18 +14,18 @@ class ScoreBoard {
       "./score board mark/9.png",
     ];
     this.scores = levels.scorePoints;
-    this.screws = screw;
-    this.lives = levels.robboLives;
+    this.screw = screw;
+    this.live = levels.robboLives;
     this.key = 0;
     this.ammo = 0;
     this.level = levels.levelCounter;
     this.shipReadyToStart = true;
-    this.board = (this.createCounters(), this.shipReady());
+    this.board = this.createCounters();
   }
   createCounters() {
     this.changeScoreBoard(this.scores, "000000", ".score--number");
-    this.changeScoreBoard(this.screws, "00", ".screws--number");
-    this.changeScoreBoard(this.lives, "00", ".lives--number");
+    this.changeScoreBoard(this.screw, "00", ".screws--number");
+    this.changeScoreBoard(this.live, "00", ".lives--number");
     this.changeScoreBoard(this.key, "00", ".keys--number");
     this.changeScoreBoard(this.ammo, "00", ".ammo--number");
     this.changeScoreBoard(this.level, "00", ".level--number");
@@ -35,21 +35,23 @@ class ScoreBoard {
       this.scores += 150;
 
       this.changeScoreBoard(this.scores, "000000", ".score--number");
-      if (this.screws > 0) {
-        this.screws -= 1;
+      if (this.screw > 0) {
+        this.screw -= 1;
       }
-      this.changeScoreBoard(this.screws, "00", ".screws--number");
+      this.changeScoreBoard(this.screw, "00", ".screws--number");
       this.shipReady();
     }
 
     if (counter == "kill") {
       this.scores += 250;
-
+      this.changeScoreBoard(this.scores, "000000", ".score--number");
+    }
+    if (counter == "ask") {
+      this.scores += 50;
       this.changeScoreBoard(this.scores, "000000", ".score--number");
     }
     if (counter == "bomb") {
       this.scores += 100;
-
       this.changeScoreBoard(this.scores, "000000", ".score--number");
     }
     if (counter == "scores") {
@@ -69,10 +71,10 @@ class ScoreBoard {
     }
 
     if (counter == "lives") {
-      if (this.lives < 99) {
-        this.lives++;
+      if (this.live < 99) {
+        this.live++;
       }
-      this.changeScoreBoard(this.lives, "00", ".lives--number");
+      this.changeScoreBoard(this.live, "00", ".lives--number");
       this.scores += 150;
       this.changeScoreBoard(this.scores, "000000", ".score--number");
     }
@@ -95,8 +97,8 @@ class ScoreBoard {
     }
 
     if (counter == "lostLives") {
-      this.lives -= 1;
-      if (this.lives > 0) {
+      this.live -= 1;
+      if (this.live > 0) {
         setTimeout(() => {
           nextLevel("lostLive");
         }, 1500);
@@ -105,11 +107,11 @@ class ScoreBoard {
           window.location.reload(true);
         }, 1500);
       }
-      this.changeScoreBoard(this.lives, "00", ".lives--number");
+      this.changeScoreBoard(this.live, "00", ".lives--number");
     }
   }
   shipReady() {
-    if (this.screws == 0 && this.shipReadyToStart) {
+    if (this.screw == 0 && this.shipReadyToStart) {
       setTimeout(() => {
         board.ship1.shipReady();
         board.ship1.shipReadyAnim();
@@ -132,9 +134,7 @@ class ScoreBoard {
   }
   nextLevel() {
     levels.scorePoints = this.scores;
-    levels.robboLives = this.lives;
-
-    //    this.lives = 3;
+    levels.robboLives = this.live;
     this.key = 0;
     this.ammo = 0;
     this.level = 1;

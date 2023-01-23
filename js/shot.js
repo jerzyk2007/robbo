@@ -132,10 +132,10 @@ class Shot {
             //            console.log('sprawdź')
             ///// ******
 
-            //          animShot(
-            //            this.startRowPosition + this.row,
-            //            this.startColumnPosition + this.column
-            //          );
+            animShot(
+              this.startRowPosition + this.row,
+              this.startColumnPosition + this.column
+            );
 
             ///// ******
             board.elementContainer.deleteNameObjects(this.startName);

@@ -24,6 +24,7 @@ function nextLevel(info) {
     this.objects.forEach((objects) => {
       eval(objects).nextLevel();
     });
+
     this.staticObjects.forEach((staticObjects) => {
       eval(staticObjects).nextLevel();
     });

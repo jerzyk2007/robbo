@@ -33,17 +33,15 @@ class Bomb {
       this.startRowPosition,
       this.startColumnPosition
     );
-    if (this.checkMove) {
-      if (this.checkMove.textContent == "GO") {
-        move(
-          moveDirection,
-          this.startRowPosition,
-          this.startColumnPosition,
-          this.imageMove,
-          this.startName
-        );
-        board.robbo.moveRobbo(moveDirection);
-      }
+    if (this.checkMove && this.checkMove.textContent == "GO") {
+      move(
+        moveDirection,
+        this.startRowPosition,
+        this.startColumnPosition,
+        this.imageMove,
+        this.startName
+      );
+      board.robbo.moveRobbo(moveDirection);
     }
   }
   bomb() {

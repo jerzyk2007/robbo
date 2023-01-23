@@ -1,14 +1,14 @@
 // klasa która przecgowuje wszytskie aktualne elementy wyświetlające się na stronie
 class ElementContainer {
   constructor() {
-    this.screws = 0;
+    this.screw = 0;
     this.ask = 0;
     this.bird = 0;
     this.hash = 0;
     this.shotNumber = 0;
     this.ammo = 0;
     this.border = 0;
-    this.lives = 0;
+    this.live = 0;
     this.key = 0;
     this.eye = 0;
     this.bomb = 0;
@@ -71,7 +71,7 @@ class ElementContainer {
     }
   }
   nextLevel() {
-    // this.screws = 0;
+    // this.screw = 0;
     // this.birdHorizontal = 0;
     // this.birdVertical = 0;
     // this.hash = 0;

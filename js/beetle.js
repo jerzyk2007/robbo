@@ -11,10 +11,10 @@ class Beetle {
     this.startColumnPosition = column;
     this.startName = name;
     this.type = type;
-    this.checkMove;
     this.moveDirection = ["left", "up", "right", "down"];
     this.tryMoveCounter = 0;
     this.course = course;
+    this.changeImageAnim();
     this.startDirection = this.startDirection();
     this.startPathfinder = this.tryMove(this.runDirection);
     this.time;
@@ -23,10 +23,23 @@ class Beetle {
     this.moveCounter = 0;
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
-    ).style.backgroundImage = this.imageMove;
-    document.querySelector(
-      `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = this.startName;
+  }
+  changeImageAnim() {
+    if (this.type == "ant") {
+      this.counter = 2;
+    } else if (this.type == "beetle") {
+      this.counter = 0;
+    }
+    this.timeAnim = setInterval(() => {
+      this.imageMove =
+        this.imageMove === this.images[0 + this.counter]
+          ? this.images[1 + this.counter]
+          : this.images[0 + this.counter];
+      document.querySelector(
+        `.class${this.startRowPosition}x${this.startColumnPosition}`
+      ).style.backgroundImage = this.imageMove;
+    }, levels.gameSpeed * 2);
   }
 
   tryMove(moveDirection) {
@@ -103,14 +116,12 @@ class Beetle {
           this.arrayMove = [];
         }
       }
-      // console.log(this.arrayMatrix);
       this.suggestMove(this.arrayMatrix, moveDirection);
     }, 0);
   }
 
   suggestMove(arrayMatrix, moveDirection) {
     this.tryDirection;
-    // console.log("robbo move: " + moveDirection);
     if (moveDirection == "up") {
       this.possibleDirection = [
         ["", "up", ""],
@@ -165,10 +176,8 @@ class Beetle {
   }
   startDirection() {
     if (this.type == "ant") {
-      this.imageMove = this.images[2];
       this.runDirection = this.moveDirection[2];
     } else if (this.type == "beetle") {
-      this.imageMove = this.images[0];
       this.runDirection = this.moveDirection[0];
     }
   }
@@ -185,6 +194,7 @@ class Beetle {
   }
   destroy() {
     clearTimeout(this.time);
+    clearInterval(this.timeAnim);
     animExplosion(
       this.startRowPosition,
       this.startColumnPosition,
@@ -193,11 +203,13 @@ class Beetle {
   }
   bomb() {
     clearTimeout(this.time);
+    clearInterval(this.timeAnim);
     animExplosion(this.startRowPosition, this.startColumnPosition);
     board.elementContainer.deleteNameObjects(this.startName);
   }
   shot(robboShot) {
     clearTimeout(this.time);
+    clearInterval(this.timeAnim);
     animExplosion(this.startRowPosition, this.startColumnPosition);
     if (robboShot == "robboShot") {
       board.scoreBoard.scores += 150;
@@ -207,15 +219,6 @@ class Beetle {
   }
   moveElement(tryDirection) {
     this.time = setTimeout(() => {
-      if (this.type == "ant") {
-        this.counter = 2;
-      } else if (this.type == "beetle") {
-        this.counter = 0;
-      }
-      this.imageMove =
-        this.imageMove === this.images[0 + this.counter]
-          ? this.images[1 + this.counter]
-          : this.images[0 + this.counter];
       document.querySelector(
         `.class${this.startRowPosition}x${this.startColumnPosition}`
       ).style.backgroundImage = this.imageMove;
@@ -224,24 +227,16 @@ class Beetle {
         this.startRowPosition,
         this.startColumnPosition
       );
-      if (this.checkMove) {
-        if (this.checkMove.textContent == "GO") {
-          move(
-            tryDirection,
-            this.startRowPosition,
-            this.startColumnPosition,
-            this.imageMove,
-            this.startName
-          );
-          searchRobbo(this.startRowPosition, this.startColumnPosition);
-          this.tryMove(tryDirection);
-        } else {
-          this.tryMove(this.moveDirection[this.tryMoveCounter]);
-          this.tryMoveCounter++;
-          if (this.tryMoveCounter == 4) {
-            this.tryMoveCounter = 0;
-          }
-        }
+      if (this.checkMove && this.checkMove.textContent == "GO") {
+        move(
+          tryDirection,
+          this.startRowPosition,
+          this.startColumnPosition,
+          this.imageMove,
+          this.startName
+        );
+        searchRobbo(this.startRowPosition, this.startColumnPosition);
+        this.tryMove(tryDirection);
       } else {
         this.tryMove(this.moveDirection[this.tryMoveCounter]);
         this.tryMoveCounter++;
@@ -253,6 +248,8 @@ class Beetle {
   }
   move(moveDirection) {}
   burner() {
+    clearTimeout(this.time);
+    clearInterval(this.timeAnim);
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";
@@ -264,6 +261,7 @@ class Beetle {
   }
   nextLevel() {
     clearTimeout(this.time);
+    clearInterval(this.timeAnim);
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";

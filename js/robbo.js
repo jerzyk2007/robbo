@@ -177,20 +177,12 @@ class Robbo {
       );
       if (moveDirection === "down") {
         row = -1;
-        image1 = 0;
-        image2 = 1;
       } else if (moveDirection === "up") {
         row = 1;
-        image1 = 2;
-        image2 = 3;
       } else if (moveDirection === "left") {
         column = -1;
-        image1 = 4;
-        image2 = 5;
       } else if (moveDirection === "right") {
         column = 1;
-        image1 = 6;
-        image2 = 7;
       }
       if (this.checkMove) {
         if (this.checkMove.textContent == "GO") {
@@ -208,10 +200,6 @@ class Robbo {
           oldPosition.textContent = "GO";
           oldPosition.style.backgroundImage = "";
           newPosition.textContent = this.startName;
-          // this.imageMove =
-          //   this.imageMove === this.images[image2]
-          //     ? this.images[image1]
-          //     : this.images[image2];
           newPosition.style.backgroundImage =
             this.changeImageMove(moveDirection);
           newPosition.scrollIntoView({
@@ -224,11 +212,6 @@ class Robbo {
           const newPosition = document.querySelector(
             `.class${this.startRowPosition}x${this.startColumnPosition}`
           );
-          // newPosition.style.backgroundImage =
-          //   this.changeImageMove(moveDirection);
-          // this.imageMove === this.images[image2]
-          //   ? this.images[image1]
-          //   : this.images[image2];
           if (this.checkMove.textContent !== "STOP") {
             eval(this.checkMove.textContent).move(moveDirection);
           }

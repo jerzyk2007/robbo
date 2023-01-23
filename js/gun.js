@@ -304,7 +304,7 @@ class Gun {
       }
       this.timeShot = setTimeout(() => {
         return this.moveShot();
-      }, 2000);
+      }, levels.gameSpeed * 10);
     } else {
       this.timeShot = setTimeout(() => {
         this.moveShotBack();
@@ -362,7 +362,7 @@ class Gun {
       }
       if (type == "single") {
         this.frequentlyShot =
-          Math.floor((Math.random() * (3000 - 250 + 1)) / levels.gameSpeed) *
+          Math.floor((Math.random() * (3500 - 250 + 1)) / levels.gameSpeed) *
             levels.gameSpeed +
           levels.gameSpeed;
       } else if (type == "burner") {

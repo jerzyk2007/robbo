@@ -22,17 +22,17 @@ class Levels {
     ];
     // this.elementContainer = new ElementContainer();
 
-    this.level1 = [
-      [...`11111111111111`],
-      [...`1 @        $ 1`],
-      [...`1            1`],
-      [...`1     N      1`],
-      [...`1            1`],
-      [...`11111111111111`],
-    ];
+    // this.level1 = [
+    //   [...`11111111111111`],
+    //   [...`1 @    A     1`],
+    //   [...`1            1`],
+    //   [...`1$   II     % `],
+    //   [...`1###### ?   h `],
+    //   [...`              `],
+    // ];
 
     // level 1
-    this.level7 = [
+    this.level1 = [
       [...`1111111111111111`],
       [...`1   1   1I 1   1`],
       [...`1 @ 1 j 11 1 k 1`],
@@ -246,6 +246,7 @@ class Levels {
 
 // @ - robbo-
 // $ - ship-
+// + - new ship, dont use, only for eye class
 // # - hash simple-
 // % - hash mobile-
 // ? - ?

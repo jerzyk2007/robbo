@@ -10,7 +10,6 @@ class Bench {
     this.startName = name;
     this.checkMove;
     this.runElement = this.changeImageAnim();
-
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = this.startName;

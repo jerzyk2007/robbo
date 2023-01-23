@@ -78,18 +78,16 @@ class Eye {
         this.startRowPosition,
         this.startColumnPosition
       );
-      if (this.checkMove) {
-        if (this.checkMove.textContent == "GO") {
-          move(
-            this.eyeDirection,
-            this.startRowPosition,
-            this.startColumnPosition,
-            this.imageMove,
-            this.startName
-          );
+      if (this.checkMove && this.checkMove.textContent == "GO") {
+        move(
+          this.eyeDirection,
+          this.startRowPosition,
+          this.startColumnPosition,
+          this.imageMove,
+          this.startName
+        );
 
-          searchRobbo(this.startRowPosition, this.startColumnPosition);
-        }
+        searchRobbo(this.startRowPosition, this.startColumnPosition);
       } else {
       }
       if (this.findNewWay.length == 4) {

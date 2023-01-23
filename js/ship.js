@@ -33,6 +33,9 @@ class Ship {
       document.querySelector(
         `.class${this.startRowPosition}x${this.startColumnPosition}`
       ).style.backgroundImage = this.imageMove;
+      document.querySelector(
+        `.class${this.startRowPosition}x${this.startColumnPosition}`
+      ).textContent = this.startName;
       this.shipReady();
     }, levels.gameSpeed * 2);
     this.endLevel = true;

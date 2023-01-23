@@ -16,7 +16,6 @@ class Screw {
   }
   move(moveDirection) {
     this.sound.play();
-
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = "GO";
