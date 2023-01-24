@@ -342,8 +342,9 @@ margin-right: 10px;
     flex-basis: 30%;
 height: 50%;
 background-color: #064d13;
-font-size: 24px;
+font-size: 28px;
 color: gray;
+font-family: myFirstFont;
 -webkit-user-select: none; /* Safari */
 -moz-user-select: none; /* Firefox */
 -ms-user-select: none; /* Internet Explorer */
@@ -383,7 +384,9 @@ display: flex;
 .wrapperLevelCounter > .levelMinus:active {
     background-color: #F0F0F0;
 }
-
+.levelCounter {
+    font-family: mySecondFont;
+}
 .container__title {
     margin-top: 50px;
     display: flex;
