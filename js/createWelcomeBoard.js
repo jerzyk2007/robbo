@@ -86,10 +86,52 @@ function createWelcomeBoard() {
   ];
   const wrapper = document.createElement("div");
   const welcomeBoard = document.createElement("div");
+  const wrapperLevelCounter = document.createElement("div");
+  const levelPlus = document.createElement("div");
+  const levelMinus = document.createElement("div");
+  const levelCounter = document.createElement("div");
   document.body.appendChild(wrapper);
   wrapper.classList.add("wrapper");
   wrapper.appendChild(welcomeBoard);
+  document.body.appendChild(wrapperLevelCounter);
+  wrapperLevelCounter.appendChild(levelMinus);
+  wrapperLevelCounter.appendChild(levelCounter);
+  wrapperLevelCounter.appendChild(levelPlus);
   welcomeBoard.classList.add("welcomeBoard");
+  wrapperLevelCounter.classList.add("wrapperLevelCounter");
+  levelPlus.classList.add("levelPlus");
+  levelCounter.classList.add("levelCounter");
+  levelMinus.classList.add("levelMinus");
+  levelPlus.textContent = "Level +";
+  levelCounter.textContent = levels.levelCounter;
+  levelMinus.textContent = "Level -";
+
+  if ("ontouchstart" in levelMinus) {
+    levelMinus.addEventListener("touchstart", changeLevelMinus);
+  } else {
+    levelMinus.addEventListener("click", changeLevelMinus);
+  }
+  if ("ontouchstart" in levelPlus) {
+    levelPlus.addEventListener("touchstart", changeLevelPlus);
+  } else {
+    levelPlus.addEventListener("click", changeLevelPlus);
+  }
+
+  function changeLevelPlus() {
+    levels.levelCounter++;
+    if (levels.levelCounter > levels.lastLevel) {
+      levels.levelCounter = 1;
+    }
+    levelCounter.textContent = levels.levelCounter;
+  }
+
+  function changeLevelMinus() {
+    levels.levelCounter--;
+    if (levels.levelCounter < 1) {
+      levels.levelCounter = levels.lastLevel;
+    }
+    levelCounter.textContent = levels.levelCounter;
+  }
 
   for (let i = 0; i < this.HTMLSectionaName.length; i++) {
     const welcomeBoard = document.querySelector(".welcomeBoard");
@@ -229,8 +271,6 @@ function createWelcomeBoard() {
     };
     indexTyping = setInterval(addLetter, addLetterTime);
   }
-
-  // document.addEventListener("touchstart", closeWelcomeBoard);
-  document.addEventListener("touchstart", closeWelcomeBoard);
-  window.addEventListener("keydown", closeWelcomeBoardbySpace);
+  wrapper.addEventListener("touchstart", closeWelcomeBoard);
+  document.addEventListener("keydown", closeWelcomeBoardbySpace);
 }

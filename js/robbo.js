@@ -74,6 +74,7 @@ class Robbo {
         `.class${this.startRowPosition}x${this.startColumnPosition}`
       ).textContent = this.startName;
       levels.canMove = true;
+        levels.oneKillRobbo = true;
     }, 1300);
   }
   move(moveDirection) {}
@@ -256,6 +257,7 @@ class Robbo {
     return "GO";
   }
   nextLevel() {
+      
     clearInterval(this.scrollTime);
 
     document.querySelector(

@@ -273,6 +273,7 @@ function closeWelcomeBoard() {
   window.removeEventListener("keydown", closeWelcomeBoardbySpace);
 
   document.querySelector(".wrapper").remove();
+  document.querySelector(".wrapperLevelCounter").remove();
   const firstLevel = document.createElement("div");
   document.body.appendChild(firstLevel);
   firstLevel.classList.add("firstLevel");
@@ -288,6 +289,7 @@ function closeWelcomeBoard() {
 }
 function closeWelcomeBoardbySpace(e) {
   if (e.keyCode === 32) {
+    console.log("spacja");
     closeWelcomeBoard();
   }
 }

@@ -24,8 +24,6 @@ class Shot {
     this.start = this.startShot();
     this.checkMove;
     this.counter = 2;
-
-    // this.action = ["shot"];
     this.time;
   }
   addToObject() {

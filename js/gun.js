@@ -362,9 +362,7 @@ class Gun {
       }
       if (type == "single") {
         this.frequentlyShot =
-          Math.floor((Math.random() * (3500 - 250 + 1)) / levels.gameSpeed) *
-            levels.gameSpeed +
-          levels.gameSpeed;
+          Math.floor(Math.random() * (3000 - 500 + 1) + 500) - 250;
       } else if (type == "burner") {
         this.frequentlyShot =
           Math.floor((Math.random() * (6000 - 1500 + 1)) / 1500) * 1500 + 1500;

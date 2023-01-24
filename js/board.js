@@ -50,7 +50,14 @@ class Board {
       this[`border`] = new Border(row, column, "board.border", "border4");
     } else if (element == "5") {
       this[`border`] = new Border(row, column, "board.border", "border5");
-    } else if (element == "@") {
+    }else if (element == "6") {
+      this[`border`] = new Border(row, column, "board.border", "border6");
+    }else if (element == "7") {
+      this[`border`] = new Border(row, column, "board.border", "border7");
+    }else if (element == "8") {
+      this[`border`] = new Border(row, column, "board.border", "border8");
+    }
+      else if (element == "@") {
       this.robbo = new Robbo(row, column, "board.robbo");
       this.elementContainer.objects.push(`board.robbo`);
     } else if (element == "I") {
@@ -143,7 +150,20 @@ class Board {
       this.elementContainer.objects.push(
         `board.gun${this.elementContainer.gun}`
       );
-    } else if (element == "R") {
+    } else if (element == "W") {
+      this.elementContainer.gun++;
+      this[`gun${this.elementContainer.gun}`] = new Gun(
+        row,
+        column,
+        `board.gun${this.elementContainer.gun}`,
+        "left",
+        "laser"
+      );
+      this.elementContainer.objects.push(
+        `board.gun${this.elementContainer.gun}`
+      );
+    }
+      else if (element == "R") {
       this.elementContainer.gun++;
       this[`gun${this.elementContainer.gun}`] = new Gun(
         row,

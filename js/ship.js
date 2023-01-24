@@ -75,6 +75,7 @@ class Ship {
     } else {
       this.soundEndLevel.play();
       this.endLevel = false;
+        levels.oneKillRobbo = false;
       board.robbo.flag = false;
       clearTimeout(this.time);
       nextLevel("nextLevel");

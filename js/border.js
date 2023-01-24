@@ -24,6 +24,13 @@ class Border {
     } else if (type == "border5") {
       return ["url(pictures/border5.png)"];
     }
+      else if (type == "border6") {
+      return ["url(pictures/border6.png)"];
+    }else if (type == "border7") {
+      return ["url(pictures/border7.png)"];
+    }else if (type == "border8") {
+      return ["url(pictures/border8.png)"];
+    }
   }
   move(moveDirection) {}
   shot(robboShot, checkMove, row, column) {
