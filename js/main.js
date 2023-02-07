@@ -1,9 +1,16 @@
 const levels = new Levels();
 let board = null;
+const keyStates = {
+  up: false,
+  down: false,
+  right: false,
+  left: false,
+  shoot: false,
+  reset: false,
+}
 
 // funkcja która uruchamia następny level lub po stracie użycia uruchamia ponownie ten sam
 function nextLevel(info) {
-  window.removeEventListener("keydown", keyDownListener());
 
   document.querySelector(".nextLevel").classList.toggle("animationNextLevel");
   setTimeout(() => {
@@ -175,95 +182,62 @@ function destroyAllElements() {
     eval(objects).destroy();
   });
 }
-// funkcja obsługująca klawisze sterujące
-function keyDownListener(direction) {
-  return function (event) {
-    if (!levels.canMove) return false;
-    levels.canMove = false;
-    levels.canMoveSetTime = setTimeout(function () {
-      levels.canMove = true;
-    }, levels.gameSpeed * 0.9);
 
-    if (!direction) {
-      switch (event.keyCode) {
-        case 39:
-          if (levels.spaceShot) {
-            return board.robbo.makeShot("right");
-          } else {
-            return board.robbo.moveRobbo("right");
-          }
-        case 40:
-          if (levels.spaceShot) {
-            return board.robbo.makeShot("down");
-          } else {
-            return board.robbo.moveRobbo("down");
-          }
-        case 37:
-          if (levels.spaceShot) {
-            return board.robbo.makeShot("left");
-          } else {
-            return board.robbo.moveRobbo("left");
-          }
-        case 38:
-          if (levels.spaceShot) {
-            return board.robbo.makeShot("up");
-          } else {
-            return board.robbo.moveRobbo("up");
-          }
-        case 32:
-          levels.spaceShot = true;
-          break;
-        case 27:
-          return board.robbo.killRobbo();
-      }
-    } else {
-      if (direction == "esc") {
-        return board.robbo.killRobbo();
-      } else {
-        if (levels.spaceShot) {
-          return board.robbo.makeShot(direction);
-        } else {
-          board.robbo.moveRobbo(direction);
-        }
-      }
-    }
-  };
-}
-document.addEventListener("keyup", function (event) {
-  if (event.keyCode === 32) {
-    levels.spaceShot = false;
+function gameMoveLoop() {
+
+  gamepad.update(keyStates);
+
+  let dir = keyStates.up && 'up' || keyStates.down && 'down' || keyStates.left && 'left' || keyStates.right && 'right' || undefined
+  
+  if (keyStates.reset) {
+    return board.robbo.killRobbo()
   }
-});
+  if (!dir) return
+
+  if (!levels.canMove) return
+
+  if (keyStates.shoot) {
+    board.robbo.makeShot(dir)
+  } else {
+    board.robbo.moveRobbo(dir)
+  }
+}
+
+function setKeyState(event, pressed) {
+  if (typeof event === "string") {
+    keyStates[event] = pressed;
+    return true;
+  }
+  switch (event.keyCode) {
+    case 37: keyStates.left  = pressed; return true;
+    case 38: keyStates.up    = pressed; return true;
+    case 39: keyStates.right = pressed; return true;
+    case 40: keyStates.down  = pressed; return true;
+    case 32: keyStates.shoot = pressed; return true;
+    case 27: keyStates.reset = pressed; return true;
+  }  
+  return false;
+}
+
+function onKeyDown(event) {
+  if (setKeyState(event, true)) {
+    event.preventDefault()
+  }
+}
+
+function onKeyUp(event) {
+  if (setKeyState(event, false)) {
+    event.preventDefault()
+  }
+}
+
 // mobile key
 function mobileKeyListener() {
-  document
-    .querySelector(".buttons__right")
-    .addEventListener("touchstart", keyDownListener("right"));
-
-  document
-    .querySelector(".buttons__left")
-    .addEventListener("touchstart", keyDownListener("left"));
-
-  document
-    .querySelector(".buttons__up")
-    .addEventListener("touchstart", keyDownListener("up"));
-
-  document
-    .querySelector(".buttons__down")
-    .addEventListener("touchstart", keyDownListener("down"));
-
-  document
-    .querySelector(".buttons__shot")
-    .addEventListener("touchstart", () => {
-      levels.spaceShot = true;
-    });
-  document.querySelector(".buttons__shot").addEventListener("touchend", () => {
-    levels.spaceShot = false;
-  });
-
-  document
-    .querySelector(".buttons__ESC")
-    .addEventListener("touchstart", keyDownListener("esc"));
+  for (let key in keyStates) {
+    let button = document.querySelector(".buttons__"+key)
+    button.addEventListener("touchstart", (ev)=>setKeyState(key, true));
+    button.addEventListener("touchend",   (ev)=>setKeyState(key, false));
+  }
 }
 
 // funkcja zamykająca ekran powitalny gry
@@ -271,6 +245,7 @@ function closeWelcomeBoard() {
   clearInterval(indexTyping);
   document.removeEventListener("touchstart", closeWelcomeBoard);
   window.removeEventListener("keydown", closeWelcomeBoardbySpace);
+  gamepad.dontWaitForAnyKey();
 
   document.querySelector(".wrapper").remove();
   document.querySelector(".wrapperLevelCounter").remove();
@@ -283,8 +258,11 @@ function closeWelcomeBoard() {
   );
   setTimeout(() => {
     document.querySelector(".firstLevel").remove();
-    window.addEventListener("keydown", keyDownListener());
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keyup",   onKeyUp);
     mobileKeyListener();
+    setInterval(gameMoveLoop, levels.gameSpeed);
+    levels.canMove = true;
   }, 1000);
 }
 function closeWelcomeBoardbySpace(e) {
