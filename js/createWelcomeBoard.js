@@ -273,5 +273,4 @@ function createWelcomeBoard() {
   }
   wrapper.addEventListener("touchstart", closeWelcomeBoard);
   document.addEventListener("keydown", closeWelcomeBoardbySpace);
-  gamepad.waitForAnyKey(closeWelcomeBoard)
 }
