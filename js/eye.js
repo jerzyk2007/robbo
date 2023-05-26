@@ -11,11 +11,11 @@ class Eye {
     this.checkMove;
     this.startEye = this.changeImageAnim();
     this.eyeDirection;
-    this.time;
+    this.timeAnim;
     this.timeMove;
     this.findNewWay = [];
     this.changeWay = ["left", "up", "right", "down"];
-    this.waitForStart();
+    this.eyeMove();
     document.querySelector(
       `.class${this.startRowPosition}x${this.startColumnPosition}`
     ).textContent = this.startName;
@@ -29,12 +29,7 @@ class Eye {
       ).style.backgroundImage = this.imageMove;
     }, levels.gameSpeed * 1.5);
   }
-  waitForStart() {
-    setTimeout(() => {
-      this.eyeMove();
-    }, levels.gameSpeed * 15);
-  }
-  move(direction) {}
+  move(direction) { }
   eyeMove() {
     this.timeMove = setInterval(() => {
       if (
@@ -126,13 +121,13 @@ class Eye {
     clearInterval(this.timeAnim);
     clearInterval(this.timeMove);
     animExplosion(this.startRowPosition, this.startColumnPosition);
+    board.elementContainer.deleteNameObjects(this.startName);
     if (robboShot == "robboShot") {
       board.scoreBoard.scores += 150;
       board.scoreBoard.changeCount("scores");
     }
-    board.elementContainer.deleteNameObjects(this.startName);
   }
-  burner() {}
+  burner() { }
   nextLevel() {
     clearInterval(this.timeAnim);
     clearInterval(this.timeMove);
