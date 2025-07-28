@@ -99,6 +99,10 @@ function createWelcomeBoard() {
   wrapperLevelCounter.appendChild(levelPlus);
   welcomeBoard.classList.add("welcomeBoard");
   wrapperLevelCounter.classList.add("wrapperLevelCounter");
+
+  // wrapper.appendChild(wrapperLevelCounter);
+  // wrapperLevelCounter.classList.add("wrapperLevelCounter");
+
   levelPlus.classList.add("levelPlus");
   levelCounter.classList.add("levelCounter");
   levelMinus.classList.add("levelMinus");
